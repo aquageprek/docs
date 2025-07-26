@@ -1,0 +1,64 @@
+---
+title: "Custom Code"
+description: "Inject custom HTML, CSS, and JS across your site for tracking, widgets, and customizations."
+icon: "code"
+---
+
+# 🧩 Custom Code Settings
+
+LucentUI allows you to inject custom code into multiple areas of your site, giving full control without editing the core theme.
+
+## Custom HTML - Head
+
+- **Setting Name**: `custom_head_html`
+- **Type**: Textarea  
+- **Description**: Injects inside `<head>`. Ideal for:
+  - Google Analytics
+  - Custom fonts
+  - Meta tags
+
+## Custom HTML - Body Top
+
+- **Setting Name**: `custom_body_top_html`
+- **Type**: Textarea  
+- **Description**: Injects at top of `<body>`. Common uses:
+  - Google Tag Manager (noscript)
+  - Tracking pixels
+
+## Custom HTML - Body Bottom
+
+- **Setting Name**: `custom_body_bottom_html`
+- **Type**: Textarea  
+- **Description**: Injects before `</body>`. Use for:
+  - Chat widgets (e.g. Tawk.to, Crisp)
+  - Discord embeds
+  - Support widgets
+
+## Custom HTML - Dashboard Only
+
+- **Setting Name**: `custom_dashboard_html`
+- **Type**: Textarea  
+- **Description**: Displays only on dashboard pages. Great for:
+  - User-specific banners
+  - Admin announcements
+
+## Custom HTML - Homepage Only
+
+- **Setting Name**: `custom_homepage_html`
+- **Type**: Textarea  
+- **Description**: Injects into homepage only. Use for:
+  - Promo banners
+  - Hero messages
+
+---
+
+## 🎨 Custom CSS
+
+- **Setting Name**: `custom_css`
+- **Type**: Textarea  
+- **Description**: Will be wrapped in `<style>` tag.
+
+```css
+body {
+  background-color: #0d0d0d;
+}
