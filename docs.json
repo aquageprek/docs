@@ -22,10 +22,21 @@
             ]
           },
           {
-            "group": "Customization",
+            "group": "LucentUI",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "lucentui/getting-started",
+              "lucentui/updating",
+              "lucentui/general-settings",
+              "lucentui/links-urls",
+              "lucentui/color-settings",
+              "lucentui/custom-html-widgets",
+              "lucentui/footer-ctas",
+              "lucentui/feature-sections",
+              "lucentui/hero-section-homepage",
+              "lucentui/registration-page-settings",
+              "lucentui/footer-header",
+              "lucentui/seo",
+              "lucentui/advanced-features"
             ]
           },
           {
