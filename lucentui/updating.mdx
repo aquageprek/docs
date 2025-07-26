@@ -1,0 +1,112 @@
+---
+title: 'Updating LucentUI'
+description: 'How to update LucentUI to the latest version manually or via PTB.'
+icon: 'arrow-up-right-from-square'
+---
+
+# 🔄 Updating LucentUI
+
+LucentUI receives updates regularly to bring new UI improvements, fixes, and compatibility with the latest Paymenter versions.
+
+You can update the theme using **Manual Update** or the **PTB (.paytheme)** method.
+
+---
+
+## ⚙️ Manual Update
+
+This is the standard method if you installed LucentUI from a ZIP file.
+
+<Steps>
+
+<Step title="Download the latest ZIP">
+Get the latest version of `lucentui.zip` from your purchase source.
+</Step>
+
+<Step title="Upload and overwrite">
+Replace the existing theme directory:
+
+```bash
+mv lucentui.zip /var/www/paymenter/themes
+cd /var/www/paymenter/themes
+unzip -o lucentui.zip
+```
+The `-o` flag will **overwrite** the previous files with the new ones. 
+</Step>
+
+<Step title="Rebuild the theme">
+After replacing the files, navigate to your Paymenter root and rebuild assets:
+
+```bash
+cd /var/www/paymenter
+npm run build lucentui
+```
+
+</Step>
+
+</Steps>
+
+---
+
+## 📦 Update via PTB (.paytheme)
+
+If you used PTB, updating is much simpler.
+
+<Steps>
+
+<Step title="Place the new .paytheme file">
+Replace the old `.paytheme` file with the new one (you can rename if needed).
+</Step>
+
+<Step title="Run update command">
+Execute the update command using PTB:
+
+```bash
+ptb update -t lucentui lucentui.paytheme
+```
+
+If you renamed the file or theme, match the names accordingly. 
+</Step>
+
+</Steps>
+
+---
+
+## 🧪 Checking Version
+
+You can verify that the update was successful by checking your theme’s footer, dashboard, or running:
+
+```bash
+ptb info -t lucentui
+```
+
+---
+
+## 📌 Notes
+
+* Custom changes will be **overwritten** unless you've backed them up.
+* Always **backup your theme files** and database before updating.
+* Read the latest [changelog](https://discord.gg/UYMrM8kDne) for what's new.
+
+---
+
+## 🚨 Troubleshooting
+
+* **500 Internal Server Error**?
+  → Re-run `npm run build lucentui` and clear your browser cache.
+
+* **Missing Styles or Broken Layouts?**
+  → Ensure assets were rebuilt correctly and check for version compatibility.
+
+---
+
+## ❓ Need Help?
+
+We're happy to assist if anything goes wrong:
+
+* [Join Zaqua Discord](https://discord.gg/UYMrM8kDne)
+* [Email Support](mailto:jstazka@icloud.com)
+
+---
+
+> LucentUI is built with 💙 by AquaGeprek
+> Powered by Zaqua + Paymenter + PTB
