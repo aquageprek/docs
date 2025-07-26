@@ -1,7 +1,9 @@
 ---
+
 title: "Homepage Settings"
 description: "Customize every section of your LucentUI homepage including hero, stats, features, and more."
 icon: "house"
+
 ---
 
 # 🏠 Homepage Settings
@@ -14,139 +16,130 @@ LucentUI gives you full control over the homepage layout, from hero banners to f
 
 ### 🚀 Badge, Title & Description
 
-| Setting | Default | Description |
-|--------|---------|-------------|
-| `homepage_hero_badge` | 🚀 Welcome to Paymenter... | Small text above hero title |
-| `homepage_hero_title1` | Premium | First part of hero heading |
-| `homepage_hero_title2` | Game Hosting | Highlighted part of heading |
-| `homepage_hero_desc` | (long paragraph) | Description paragraph under title |
+<Expandable title="Badge, Title & Description">
+    <ResponseField name="homepage_hero_badge" type="string" default="🚀 Welcome to Paymenter...">
+        Small text above hero title
+    </ResponseField>
+    <ResponseField name="homepage_hero_title1" type="string" default="Premium">
+        First part of hero heading
+    </ResponseField>
+    <ResponseField name="homepage_hero_title2" type="string" default="Game Hosting">
+        Highlighted part of heading
+    </ResponseField>
+    <ResponseField name="homepage_hero_desc" type="string">
+        Description paragraph under title
+    </ResponseField>
+</Expandable>
 
 ### 🖱️ Call-to-Action Buttons
 
-| Setting | Default | Description |
-|--------|---------|-------------|
-| `hero_cta_primary_text` | Start Gaming Now | Primary action button |
-| `hero_cta_secondary_text` | Explore Features | Secondary action button |
+<Expandable title="Call-to-Action Buttons">
+    <ResponseField name="hero_cta_primary_text" type="string" default="Start Gaming Now">
+        Primary action button
+    </ResponseField>
+    <ResponseField name="hero_cta_secondary_text" type="string" default="Explore Features">
+        Secondary action button
+    </ResponseField>
+</Expandable>
 
 ### 🛡️ Trust Badges
 
-| Setting | Default |
-|--------|---------|
-| `hero_trust_badge_1` | 30-Day Money Back |
-| `hero_trust_badge_2` | Instant Activation |
+<Expandable title="Trust Badges">
+    <ResponseField name="hero_trust_badge_1" type="string" default="30-Day Money Back" />
+    <ResponseField name="hero_trust_badge_2" type="string" default="Instant Activation" />
+</Expandable>
 
 ---
 
 ## 📊 Stats Section
 
-Showcase your platform’s reliability, support, and userbase.
-
-| Setting | Title | Subtitle |
-|--------|--------|----------|
-| Uptime | `stats_uptime_title` | `stats_uptime_subtitle` |
-| Support | `stats_support_title` | `stats_support_subtitle` |
-| Users | `stats_users_title` | `stats_users_subtitle` |
-| Servers | `stats_servers_title` | `stats_servers_subtitle` |
+<Expandable title="Stats Section">
+    <ResponseField name="stats_uptime_title" type="string" />
+    <ResponseField name="stats_uptime_subtitle" type="string" />
+    <ResponseField name="stats_support_title" type="string" />
+    <ResponseField name="stats_support_subtitle" type="string" />
+    <ResponseField name="stats_users_title" type="string" />
+    <ResponseField name="stats_users_subtitle" type="string" />
+    <ResponseField name="stats_servers_title" type="string" />
+    <ResponseField name="stats_servers_subtitle" type="string" />
+</Expandable>
 
 ---
 
 ## ⚡ Quick Actions
 
-Fast links to popular areas like buying, login, docs, or support.
-
 ### Section Titles
 
-| Setting | Default |
-|--------|---------|
-| `quick_actions_title` | Get Started in Seconds |
-| `quick_actions_subtitle` | Everything you need is just one click away |
-| `quick_actions_header` | Quick Actions |
+<Expandable title="Section Titles">
+    <ResponseField name="quick_actions_title" type="string" default="Get Started in Seconds" />
+    <ResponseField name="quick_actions_subtitle" type="string" default="Everything you need is just one click away" />
+    <ResponseField name="quick_actions_header" type="string" default="Quick Actions" />
+</Expandable>
 
 ### Cards
 
-| Card | Title | Subtitle | Description | Link |
-|------|-------|----------|-------------|------|
-| Buy Server | `buy_server_title` | `buy_server_subtitle` | `buy_server_description` | `buy_server_link` |
-| Help | `help_title` | `help_subtitle` | *(no description)* | `help_link` |
-| Login | `login_title` | `login_subtitle` | `login_description` | *(N/A)* |
-| Dashboard | `dashboard_title` | `dashboard_subtitle` | `dashboard_description` | *(N/A)* |
-| Docs | `docs_title` | `docs_subtitle` | `docs_description` | `docs_link` |
+<Expandable title="Cards">
+    <ResponseField name="buy_server_title" type="string" />
+    <ResponseField name="buy_server_subtitle" type="string" />
+    <ResponseField name="buy_server_description" type="string" />
+    <ResponseField name="buy_server_link" type="string" />
+    <ResponseField name="help_title" type="string" />
+    <ResponseField name="help_subtitle" type="string" />
+    <ResponseField name="help_link" type="string" />
+    <ResponseField name="login_title" type="string" />
+    <ResponseField name="login_subtitle" type="string" />
+    <ResponseField name="login_description" type="string" />
+    <ResponseField name="dashboard_title" type="string" />
+    <ResponseField name="dashboard_subtitle" type="string" />
+    <ResponseField name="dashboard_description" type="string" />
+    <ResponseField name="docs_title" type="string" />
+    <ResponseField name="docs_subtitle" type="string" />
+    <ResponseField name="docs_description" type="string" />
+    <ResponseField name="docs_link" type="string" />
+</Expandable>
 
 ---
 
 ## 🧩 Features Section
 
-Explain why users should choose your hosting platform.
-
-| Setting | Default |
-|--------|---------|
-| `features_title` | Why Choose Us? |
-| `features_subtitle` | We’ve built the most advanced... |
-
-Each feature uses:
-
-```md
-feature_X_title
-feature_X_desc
-````
-
-Where **X = 1 to 6**, for example:
-
-```md
-feature_1_title: Military-Grade Security  
-feature_1_desc: DDoS protection, encrypted connections...
-```
+<Expandable title="Features Section">
+    <ResponseField name="features_title" type="string" default="Why Choose Us?" />
+    <ResponseField name="features_subtitle" type="string" default="We’ve built the most advanced..." />
+    <ResponseField name="feature_X_title" type="string" />
+    <ResponseField name="feature_X_desc" type="string" />
+</Expandable>
 
 ---
 
 ## 🗣️ Testimonials
 
-Social proof from happy customers.
-
-| Setting                 | Default                                  |
-| ----------------------- | ---------------------------------------- |
-| `testimonials_title`    | What Gamers Say                          |
-| `testimonials_subtitle` | Join thousands of satisfied customers... |
-
-Each testimonial uses:
-
-```md
-testimonial_X_name  
-testimonial_X_role  
-testimonial_X_quote
-```
-
-Where **X = 1 to 3**. Example:
-
-```md
-testimonial_1_name: John Doe  
-testimonial_1_role: Minecraft Server Admin  
-testimonial_1_quote: Best hosting service I’ve ever used!
-```
+<Expandable title="Testimonials">
+    <ResponseField name="testimonials_title" type="string" default="What Gamers Say" />
+    <ResponseField name="testimonials_subtitle" type="string" default="Join thousands of satisfied customers..." />
+    <ResponseField name="testimonial_X_name" type="string" />
+    <ResponseField name="testimonial_X_role" type="string" />
+    <ResponseField name="testimonial_X_quote" type="string" />
+</Expandable>
 
 ---
 
 ## 🎮 Services Section
 
-Title for services list on homepage.
-
-| Setting             | Default                          |
-| ------------------- | -------------------------------- |
-| `services_title`    | Our Services                     |
-| `services_subtitle` | Choose from our comprehensive... |
+<Expandable title="Services Section">
+    <ResponseField name="services_title" type="string" default="Our Services" />
+    <ResponseField name="services_subtitle" type="string" default="Choose from our comprehensive..." />
+</Expandable>
 
 ---
 
 ## 📣 Call to Action (CTA)
 
-Bottom section call-to-action banner.
-
-| Setting              | Default                      |
-| -------------------- | ---------------------------- |
-| `cta_title`          | Ready to Get Started?        |
-| `cta_subtitle`       | (Markdown-supported message) |
-| `cta_primary_text`   | View Pricing                 |
-| `cta_secondary_text` | Chat Support                 |
+<Expandable title="Call to Action">
+    <ResponseField name="cta_title" type="string" default="Ready to Get Started?" />
+    <ResponseField name="cta_subtitle" type="string" />
+    <ResponseField name="cta_primary_text" type="string" default="View Pricing" />
+    <ResponseField name="cta_secondary_text" type="string" default="Chat Support" />
+</Expandable>
 
 ---
 
