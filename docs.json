@@ -25,6 +25,8 @@
             "group": "LucentUI",
             "pages": [
               "lucentui/introduction",
+              "lucentui/faq",
+              "lucentui/changelogs",
               "lucentui/get-started",
               "lucentui/updating",
               "lucentui/general",
