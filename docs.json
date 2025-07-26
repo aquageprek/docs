@@ -121,5 +121,8 @@
       "discord": "https://discord.gg/UYMrM8kDne",
       "github": "https://github.com/zaquahost"
     }
+  },
+  "fonts": {
+    "family": "Poppins"
   }
 }
