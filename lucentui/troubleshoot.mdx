@@ -18,19 +18,23 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 
 **Possible Causes:**
 - Theme not properly installed or not selected
-- `settings.php` is malformed (e.g. missing comma, invalid array)
+- Missing required assets or build step not completed
+- Base URL not set correctly
+- `Theme.php` is malformed (e.g. missing comma, invalid array)
 
 **Fixes:**
 - Make sure LucentUI is selected as the active theme in Paymenter settings
-- Check the theme folder path: should be `/resources/themes/LucentUI`
-- Validate your `settings.php` using an online PHP linter
+- Run `php artisan app:settings:change app_url` to set the Base URL
+- Build the theme again using `php artisan theme:build`
+- Check the theme folder path: should be `/resources/themes/lucentui`
+- Validate your `Theme.php` using an online PHP linter
 
 ---
 
 ## ⚠️ Error 500 - Internal Server Error
 
 **Symptoms:**
-- Page displays error 500 or “Whoops, something went wrong”
+- Page displays error 500 or “SERVER ERROR”
 
 **Possible Causes:**
 - Syntax error in theme files
@@ -40,7 +44,7 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 **Fixes:**
 - Run `php artisan config:clear`, `php artisan view:clear`, and `php artisan cache:clear`
 - Check `storage/logs/laravel.log` for exact error trace
-- Ensure you’re using PHP 8.1 or higher (as required by Paymenter)
+- Ensure you’re using PHP 8.3 or higher (as required by Paymenter)
 
 ---
 
