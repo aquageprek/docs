@@ -1,0 +1,18 @@
+---
+title: "📢 Banner Settings"
+description: "Controls for displaying banner announcements in the LucentUI theme."
+icon: "megaphone"
+---
+
+# 📢 Banner Announcement Settings
+
+Configure how announcement banners are displayed above the dashboard. This is useful for important updates, promotions, or alerts.
+
+| Setting              | Type     | Default                                          | Description                                                                                             |
+| -------------------- | -------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| `banner_enabled`     | Checkbox | false                                            | Toggle to enable/disable banner announcements on the dashboard                                          |
+| `banner_type`        | Select   | info                                             | Select the banner type. Options: `critical` (Red), `warning` (Orange), `info` (Blue), `success` (Green) |
+| `banner_message`     | Textarea | This is an important announcement for all users. | The main text message displayed in the banner                                                           |
+| `banner_dismissible` | Checkbox | true                                             | Allows users to manually close the banner if enabled                                                    |
+
+> 💡 **Tip:** Use `banner_type` to match the urgency or theme of your announcement, such as `critical` for outages or `success` for promotions.

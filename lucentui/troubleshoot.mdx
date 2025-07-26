@@ -1,0 +1,159 @@
+---
+title: "🛠️ Troubleshooting LucentUI"
+description: "Common issues and how to fix them when using the LucentUI theme for Paymenter."
+icon: "bug"
+---
+
+# 🛠️ Troubleshooting Guide
+
+If you're running into issues with the LucentUI theme, don’t worry! Here’s a list of common problems and how to resolve them.
+
+---
+
+## 🚫 Theme Not Rendering / Blank Page
+
+**Symptoms:**
+- Page is blank or not styled
+- Header/footer is missing
+
+**Possible Causes:**
+- Theme not properly installed or not selected
+- `settings.php` is malformed (e.g. missing comma, invalid array)
+
+**Fixes:**
+- Make sure LucentUI is selected as the active theme in Paymenter settings
+- Check the theme folder path: should be `/resources/themes/LucentUI`
+- Validate your `settings.php` using an online PHP linter
+
+---
+
+## ⚠️ Error 500 - Internal Server Error
+
+**Symptoms:**
+- Page displays error 500 or “Whoops, something went wrong”
+
+**Possible Causes:**
+- Syntax error in theme files
+- PHP version incompatibility
+- Laravel cache issues
+
+**Fixes:**
+- Run `php artisan config:clear`, `php artisan view:clear`, and `php artisan cache:clear`
+- Check `storage/logs/laravel.log` for exact error trace
+- Ensure you’re using PHP 8.1 or higher (as required by Paymenter)
+
+---
+
+## 🧩 Theme Settings Not Showing
+
+**Symptoms:**
+- Custom theme settings are missing in the admin panel
+
+**Possible Causes:**
+- `settings.php` file not loaded properly
+- Syntax error in one of the setting definitions
+
+**Fixes:**
+- Double check `settings.php` syntax (especially commas, quotes, brackets)
+- Refresh the admin dashboard or relogin
+- Re-import the theme using `ptb import -t lucentui`
+
+---
+
+## 🖼️ Background Image Not Showing
+
+**Symptoms:**
+- Background image set in settings does not appear
+
+**Possible Causes:**
+- Invalid URL format
+- Image is blocked due to CORS
+
+**Fixes:**
+- Make sure the image URL is direct and ends with `.jpg`, `.png`, etc.
+- Try uploading the image to a CDN or your own server
+- Ensure browser isn’t blocking external content
+
+---
+
+## 🎨 Color Settings Not Applying
+
+**Symptoms:**
+- Primary or secondary colors are not updating
+
+**Possible Causes:**
+- Cache not cleared
+- Incorrect `hsl()` or `hex` format
+
+**Fixes:**
+- Check that all colors are valid (e.g. `hsl(240, 100%, 50%)`)
+- Clear browser cache or use hard reload (Ctrl + F5)
+- Try clearing views: `php artisan view:clear`
+
+---
+
+## 🔧 Custom JS/CSS Not Working
+
+**Symptoms:**
+- Custom scripts or styles have no effect
+
+**Possible Causes:**
+- Syntax errors in your custom code
+- Content-Security-Policy (CSP) blocking inline scripts
+
+**Fixes:**
+- Wrap CSS in `<style>` and JS in `<script>` (automatically done if using theme settings)
+- Avoid using `document.write` in JS
+- Check browser console for errors (F12 > Console)
+
+---
+
+## 🧼 Markdown Not Rendering in Footer / CTA
+
+**Symptoms:**
+- Footer text or other markdown content displays as raw text
+
+**Fixes:**
+- Ensure you're not escaping special characters (like `*`, `_`)
+- Wrap content correctly — avoid unclosed tags
+
+---
+
+## ❌ “ptb import” Not Updating Theme
+
+**Symptoms:**
+- You updated theme files but nothing changes
+
+**Fixes:**
+- Run `ptb import -t lucentui` again
+- Ensure the import target folder is correct
+- Restart server if needed
+
+---
+
+## 💥 JS Console Errors (e.g. Alpine.js)
+
+**Symptoms:**
+- Interactions like dropdowns, modals, or tabs not working
+
+**Fixes:**
+- Ensure Alpine.js is included in the theme
+- Avoid duplicate script tags
+- Check for syntax errors in `custom_js` section
+
+---
+
+## 🧪 Still Broken?
+
+**Checklist:**
+- ✅ Is the theme installed in the right folder?
+- ✅ Is your Paymenter version up to date?
+- ✅ Are you using supported PHP version?
+- ✅ Did you clear Laravel & browser cache?
+- ✅ Did you check the logs?
+
+> 🧠 **Pro Tip:** Always test new settings on a staging environment before applying them live!
+
+---
+
+Need help? [Open an issue on GitHub](https://github.com/aquageprek/LucentUI) or join the support Discord if available!

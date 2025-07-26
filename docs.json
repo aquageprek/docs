@@ -31,12 +31,10 @@
               "lucentui/seo",
               "lucentui/custom-code",
               "lucentui/homepage",
-              "lucentui/feature-sections",
-              "lucentui/hero-section-homepage",
-              "lucentui/registration-page-settings",
-              "lucentui/footer-header",
-              "lucentui/seo",
-              "lucentui/advanced-features"
+              "lucentui/banner",
+              "lucentui/colors",
+              "lucentui/footer",
+              "lucentui/troubleshoot"
             ]
           },
           {
