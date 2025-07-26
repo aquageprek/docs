@@ -17,6 +17,36 @@ LucentUI allows you to inject custom code into multiple areas of your site, givi
   - Custom fonts
   - Meta tags
 
+### Examples:
+
+**Google Analytics 4:**
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+```
+
+**Custom Fonts:**
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+```
+
+**Meta Tags for SEO:**
+```html
+<meta name="theme-color" content="#000000">
+<meta name="author" content="Your Name">
+<meta property="og:site_name" content="Your Site Name">
+```
+
+---
+
 ## Custom HTML - Body Top
 
 - **Setting Name**: `custom_body_top_html`
@@ -24,6 +54,28 @@ LucentUI allows you to inject custom code into multiple areas of your site, givi
 - **Description**: Injects at top of `<body>`. Common uses:
   - Google Tag Manager (noscript)
   - Tracking pixels
+
+### Examples:
+
+**Google Tag Manager (noscript):**
+```html
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+          height="0" width="0" style="display:none;visibility:hidden">
+  </iframe>
+</noscript>
+```
+
+**Facebook Pixel:**
+```html
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+</noscript>
+```
+
+---
 
 ## Custom HTML - Body Bottom
 
@@ -34,6 +86,50 @@ LucentUI allows you to inject custom code into multiple areas of your site, givi
   - Discord embeds
   - Support widgets
 
+### Examples:
+
+**Tawk.to Chat Widget:**
+```html
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/YOUR_WIDGET_ID/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+```
+
+**Crisp Chat:**
+```html
+<script type="text/javascript">
+  window.$crisp=[];
+  window.CRISP_WEBSITE_ID="YOUR-WEBSITE-ID";
+  (function(){
+    d=document;
+    s=d.createElement("script");
+    s.src="https://client.crisp.chat/l.js";
+    s.async=1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+</script>
+```
+
+**Discord Widget:**
+```html
+<iframe src="https://discord.com/widget?id=YOUR_SERVER_ID&theme=dark" 
+        width="350" height="500" allowtransparency="true" 
+        frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+</iframe>
+```
+
+---
+
 ## Custom HTML - Dashboard Only
 
 - **Setting Name**: `custom_dashboard_html`
@@ -41,6 +137,27 @@ LucentUI allows you to inject custom code into multiple areas of your site, givi
 - **Description**: Displays only on dashboard pages. Great for:
   - User-specific banners
   - Admin announcements
+
+### Examples:
+
+**Admin Announcement Banner:**
+```html
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: white; padding: 1rem; margin: 1rem 0; border-radius: 8px; text-align: center;">
+  <h3 style="margin: 0 0 0.5rem 0;">🎉 New Feature Available!</h3>
+  <p style="margin: 0;">Check out our new dashboard analytics section.</p>
+</div>
+```
+
+**Maintenance Notice:**
+```html
+<div class="alert alert-warning" role="alert">
+  <strong>⚠️ Scheduled Maintenance:</strong> 
+  System will be down for maintenance on March 15th from 2:00-4:00 AM EST.
+</div>
+```
+
+---
 
 ## Custom HTML - Homepage Only
 
@@ -50,6 +167,27 @@ LucentUI allows you to inject custom code into multiple areas of your site, givi
   - Promo banners
   - Hero messages
 
+### Examples:
+
+**Promotional Banner:**
+```html
+<div style="background: linear-gradient(45deg, #ff6b6b, #feca57); 
+            color: white; text-align: center; padding: 20px; margin: 20px 0; border-radius: 10px;">
+  <h2 style="margin: 0 0 10px 0;">🚀 50% Off All Plans!</h2>
+  <p style="margin: 0;">Limited time offer - Use code SAVE50 at checkout</p>
+</div>
+```
+
+**Newsletter Signup:**
+```html
+<div style="border: 2px solid #4CAF50; padding: 20px; margin: 20px 0; border-radius: 8px; text-align: center;">
+  <h3>📧 Stay Updated</h3>
+  <p>Subscribe to our newsletter for the latest updates!</p>
+  <input type="email" placeholder="Enter your email" style="padding: 10px; margin-right: 10px; border: 1px solid #ddd; border-radius: 4px;">
+  <button style="padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 4px;">Subscribe</button>
+</div>
+```
+
 ---
 
 ## 🎨 Custom CSS
@@ -58,23 +196,139 @@ LucentUI allows you to inject custom code into multiple areas of your site, givi
 - **Type**: Textarea  
 - **Description**: Will be wrapped in `<style>` tag.
 
+### Examples:
+
+**Dark Theme Customization:**
 ```css
-body {
-  background-color: #0d0d0d;
+:root {
+  --primary-color: #6366f1;
+  --background-dark: #0d1117;
+  --surface-dark: #161b22;
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
 }
-````
+
+body {
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+}
+
+.card {
+  background-color: var(--surface-dark);
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+}
+```
+
+**Responsive Design Enhancements:**
+```css
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+```
 
 ---
 
 ## 🔧 Custom JavaScript
 
-* **Setting Name**: `custom_js`
-* **Type**: Textarea
-* **Description**: Injects at the bottom of the page inside `<script>` tag.
+- **Setting Name**: `custom_js`
+- **Type**: Textarea
+- **Description**: Injects at the bottom of the page inside `<script>` tag.
 
+### Examples:
+
+**Enhanced User Experience:**
 ```js
-console.log("Welcome to LucentUI!");
+// Welcome message with fade-in effect
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Welcome to LucentUI!");
+  
+  // Add fade-in animation to elements
+  const fadeElements = document.querySelectorAll('.fade-in');
+  fadeElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'all 0.6s ease-out';
+    
+    setTimeout(() => {
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+    }, 100);
+  });
+});
 ```
+---
+
+<Warning>
+Always test custom code in a staging environment before deploying to production. Consider performance impact and ensure compatibility across browsers.
+</Warning>
 
 <Info>
 Custom code is perfect for enhancing UI behavior, embedding third-party tools, or adding advanced analytics — all without touching the theme code.
