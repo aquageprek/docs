@@ -11,13 +11,18 @@ LucentUI is ready to elevate your Paymenter experience with a clean, responsive,
 There are **two ways** to install the theme: **manual installation** or using the recommended **PTB (.paytheme)** method.
 
 ---
+## 🛠 Prerequisites
+* Paymenter installed
+* Node.js + NPM
+* unzip & curl installed
+* PTB for `.paytheme` support (optional but recommended)
+---
 
 ## 🧰 Option 1: Manual Installation
 
 <Steps>
 <Step title="Upload the ZIP file">
 Move the downloaded `lucentui.zip` into your Paymenter themes directory:
-
 ```bash
 mv lucentui.zip /var/www/paymenter/themes
 cd /var/www/paymenter/themes
@@ -26,13 +31,10 @@ cd /var/www/paymenter/themes
 
 <Step title="Extract the theme">
 Unzip the archive:
-
 ```bash
 unzip lucentui.zip
 ```
-
 Make sure the folder structure is like this:
-
 ```txt
 /themes
  └── lucentui/
@@ -40,18 +42,15 @@ Make sure the folder structure is like this:
       ├── home.blade.php
       └── other views...
 ```
-
 </Step>
 
 <Step title="Build the assets (required)">
 Navigate to your Paymenter root and build the theme:
-
 ```bash
 cd /var/www/paymenter
 npm i
 npm run build lucentui
 ```
-
 <Warning>Skipping this step may result in a **500 Internal Server Error**.</Warning> 
 </Step>
 
@@ -70,7 +69,6 @@ Using [PTB (Paymenter ToolBox)](https://github.com/QKing-Official/PTB) is the **
 <Steps>
 <Step title="Install PTB CLI">
 Run this script to install PTB globally:
-
 ```bash
 curl -fsSL https://raw.githubusercontent.com/QKing-Official/PTB/refs/heads/main/installer | bash
 ```
@@ -82,7 +80,6 @@ Upload the `lucentui.paytheme` file to your hosted Paymenter server (any locatio
 
 <Step title="Import using PTB">
 Import the theme with this command:
-
 ```bash
 ptb import -t lucentui.paytheme
 ```
@@ -99,32 +96,11 @@ Go to your **Admin → Settings → Theme**, and select `lucentui`.
 
 * PTB also supports `update`, `rename`, and `validate` features.
 * Want to change theme name or preview before installing? Use:
-
 ```bash
 ptb rename -t lucentui.paytheme -n my-custom-theme
 ptb list -t lucentui.paytheme
 ```
-
 ---
-
-## 🛠 Prerequisites
-
-* Paymenter installed
-* Node.js + NPM
-* unzip & curl installed
-* PTB for `.paytheme` support (optional but recommended)
-
----
-
-## 📬 Need Help?
-
-Having issues or want advanced customization?
-
-* [Join Zaqua Discord](https://discord.gg/UYMrM8kDne)
-* [Email Support](mailto:jstazka@icloud.com)
-
----
-
 > LucentUI is built with ❤️ by AquaGeprek
 > Powered by Zaqua + Paymenter + PTB
 

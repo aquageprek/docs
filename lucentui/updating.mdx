@@ -9,7 +9,6 @@ icon: 'arrows-rotate'
 LucentUI receives updates regularly to bring new UI improvements, fixes, and compatibility with the latest Paymenter versions.
 
 You can update the theme using **Manual Update** or the **PTB (.paytheme)** method.
-
 ---
 
 ## ⚙️ Manual Update
@@ -17,14 +16,12 @@ You can update the theme using **Manual Update** or the **PTB (.paytheme)** meth
 This is the standard method if you installed LucentUI from a ZIP file.
 
 <Steps>
-
 <Step title="Download the latest ZIP">
 Get the latest version of `lucentui.zip` from your purchase source.
 </Step>
 
 <Step title="Upload and overwrite">
 Replace the existing theme directory:
-
 ```bash
 mv lucentui.zip /var/www/paymenter/themes
 cd /var/www/paymenter/themes
@@ -35,14 +32,11 @@ The `-o` flag will **overwrite** the previous files with the new ones.
 
 <Step title="Rebuild the theme">
 After replacing the files, navigate to your Paymenter root and rebuild assets:
-
 ```bash
 cd /var/www/paymenter
 npm run build lucentui
 ```
-
 </Step>
-
 </Steps>
 
 ---
