@@ -20,14 +20,29 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 - Theme not properly installed or not selected
 - Missing required assets or build step not completed
 - Base URL not set correctly
-- `Theme.php` is malformed (e.g. missing comma, invalid array)
+- `themes/lucentui/theme.php` is malformed (e.g. missing comma, invalid array) or not found
 
 **Fixes:**
 - Make sure LucentUI is selected as the active theme in Paymenter settings
 - Run `php artisan app:settings:change app_url` to set the Base URL
-- Build the theme again using `npm run build lucentui`
+- Build the theme again using `npm run build lucentui` from your Paymenter root
 - Check the theme folder path: should be `/themes/lucentui`
 - Validate your `theme.php` using an online PHP linter
+
+---
+
+## ⚠️ npm/Vite Build Errors
+**Symptoms:**
+- Errors when running `npm run build lucentui`
+- Missing dependencies or modules
+**Possible Causes:**
+- Node.js or NPM not installed or outdated
+- Missing `package.json` or `node_modules`
+**Fixes:**
+- Ensure you have Node.js v14+ and NPM installed
+- Run `npm install` in your Paymenter root to install dependencies
+- Check for typos in `package.json`
+- Try deleting `node_modules` and running `npm install` again
 
 ---
 
@@ -54,13 +69,13 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 - Custom theme settings are missing in the admin panel
 
 **Possible Causes:**
-- `Theme.php` file not loaded properly
+- `theme.php` file not loaded properly
 - Syntax error in one of the setting definitions
 
 **Fixes:**
-- Double check `Theme.php` syntax (especially commas, quotes, brackets)
+- Double check `theme.php` syntax (especially commas, quotes, brackets)
 - Refresh the admin dashboard or relogin
-- Re-import the theme using `ptb import -t lucentui`
+- Re-import the theme
 
 ---
 
@@ -87,7 +102,7 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 
 **Possible Causes:**
 - Cache not cleared
-- Incorrect `hsl()` or `hex` format
+- Incorrect `hsl()` format
 
 **Fixes:**
 - Check that all colors are valid (e.g. `hsl(240, 100%, 50%)`)

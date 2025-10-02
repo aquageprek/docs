@@ -8,7 +8,7 @@ icon: 'rocket'
 
 LucentUI is ready to elevate your Paymenter experience with a clean, responsive, and modern interface.
 
-There are **two ways** to install the theme: **manual installation** or using the recommended **PTB (.paytheme)** method.
+Currently, **PTB (.paytheme) installation is temporarily unsupported**. Please use the manual installation method below.
 
 ---
 
@@ -61,44 +61,3 @@ In your admin panel, go to **Settings → Theme**, and choose `lucentui`.
 </Step>
 
 </Steps>
-
----
-
-## 📦 Option 2: Install via PTB (.paytheme)
-
-Using [PTB (Paymenter ToolBox)](https://github.com/QKing-Official/PTB) is the **recommended** way to install and manage your theme.
-
-<Steps>
-<Step title="Install PTB CLI">
-Run this script to install PTB globally:
-```bash
-curl -fsSL https://raw.githubusercontent.com/QKing-Official/PTB/refs/heads/main/installer | bash
-```
-</Step>
-
-<Step title="Move the .paytheme file">
-Upload the `lucentui.paytheme` file to your hosted Paymenter server (any location is fine).
-</Step>
-
-<Step title="Import using PTB">
-Import the theme with this command:
-```bash
-ptb import -t lucentui.paytheme
-```
-</Step>
-
-<Step title="Activate LucentUI">
-Go to your **Admin → Settings → Theme**, and select `lucentui`.
-</Step>
-</Steps>
-
----
-
-## 💡 Tips
-
-* PTB also supports `update`, `rename`, and `validate` features.
-* Want to change theme name or preview before installing? Use:
-```bash
-ptb rename -t lucentui.paytheme -n my-custom-theme
-ptb list -t lucentui.paytheme
-```
