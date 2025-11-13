@@ -8,8 +8,6 @@ icon: 'rocket'
 
 LucentUI is ready to elevate your Paymenter experience with a clean, responsive, and modern interface.
 
-Currently, **PTB (.paytheme) installation is temporarily unsupported**. Please use the manual installation method below.
-
 ---
 
 ## 🛠 Prerequisites
@@ -47,13 +45,13 @@ Make sure the folder structure is like this:
 </Step>
 
 <Step title="Build the assets (required)">
+<Warning>Skipping this step may result in a **500 Internal Server Error**.</Warning> 
 Navigate to your Paymenter root and build the theme:
 ```bash
 cd /var/www/paymenter
 npm i
 npm run build lucentui
 ```
-<Warning>Skipping this step may result in a **500 Internal Server Error**.</Warning> 
 </Step>
 
 <Step title="Activate LucentUI">
