@@ -20,14 +20,14 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 - Theme not properly installed or not selected
 - Missing required assets or build step not completed
 - Base URL not set correctly
-- `themes/lucentui/theme.php` is malformed (e.g. missing comma, invalid array) or not found
+- `themes/lucentui/Theme.php` is malformed (e.g. missing comma, invalid array) or not found
 
 **Fixes:**
 - Make sure LucentUI is selected as the active theme in Paymenter settings
 - Run `php artisan app:settings:change app_url` to set the Base URL
 - Build the theme again using `npm run build lucentui` from your Paymenter root
 - Check the theme folder path: should be `/themes/lucentui`
-- Validate your `theme.php` using an online PHP linter
+- Validate your `Theme.php` using an online PHP linter
 
 ---
 
@@ -69,11 +69,11 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 - Custom theme settings are missing in the admin panel
 
 **Possible Causes:**
-- `theme.php` file not loaded properly
+- `Theme.php` file not loaded properly
 - Syntax error in one of the setting definitions
 
 **Fixes:**
-- Double check `theme.php` syntax (especially commas, quotes, brackets)
+- Double check `Theme.php` syntax (especially commas, quotes, brackets)
 - Refresh the admin dashboard or relogin
 - Re-import the theme
 
@@ -135,18 +135,6 @@ If you're running into issues with the LucentUI theme, don’t worry! Here’s a
 **Fixes:**
 - Ensure you're not escaping special characters (like `*`, `_`)
 - Wrap content correctly — avoid unclosed tags
-
----
-
-## ❌ “ptb import” Not Updating Theme
-
-**Symptoms:**
-- You updated theme files but nothing changes
-
-**Fixes:**
-- Run `ptb import -t lucentui` again
-- Ensure the import target folder is correct
-- Restart server if needed
 
 ---
 
