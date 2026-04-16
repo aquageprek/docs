@@ -12,62 +12,60 @@ After enabling TriPay Gateway from the Admin Panel, fill in the following settin
 
 ## 🔑 Required Settings
 
-<ParamField body="API Key" type="string" required>
-  Your TriPay API Key. Found under **Merchant → API** in the TriPay Dashboard.
+### API Key
 
-  ```
-  Example: DEV-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  ```
-</ParamField>
+Your TriPay API Key. Found under **Merchant → API** in the TriPay Dashboard.
 
-<ParamField body="Private Key" type="string" required>
-  Your TriPay Private Key, used to sign transaction requests and verify webhook callbacks.
+```
+Example: DEV-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
-  ```
-  Example: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-  ```
+### Private Key
 
-  <Warning>Keep this key secret. Never expose it publicly or commit it to version control.</Warning>
-</ParamField>
+Your TriPay Private Key, used to sign transaction requests and verify webhook callbacks.
 
-<ParamField body="Merchant Code" type="string" required>
-  Your unique Merchant Code from the TriPay Dashboard.
+```
+Example: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
 
-  ```
-  Example: T12345
-  ```
-</ParamField>
+<Warning>Keep this key secret. Never expose it publicly or commit it to version control.</Warning>
+
+### Merchant Code
+
+Your unique Merchant Code from the TriPay Dashboard.
+
+```
+Example: T12345
+```
 
 ---
 
 ## 🌐 Environment
 
-<ParamField body="Production Mode" type="checkbox">
-  Controls which TriPay API environment is used.
+**Production Mode** (checkbox) controls which TriPay API environment is used:
 
-  | State | API Endpoint | Use Case |
-  |-------|-------------|----------|
-  | ✅ Checked | `https://tripay.co.id/api` | Live / Production |
-  | ☐ Unchecked | `https://tripay.co.id/api-sandbox` | Testing / Sandbox |
+| State | API Endpoint | Use Case |
+|-------|-------------|----------|
+| ✅ Checked | `https://tripay.co.id/api` | Live / Production |
+| ☐ Unchecked | `https://tripay.co.id/api-sandbox` | Testing / Sandbox |
 
-  <Info>Always test with **Sandbox mode** (unchecked) before going live to avoid accidental real transactions.</Info>
-</ParamField>
+<Info>Always test with **Sandbox mode** (unchecked) before going live to avoid accidental real transactions.</Info>
 
 ---
 
 ## 💱 Currency Settings
 
-<ParamField body="USD to IDR Rate" type="number" default="16500">
-  Exchange rate used when your Paymenter instance is configured in USD.
+### USD to IDR Rate
 
-  The gateway always charges in IDR (Indonesian Rupiah). If your invoice is in USD, the total will be multiplied by this rate before being sent to TriPay.
+Exchange rate used when your Paymenter instance is configured in USD. Default: `16500`.
 
-  ```
-  Example: 16500 → 1 USD = Rp 16,500
-  ```
+The gateway always charges in IDR (Indonesian Rupiah). If your invoice is in USD, the total will be multiplied by this rate before being sent to TriPay.
 
-  <Note>Leave this at the default value and update it periodically to reflect current exchange rates.</Note>
-</ParamField>
+```
+Example: 16500 → 1 USD = Rp 16,500
+```
+
+<Note>Update this value periodically to reflect current exchange rates.</Note>
 
 ---
 
