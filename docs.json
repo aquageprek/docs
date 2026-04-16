@@ -40,7 +40,11 @@
           {
             "group": "Tripay Payment Gateway",
             "pages": [
-              "tripay/introduction"
+              "tripay/introduction",
+              "tripay/get-started",
+              "tripay/configuration",
+              "tripay/webhook",
+              "tripay/channels"
             ]
           }
         ]
