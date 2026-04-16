@@ -1,0 +1,83 @@
+---
+title: 'Payment Channels'
+description: 'Explore all supported payment methods available through TriPay Gateway.'
+icon: 'grid-2'
+---
+
+# 💳 Payment Channels
+
+TriPay Gateway supports a wide range of Indonesian payment channels. The available channels are fetched in real-time from the TriPay API based on your merchant account configuration.
+
+---
+
+## 📦 Channel Categories
+
+<CardGroup cols={2}>
+
+<Card title="QRIS" icon="qrcode">
+Universal QR code accepted by all major e-wallet and mobile banking apps in Indonesia. Instant confirmation.
+</Card>
+
+<Card title="Virtual Account" icon="building-columns">
+Static or dynamic VA numbers for BCA, BRI, Mandiri, BNI, and more. Payment valid for 24 hours.
+</Card>
+
+<Card title="E-Wallet" icon="mobile">
+OVO, Dana, ShopeePay, LinkAja, and other e-wallet options with instant redirect payment flow.
+</Card>
+
+<Card title="Retail Outlet" icon="store">
+Pay at Alfamart, Indomaret, or other retail partners using a payment code. Great for unbanked users.
+</Card>
+
+</CardGroup>
+
+---
+
+## 🔢 Common Channel Codes
+
+Below are examples of commonly used TriPay channel codes. Availability depends on your merchant account.
+
+| Channel | Code | Type |
+|---------|------|------|
+| QRIS | `QRIS` | QR Code |
+| BCA Virtual Account | `BVABI` | Virtual Account |
+| BRI Virtual Account | `BRIVA` | Virtual Account |
+| Mandiri Virtual Account | `MANDIRIVA` | Virtual Account |
+| BNI Virtual Account | `BNIVA` | Virtual Account |
+| OVO | `OVO` | E-Wallet |
+| Dana | `DANA` | E-Wallet |
+| ShopeePay | `SHOPEEPAY` | E-Wallet |
+| Alfamart | `ALFAMART` | Retail Outlet |
+| Indomaret | `INDOMARET` | Retail Outlet |
+
+<Info>
+The complete and up-to-date list of available channels is always fetched live from the TriPay API. Channels not enabled on your merchant account will not appear in the payment selection screen.
+</Info>
+
+---
+
+## ⏱ Transaction Expiry
+
+All transactions created through this gateway expire after **24 hours**. After expiry:
+
+- The transaction status changes to `EXPIRED` on TriPay's side.
+- The cached transaction reference is automatically cleared.
+- The customer will need to initiate a new payment.
+
+---
+
+## 🔄 How Channel Selection Works
+
+1. The customer opens an unpaid invoice in Paymenter.
+2. The payment page fetches available channels from the TriPay API in real-time.
+3. The customer selects a channel (e.g., BCA Virtual Account).
+4. A transaction is created and the payment instructions are displayed — including the VA number, QRIS code, or retail payment code.
+5. A countdown timer shows the remaining time before expiry.
+6. The invoice is updated to **Paid** automatically once the payment is confirmed via [Webhook](./webhook).
+
+---
+
+## ♻️ Re-using Existing Transactions
+
+If a customer navigates away and returns to the same invoice, the gateway will check for an existing active transaction reference in cache. If the same payment channel is still selected and the transaction hasn't expired or been paid, the existing payment instructions are shown — no duplicate transaction is created.

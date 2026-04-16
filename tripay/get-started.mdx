@@ -1,0 +1,79 @@
+---
+title: 'Installation Guide'
+description: 'Upload and activate the TriPay Gateway extension on your Paymenter server.'
+icon: 'rocket'
+---
+
+# 🚀 Installing TriPay Gateway
+
+Follow the steps below to install the TriPay Gateway extension on your Paymenter instance.
+
+---
+
+## 🛠 Prerequisites
+
+- Paymenter installed and running
+- SSH access to your server
+- A [TriPay Merchant Account](https://tripay.co.id) with API credentials
+
+---
+
+## 📥 Installation Steps
+
+<Steps>
+
+<Step title="Upload the Files">
+Upload the extension folder to the Gateways directory on your server:
+
+```bash
+cd /var/www/paymenter/extensions/Gateways/
+```
+
+You can use SFTP, SCP, or any file transfer method to place the folder there.
+</Step>
+
+<Step title="Verify the Folder Name">
+<Warning>
+**Critical:** The folder name **MUST** match the namespace `Tripay` exactly (case-sensitive). If your folder has a different name, rename it before proceeding.
+</Warning>
+
+```bash
+mv TriPay-Paymenter Tripay
+```
+
+The correct folder structure should look like this:
+
+```
+extensions/
+└── Gateways/
+    └── Tripay/
+        ├── Tripay.php
+        └── ...
+```
+</Step>
+
+<Step title="Enable & Configure">
+1. Go to your **Admin Panel → Extensions → Gateways**
+2. Find **"Tripay Gateway"** in the list
+3. Click **Enable**, then enter your credentials from the [TriPay Dashboard](https://tripay.co.id/member/merchant)
+
+See the [Configuration Guide](./configuration) for a detailed breakdown of each setting.
+</Step>
+
+<Step title="Set Up the Webhook">
+To mark invoices as paid automatically, configure the Callback URL in your TriPay Dashboard.
+
+See the [Webhook Setup Guide](./webhook) for full instructions.
+</Step>
+
+</Steps>
+
+---
+
+## ✅ Verify the Installation
+
+After enabling the gateway, create a test invoice and select any TriPay payment method. If the payment selection screen appears with a countdown timer, the extension is working correctly.
+
+<Info>
+Use **Sandbox mode** first to test the full payment flow before going live. You can toggle this in the [Configuration](./configuration) settings.
+</Info>

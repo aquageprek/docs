@@ -1,0 +1,96 @@
+---
+title: 'Webhook Setup'
+description: 'Configure the TriPay callback URL so invoices are marked as paid automatically.'
+icon: 'webhook'
+---
+
+# 🔗 Webhook Setup
+
+The webhook (callback) is what makes payments fully automated. When a customer completes a payment, TriPay sends a notification to your server, and the extension marks the invoice as **Paid** instantly — no manual action needed.
+
+---
+
+## 📋 Your Callback URL
+
+Set the following URL as the Callback URL in your TriPay Merchant Dashboard:
+
+```
+https://your-domain.com/extensions/tripay/webhook
+```
+
+<Warning>Replace `your-domain.com` with your actual Paymenter domain. The path `/extensions/tripay/webhook` must remain exactly as shown.</Warning>
+
+---
+
+## 🛠 Steps to Configure
+
+<Steps>
+
+<Step title="Log in to TriPay Dashboard">
+Go to [tripay.co.id](https://tripay.co.id) and log in to your merchant account.
+</Step>
+
+<Step title="Open Merchant Settings">
+Navigate to **Merchant → Settings** or the **Callback / Webhook** section of your merchant profile.
+</Step>
+
+<Step title="Enter the Callback URL">
+Paste your callback URL:
+
+```
+https://your-domain.com/extensions/tripay/webhook
+```
+</Step>
+
+<Step title="Enable Payment Status Event">
+Make sure the **"Payment Status"** callback event is enabled. This is what triggers the invoice update when a payment is completed.
+
+<Info>Without this event enabled, TriPay will not send notifications to your server even if the URL is configured correctly.</Info>
+</Step>
+
+<Step title="Save and Test">
+Save the configuration in the TriPay Dashboard. You can use Sandbox mode to trigger a test callback and verify that invoices are being updated correctly.
+</Step>
+
+</Steps>
+
+---
+
+## 🔐 How Signature Verification Works
+
+Every incoming webhook request is verified using **HMAC-SHA256** before any action is taken. Here's what happens under the hood:
+
+1. TriPay sends a `POST` request to your callback URL with the payment data.
+2. The request includes an `X-Callback-Signature` header containing a signature hash.
+3. The extension recomputes the signature using your **Private Key** and the raw request body.
+4. If the signatures match, the payment is processed. If not, the request is rejected with a `403` error.
+
+```
+Signature = HMAC-SHA256(raw_request_body, private_key)
+```
+
+<Warning>
+If your **Private Key** is incorrect or has changed, webhook verification will fail and invoices will **not** be updated automatically. Double-check your key in the [Configuration](./configuration) settings.
+</Warning>
+
+---
+
+## 🧪 Testing in Sandbox Mode
+
+When **Production Mode** is disabled (Sandbox), you can simulate payments directly from the TriPay Sandbox Dashboard to test the full webhook flow without real money.
+
+1. Create an invoice in Paymenter and proceed to payment
+2. Select any payment channel
+3. In the TriPay Sandbox Dashboard, mark the transaction as paid
+4. Verify that the Paymenter invoice status changes to **Paid**
+
+---
+
+## ❓ Troubleshooting
+
+| Issue | Possible Cause | Solution |
+|-------|---------------|----------|
+| Invoice not marked as paid | Callback URL incorrect | Verify the URL in TriPay Dashboard |
+| `403 Invalid Signature` in logs | Wrong Private Key | Check [Configuration](./configuration) settings |
+| Callback not received | Payment Status event disabled | Enable it in TriPay Dashboard |
+| Callback received but ignored | Invoice already paid or not found | Check Paymenter logs for details |

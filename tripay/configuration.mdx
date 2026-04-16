@@ -1,0 +1,90 @@
+---
+title: 'Configuration'
+description: 'Configure your API credentials, environment mode, and currency settings for TriPay Gateway.'
+icon: 'sliders'
+---
+
+# ⚙️ Configuration
+
+After enabling TriPay Gateway from the Admin Panel, fill in the following settings. All credentials can be found in your [TriPay Merchant Dashboard](https://tripay.co.id/member/merchant).
+
+---
+
+## 🔑 Required Settings
+
+<ParamField body="API Key" type="string" required>
+  Your TriPay API Key. Found under **Merchant → API** in the TriPay Dashboard.
+
+  ```
+  Example: DEV-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ```
+</ParamField>
+
+<ParamField body="Private Key" type="string" required>
+  Your TriPay Private Key, used to sign transaction requests and verify webhook callbacks.
+
+  ```
+  Example: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  ```
+
+  <Warning>Keep this key secret. Never expose it publicly or commit it to version control.</Warning>
+</ParamField>
+
+<ParamField body="Merchant Code" type="string" required>
+  Your unique Merchant Code from the TriPay Dashboard.
+
+  ```
+  Example: T12345
+  ```
+</ParamField>
+
+---
+
+## 🌐 Environment
+
+<ParamField body="Production Mode" type="checkbox">
+  Controls which TriPay API environment is used.
+
+  | State | API Endpoint | Use Case |
+  |-------|-------------|----------|
+  | ✅ Checked | `https://tripay.co.id/api` | Live / Production |
+  | ☐ Unchecked | `https://tripay.co.id/api-sandbox` | Testing / Sandbox |
+
+  <Info>Always test with **Sandbox mode** (unchecked) before going live to avoid accidental real transactions.</Info>
+</ParamField>
+
+---
+
+## 💱 Currency Settings
+
+<ParamField body="USD to IDR Rate" type="number" default="16500">
+  Exchange rate used when your Paymenter instance is configured in USD.
+
+  The gateway always charges in IDR (Indonesian Rupiah). If your invoice is in USD, the total will be multiplied by this rate before being sent to TriPay.
+
+  ```
+  Example: 16500 → 1 USD = Rp 16,500
+  ```
+
+  <Note>Leave this at the default value and update it periodically to reflect current exchange rates.</Note>
+</ParamField>
+
+---
+
+## 📋 Configuration Summary
+
+| Setting | Required | Description |
+|---------|----------|-------------|
+| API Key | ✅ Yes | Authenticates requests to the TriPay API |
+| Private Key | ✅ Yes | Signs transactions and verifies webhook signatures |
+| Merchant Code | ✅ Yes | Identifies your merchant account in transactions |
+| Production Mode | — | Toggle between Sandbox and Live environments |
+| USD to IDR Rate | — | Exchange rate for USD invoices (default: 16500) |
+
+---
+
+## 🔄 Saving Changes
+
+After filling in all fields, click **Save** in the Admin Panel. The gateway will immediately use the new configuration for all future transactions.
+
+If you switch between Sandbox and Production, any active (pending) transactions will still reference the previous environment. It is recommended to avoid switching environments while transactions are in progress.
