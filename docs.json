@@ -42,6 +42,28 @@
             "pages": [
               "tripay/introduction"
             ]
+          },
+          {
+            "group": "Sonata",
+            "pages": [
+              "sonata/introduction",
+              "sonata/get-started",
+              "sonata/general",
+              "sonata/homepage",
+              "sonata/colors",
+              "sonata/product-data",
+              "sonata/app-vps-nodes",
+              "sonata/deployment",
+              "sonata/domains",
+              "sonata/integrations",
+              "sonata/seo",
+              "sonata/game-hosting",
+              "sonata/web-hosting",
+              "sonata/updating",
+              "sonata/license",
+              "sonata/faq",
+              "sonata/troubleshoot"
+            ]
           }
         ]
       }
