@@ -8,6 +8,10 @@ icon: "plug"
 
 Sonata includes optional integrations for real hosting workflows.
 
+<Info>
+Integrations are optional. Sonata should still render without them, but pages that rely on live API data may show fallback states.
+</Info>
+
 ## Pterodactyl Stock
 
 API route:
@@ -25,6 +29,15 @@ PTERODACTYL_APP_KEY=ptla_xxxxxxxxxxxxxxxxx
 
 Use an Application API key with read access to the required resources.
 
+Recommended checks:
+
+- Panel URL has no trailing slash unless the code expects it.
+- API key is an Application API key, not a client API key.
+- Location IDs match the locations used in product data.
+- Production environment variables match local values.
+
+Never expose the Pterodactyl application key to client-side code.
+
 ## UptimeRobot Status
 
 API route:
@@ -41,6 +54,13 @@ UPTIMEROBOT_API_KEY=ur_xxxxxxxxxxxxxxxxx
 
 Use a Main API Key.
 
+If status does not show correctly:
+
+- Confirm monitors exist.
+- Confirm the API key is active.
+- Check API route logs.
+- Check deployment environment variables.
+
 ## Discord Widget
 
 Environment variable:
@@ -50,6 +70,14 @@ NEXT_PUBLIC_DISCORD_GUILD_ID=000000000000000000
 ```
 
 Enable the server widget in Discord settings.
+
+Discord setup:
+
+1. Open Discord server settings.
+2. Enable the server widget.
+3. Copy the server ID.
+4. Set `NEXT_PUBLIC_DISCORD_GUILD_ID`.
+5. Restart the dev server.
 
 ## Billing
 
@@ -70,6 +98,16 @@ billing: {
 
 Product-specific billing URLs are stored in product data files.
 
+Common billing providers:
+
+- WHMCS.
+- Paymenter.
+- Blesta.
+- WISECP.
+- Custom storefront or checkout.
+
+For game hosting, make sure selected cycle, location, and software values become query parameters your billing panel understands.
+
 ## Domain Lookup
 
 Domain lookup uses public RDAP data.
@@ -81,6 +119,18 @@ app/api/domain-check/route.ts
 ```
 
 No API key is required for basic RDAP lookup.
+
+## Integration Testing
+
+Use this quick flow after changing integration settings:
+
+1. Restart the dev server.
+2. Open the status page.
+3. Open a game hosting product page.
+4. Check stock badges.
+5. Search for a domain.
+6. Click a billing link.
+7. Check terminal logs for API errors.
 
 ## Anti-Piracy Placeholders
 

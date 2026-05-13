@@ -1,12 +1,16 @@
 ---
 title: "Domains"
 description: "Customize Sonata domain pricing, search, RDAP availability checks, FAQ, and domain steps."
-icon: "scan-search"
+icon: "globe-pointer"
 ---
 
 # Domains
 
 The domain page includes domain pricing and availability lookup.
+
+<Info>
+RDAP checks are useful for search feedback, but final availability should always be confirmed by your registrar or billing panel.
+</Info>
 
 Main files:
 
@@ -31,6 +35,30 @@ Each item can include:
 - Renew price.
 - Transfer price.
 - Popular state.
+
+Example:
+
+```ts
+{
+  extension: ".com",
+  register: "Rp 165.000",
+  renew: "Rp 175.000",
+  transfer: "Rp 165.000",
+  popular: true,
+}
+```
+
+## Pricing Notes
+
+Domain prices can change often. Check registrar pricing before launch and review it regularly.
+
+Keep separate values for:
+
+- Registration.
+- Renewal.
+- Transfer.
+- Premium domains.
+- Promo pricing.
 
 ## Domain Search
 
@@ -61,6 +89,18 @@ The domain page sends a query to:
 
 The API checks the requested label against selected TLDs.
 
+## Supported TLDs
+
+Only enable TLDs you can actually sell.
+
+Before adding a new TLD:
+
+1. Confirm your registrar supports it.
+2. Confirm the billing product exists.
+3. Confirm the renewal price.
+4. Confirm RDAP lookup works.
+5. Test common unavailable and available names.
+
 ## Domain Steps
 
 The page includes a step flow such as:
@@ -70,6 +110,19 @@ The page includes a step flow such as:
 3. Manage.
 
 Keep step labels short and make connector arrows readable on desktop.
+
+## Billing Integration
+
+The domain page can link users to your billing panel after search.
+
+Common approaches:
+
+- Send users to a generic domain order page.
+- Append the searched domain as a query parameter.
+- Use a registrar module inside your billing system.
+- Use a custom checkout flow.
+
+Make sure the final checkout page validates availability again.
 
 ## Troubleshooting Domain Lookup
 

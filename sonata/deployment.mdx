@@ -14,6 +14,25 @@ pnpm build
 
 Fix build errors before shipping.
 
+<Warning>
+Do not deploy with placeholder billing URLs, test API keys, or old metadata images. Buyers will see those in production.
+</Warning>
+
+## Environment Variables
+
+Add the same production values to your hosting provider that you use locally.
+
+Common variables:
+
+```env
+PTERODACTYL_PANEL_URL=https://panel.example.com
+PTERODACTYL_APP_KEY=ptla_xxxxxxxxxxxxxxxxx
+UPTIMEROBOT_API_KEY=ur_xxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_DISCORD_GUILD_ID=000000000000000000
+```
+
+Only expose variables with `NEXT_PUBLIC_` when the browser needs them.
+
 ## Vercel
 
 Recommended for most users.
@@ -23,6 +42,15 @@ Recommended for most users.
 3. Confirm framework is Next.js.
 4. Add environment variables.
 5. Deploy.
+
+Vercel settings:
+
+```txt
+Framework Preset: Next.js
+Install Command: pnpm install
+Build Command: pnpm build
+Output Directory: .next
+```
 
 ## Railway
 
@@ -70,6 +98,50 @@ Example:
 pm2 start pnpm --name sonata -- start
 pm2 save
 ```
+
+Example Nginx reverse proxy:
+
+```nginx
+server {
+  server_name example.com;
+
+  location / {
+    proxy_pass http://127.0.0.1:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
+```
+
+Use your own SSL setup, such as Certbot or your hosting provider's certificate manager.
+
+## Post-Deploy Tests
+
+After deployment, open production pages directly:
+
+```txt
+/
+/game-host
+/web-host
+/app-host
+/vps
+/domain
+/nodes
+/status
+```
+
+Then test:
+
+- Checkout links.
+- Domain lookup.
+- Status API.
+- Game stock API.
+- Discord widget.
+- Metadata preview.
+- Mobile layout.
 
 ## Production Checklist
 

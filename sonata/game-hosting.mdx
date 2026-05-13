@@ -1,12 +1,16 @@
 ---
 title: "Game Hosting"
 description: "Customize Sonata game hosting pages, plans, billing parameters, locations, software options, and stock badges."
-icon: "gamepad-2"
+icon: "gamepad-modern"
 ---
 
 # Game Hosting
 
 Game hosting is one of Sonata's core product areas.
+
+<Info>
+Game hosting pages combine product data, checkout parameters, locations, software options, and optional live stock.
+</Info>
 
 Main files:
 
@@ -62,6 +66,34 @@ Examples:
 - Paymenter may use `cycle` and `options[...]`.
 - Custom billing can use any query names your app expects.
 
+## Location Options
+
+Locations should match the real regions you can provide.
+
+Check each location against:
+
+- Public product copy.
+- Billing configurable options.
+- Pterodactyl location or node mapping.
+- Stock availability.
+
+If the billing panel expects numeric IDs, map friendly location labels to the required billing parameter values.
+
+## Software Options
+
+Software options can represent:
+
+- Vanilla.
+- Paper.
+- Purpur.
+- Forge.
+- Fabric.
+- BungeeCord.
+- Velocity.
+- Game-specific versions or loaders.
+
+Only show software options that your deployment flow supports.
+
 ## Plans
 
 Game plans are created using the plan helper in `game-hosting.ts`.
@@ -83,6 +115,14 @@ Plan fields commonly include:
 - Slots.
 - Recommended usage.
 - Badges.
+
+## Plan Writing Tips
+
+- Keep RAM, CPU, storage, and slots consistent across plans.
+- Use plan names that are easy to compare.
+- Put the best value badge on one plan only.
+- Avoid long plan descriptions inside cards.
+- Keep recommended usage realistic.
 
 ## Stock Badges
 
@@ -114,6 +154,19 @@ PTERODACTYL_APP_KEY=ptla_xxxxxxxxxxxxxxxxx
 ```
 
 Use an Application API key with read access.
+
+## Testing Game Pages
+
+After changing game data:
+
+1. Open the game listing page.
+2. Open every game detail page.
+3. Switch billing cycles.
+4. Change locations.
+5. Change software options.
+6. Click checkout links.
+7. Check stock badges.
+8. Run `pnpm build`.
 
 ## Common Mistakes
 

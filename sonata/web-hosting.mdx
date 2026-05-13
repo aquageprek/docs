@@ -8,6 +8,10 @@ icon: "globe"
 
 Web hosting has a custom page because the buying flow differs from simple catalog pages.
 
+<Info>
+Web hosting buyers usually compare support, panel access, storage, backups, SSL, and app installs before tiny resource details.
+</Info>
+
 Main files:
 
 ```txt
@@ -52,6 +56,34 @@ Each web hosting plan includes:
 - Feature list.
 - CTA label.
 
+Example plan structure:
+
+```ts
+{
+  name: "Starter",
+  tagline: "For small websites and landing pages",
+  monthly: "Rp 25.000",
+  yearly: "Rp 240.000",
+  popular: false,
+  billingUrl: `${B}/products/web-hosting/starter`,
+  features: ["1 website", "10 GB NVMe", "Free SSL"],
+}
+```
+
+## Feature Groups
+
+Useful feature groups:
+
+- Performance.
+- Security.
+- Backups.
+- Control panel.
+- Email.
+- Developer tools.
+- Support.
+
+Keep features specific. `NVMe storage` is clearer than `fast hosting`.
+
 ## Apps
 
 The app list is used to show common one-click install options.
@@ -65,6 +97,8 @@ Examples:
 - Ghost.
 - Node.js.
 
+Only show apps that your platform actually supports.
+
 ## FAQ
 
 Keep web hosting FAQ focused on buyer questions:
@@ -76,6 +110,30 @@ Keep web hosting FAQ focused on buyer questions:
 - Control panel.
 - Staging.
 
+## Stats
+
+Stats can be used for trust signals.
+
+Good examples:
+
+- Uptime target.
+- Websites hosted.
+- Average support response.
+- Data center regions.
+- Backup retention.
+
+Avoid inflated claims unless you can support them.
+
 ## Visual Notes
 
 The web hosting hero uses background file labels and a softer hero CTA shadow. If the CTA glow covers nearby content, tune `.hero-cta-soft` in `app/globals.css`.
+
+## Launch Checklist
+
+- Monthly and yearly prices are correct.
+- Billing links use production URLs.
+- Features match the real hosting package.
+- App list matches available installers.
+- FAQ matches support policy.
+- SSL, backup, and migration claims are accurate.
+- Mobile pricing cards do not overflow.

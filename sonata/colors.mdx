@@ -14,6 +14,10 @@ app/globals.css
 
 Use this file to change the theme without editing every component.
 
+<Info>
+Change tokens first. Edit component classes only when the token system cannot express the brand style you need.
+</Info>
+
 ## Accent Tokens
 
 Main accent colors:
@@ -120,3 +124,50 @@ Border beam values:
 If the beam feels too bright, lower `--border-beam-opacity`.
 
 If it feels too sharp, increase `--border-beam-blur`.
+
+## Recommended Color Workflow
+
+1. Pick one primary accent color.
+2. Create hover, text, and glow variants.
+3. Update dark mode tokens.
+4. Update `html.light` tokens.
+5. Update `seo.themeColor`.
+6. Test buttons, badges, cards, nav, and forms.
+
+## Contrast Checks
+
+Check contrast on:
+
+- Primary buttons.
+- Secondary buttons.
+- Plan card text.
+- Muted feature text.
+- Header links.
+- Footer links.
+- Form placeholders.
+- Badges and pills.
+
+If a color works in dark mode but looks weak in light mode, create a separate light mode value.
+
+## Button and Card Depth
+
+Sonata's visual style depends on depth.
+
+When changing shadows:
+
+- Keep pressed states visibly different from hover states.
+- Avoid shadows that make small button text harder to read.
+- Check card hover states on light backgrounds.
+- Check primary CTA glow against hero content.
+
+## Rebrand Checklist
+
+- Accent tokens updated.
+- Light mode tokens updated.
+- Metadata theme color updated.
+- Logo assets replaced.
+- Open Graph image replaced.
+- Favicon replaced.
+- Buttons are readable.
+- Cards still have clear borders.
+- Border beam is visible but not distracting.

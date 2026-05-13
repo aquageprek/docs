@@ -8,6 +8,10 @@ icon: "sliders"
 
 Most Sonata customization starts in a small number of files.
 
+<Info>
+Start with config and data files before editing components. Sonata is designed so common storefront changes do not require layout rewrites.
+</Info>
+
 ## Important Files
 
 | File | Purpose |
@@ -97,3 +101,56 @@ components/Footer.tsx
 ```
 
 When adding a new public page, update navigation only if the page needs to be discoverable from the header or footer.
+
+## Configuration Priority
+
+For a new brand, update files in this order:
+
+1. `lib/config/site.ts`
+2. `app/globals.css`
+3. `lib/data/game-hosting.ts`
+4. `lib/data/product-config.ts`
+5. `public/asset/`
+6. `components/Navbar.tsx`
+7. `components/Footer.tsx`
+
+This keeps identity, colors, pricing, and navigation aligned before deeper customization.
+
+## Locations
+
+Location data should stay consistent across the website, billing panel, and Pterodactyl.
+
+Example:
+
+```ts
+{
+  id: "sg",
+  label: "Singapore",
+  region: "Asia",
+}
+```
+
+Use the same naming style for:
+
+- Location selectors.
+- Game hosting plans.
+- Billing configurable options.
+- Pterodactyl location or node mapping.
+
+## Copy Guidelines
+
+- Use short labels in navigation.
+- Use concise plan card text.
+- Put longer explanations in FAQ or docs pages.
+- Keep button labels action-oriented.
+- Avoid unsupported claims in product copy.
+
+## Final Check
+
+After changing configuration:
+
+- Run `pnpm build`.
+- Click every header and footer link.
+- Check all product categories.
+- Confirm checkout links point to production billing.
+- Test light mode and dark mode.

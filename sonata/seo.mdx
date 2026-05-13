@@ -13,6 +13,10 @@ lib/config/site.ts
 app/layout.tsx
 ```
 
+<Info>
+SEO changes work best when metadata, page copy, product names, and Open Graph images describe the same brand and offer.
+</Info>
+
 ## Site URL
 
 Set the production domain:
@@ -22,6 +26,8 @@ url: "https://sonata.id"
 ```
 
 This is used for metadata base, canonical URLs, and author links.
+
+Use the real production domain before generating previews or sharing links publicly.
 
 ## Metadata
 
@@ -59,6 +65,16 @@ public/asset/metadata/
 
 Then update `seo.ogImage`.
 
+Good Open Graph images include:
+
+- Brand name.
+- Main product category.
+- Clear contrast.
+- Minimal text.
+- Real UI preview or product visual.
+
+Avoid tiny screenshots that become unreadable in chat previews.
+
 ## Theme Color
 
 Match this with your accent:
@@ -80,6 +96,31 @@ app/game-host/page.tsx
 ```
 
 When adding a new important public page, add metadata if needed.
+
+## Page Copy
+
+Use natural hosting keywords where they belong:
+
+- Game server hosting.
+- Minecraft hosting.
+- Web hosting.
+- VPS hosting.
+- App hosting.
+- Domain registration.
+- Private node hosting.
+
+Do not repeat keywords unnaturally. Product clarity matters more than keyword stuffing.
+
+## Metadata Testing
+
+After deployment, test previews in:
+
+- Discord.
+- X/Twitter card validator.
+- Facebook Sharing Debugger.
+- Search result preview tools.
+
+If a preview shows old data, the platform may be caching your metadata.
 
 ## SEO Checklist
 

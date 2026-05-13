@@ -8,6 +8,10 @@ icon: "boxes"
 
 Sonata product content is mostly data-driven.
 
+<Info>
+If a plan, price, feature, badge, or checkout URL looks wrong, the fix is usually in a data file rather than a React component.
+</Info>
+
 ## Product Data Files
 
 ```txt
@@ -92,3 +96,60 @@ By default, these selectors are visual. If you want them to change billing URLs,
 - Use real resource values.
 - Avoid long text inside cards.
 - Test mobile layout after adding new content.
+
+## Data Editing Rules
+
+- Keep every `id` unique inside its product group.
+- Keep every `slug` URL-safe.
+- Keep prices formatted consistently.
+- Keep billing URLs production-ready before launch.
+- Keep spec labels short enough for mobile cards.
+- Avoid adding empty features just to fill space.
+
+## Common Product Fields
+
+| Field | Purpose |
+|---|---|
+| `id` | Stable internal identifier. |
+| `name` | Display name shown to customers. |
+| `tagline` | Short card subtitle or selling point. |
+| `price` | Display price. |
+| `billingUrl` | Checkout or order link. |
+| `features` | Bullet list shown in cards or detail sections. |
+| `popular` | Highlights a recommended plan. |
+| `badge` | Optional label such as Best Value. |
+
+## Game Hosting Data
+
+Game hosting data can include:
+
+- Game slug and route.
+- Hero copy.
+- Game images.
+- Plans and tiers.
+- Locations.
+- Software options.
+- Billing query parameters.
+- Stock mapping.
+
+Keep each game plan structure consistent so cards remain aligned.
+
+## Pricing Cycles
+
+If a product has monthly and yearly pricing, confirm:
+
+- The yearly price is accurate.
+- The discount badge matches the actual difference.
+- The billing cycle parameter matches the billing provider.
+- The default cycle is the one you want buyers to see first.
+
+## Testing Product Changes
+
+After editing product data:
+
+1. Restart the dev server if the data file does not refresh.
+2. Open every affected product page.
+3. Test tier tabs and config selectors.
+4. Click checkout links.
+5. Check mobile card layout.
+6. Run `pnpm build`.

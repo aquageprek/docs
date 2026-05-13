@@ -8,6 +8,10 @@ icon: "life-ring"
 
 Use this guide when Sonata does not install, build, render, or deploy as expected.
 
+<Info>
+Start with the first error in the terminal. Later errors are often side effects.
+</Info>
+
 ## Quick Checklist
 
 1. Check Node.js version.
@@ -51,6 +55,22 @@ Use another port:
 pnpm dev -- -p 3001
 ```
 
+## Dependency Install Fails
+
+Try:
+
+```bash
+pnpm install
+```
+
+If it still fails:
+
+- Delete `node_modules`.
+- Keep the lockfile unless update instructions say otherwise.
+- Confirm Node.js 20 or newer.
+- Confirm network access to the npm registry.
+- Check whether a package version was changed manually.
+
 ## Blank Page
 
 Check:
@@ -63,6 +83,16 @@ Check:
 - Invalid data in config files.
 - Hydration mismatches.
 - Build errors.
+
+## 404 Page After Deployment
+
+Check:
+
+- The route exists under `app/`.
+- The deployment built the latest commit.
+- The hosting platform is using Next.js.
+- Links use the correct path.
+- File and folder casing matches exactly.
 
 
 ## Hydration Mismatch
@@ -90,6 +120,18 @@ Common causes:
 - Missing environment variable.
 - Case-sensitive path issue on Linux deployments.
 
+## TypeScript Error After Editing Data
+
+Common causes:
+
+- Missing required field.
+- Wrong field name.
+- Wrong price or spec type.
+- Duplicate ID where a unique ID is expected.
+- A plan was added to the wrong tier shape.
+
+Compare your new item with an existing working item in the same data file.
+
 ## Product Cards Do Not Update
 
 Check the correct data file:
@@ -114,6 +156,13 @@ lib/data/product-config.ts
 ```
 
 Most URLs use `siteConfig.billing.url` plus a product path.
+
+Also check:
+
+- The billing base URL has the correct domain.
+- Product suffix matches the billing panel route.
+- Query parameters match the provider.
+- Selected billing cycle is passed correctly.
 
 ## Domain Lookup Fails
 
@@ -220,6 +269,18 @@ Check:
 - Environment variables.
 - Case-sensitive file paths.
 - Platform logs.
+
+## Open Graph Preview Is Wrong
+
+Check:
+
+- `lib/config/site.ts`
+- `seo.ogImage`
+- Image path under `public/`
+- Production URL.
+- Platform preview cache.
+
+Some apps cache previews. Re-test with a new URL or cache debugger.
 
 ## License Issue
 

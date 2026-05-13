@@ -81,3 +81,58 @@ Use:
 lib/data/game-hosting.ts
 lib/data/product-config.ts
 ```
+
+## Do I need Pterodactyl?
+
+No. Sonata can be used without Pterodactyl.
+
+Pterodactyl is only needed if you want live stock or infrastructure data connected to the included stock API flow.
+
+## Do I need UptimeRobot?
+
+No. UptimeRobot is optional.
+
+If you do not use it, remove or customize the status page content to match your monitoring provider.
+
+## Can I use Cloudflare?
+
+Yes. You can use Cloudflare for DNS, CDN, caching, SSL, and basic protection.
+
+Make sure API routes that need fresh data are not cached incorrectly.
+
+## Can I deploy to Vercel?
+
+Yes. Vercel is one of the easiest deployment targets for Sonata.
+
+Add production environment variables in the Vercel project settings before deploying.
+
+## Can I deploy to a VPS?
+
+Yes. Build Sonata with `pnpm build`, run it with `pnpm start`, then place it behind a reverse proxy such as Nginx.
+
+## Why does it work locally but fail in production?
+
+Common causes:
+
+- Missing production environment variables.
+- Case-sensitive path issues on Linux.
+- Old Node.js version.
+- Build command mismatch.
+- External API requests blocked or rate-limited.
+- Placeholder billing URLs.
+
+## Can I add a new page?
+
+Yes. Add the page under `app/`, then update navigation and footer if customers need to access it easily.
+
+## Can I change the design system?
+
+Yes. Start with `app/globals.css` and shared components.
+
+Avoid rewriting every page unless the brand direction is completely different.
+
+## Should I edit components or data files?
+
+Edit data files for content, pricing, specs, products, and URLs.
+
+Edit components when you need to change layout, interaction, or visual behavior.

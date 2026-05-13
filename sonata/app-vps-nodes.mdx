@@ -26,6 +26,10 @@ Data file:
 lib/data/product-config.ts
 ```
 
+<Info>
+Because these pages share one catalog component, improving shared behavior can affect App Hosting, VPS, and Private Nodes at the same time.
+</Info>
+
 ## Shared Props
 
 Each page passes:
@@ -40,6 +44,27 @@ Each page passes:
 - `configGroups`
 - `specFields`
 - `footerNote`
+
+## Shared Data Pattern
+
+Catalog data usually follows this style:
+
+```ts
+{
+  id: "starter",
+  label: "Starter",
+  plans: [
+    {
+      id: "s1",
+      name: "Starter S1",
+      price: "Rp 49.000",
+      billingUrl: `${B}/products/vps/starter-s1`,
+    },
+  ],
+}
+```
+
+Use predictable IDs so tabs, analytics, and future billing logic are easier to maintain.
 
 ## App Hosting
 
@@ -58,6 +83,15 @@ Common config groups:
 - Runtime add-ons.
 - Database options.
 
+Good specs for app hosting:
+
+- Runtime.
+- RAM.
+- Storage.
+- Build minutes.
+- Deploy method.
+- Database support.
+
 ## VPS
 
 VPS is useful for general compute plans.
@@ -73,6 +107,15 @@ Common config groups:
 - Operating system.
 - Setup profile.
 - Backup level.
+
+Good specs for VPS:
+
+- vCPU.
+- RAM.
+- NVMe storage.
+- Bandwidth.
+- Region.
+- Management level.
 
 ## Private Nodes
 
@@ -90,6 +133,15 @@ Common config groups:
 - Use case.
 - Support level.
 
+Good specs for private nodes:
+
+- CPU model.
+- RAM.
+- Storage.
+- Network port.
+- DDoS protection.
+- Included panel.
+
 ## Extending the Shared Catalog
 
 If you want config selectors to affect checkout:
@@ -98,3 +150,18 @@ If you want config selectors to affect checkout:
 2. Convert selected config to query params.
 3. Append params to `billingUrl`.
 4. Test each billing provider.
+
+## Copy Guidelines
+
+- App hosting copy should focus on deployment speed and runtime support.
+- VPS copy should focus on resources, control, and reliability.
+- Private node copy should focus on dedicated capacity and predictable performance.
+
+## Test Checklist
+
+- Tier switching works.
+- Config selector states are clear.
+- Plan specs align across cards.
+- Billing links are correct.
+- Footer note is accurate.
+- Long plan names fit on mobile.

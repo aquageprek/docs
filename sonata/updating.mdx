@@ -1,12 +1,16 @@
 ---
 title: "Updating"
 description: "Update Sonata safely while preserving local customizations and product data."
-icon: "rotate-cw"
+icon: "rotate"
 ---
 
 # Updating
 
 When updating Sonata, protect your local customizations first.
+
+<Warning>
+Do not overwrite customized config, product data, or assets without comparing files first.
+</Warning>
 
 ## Before Updating
 
@@ -28,6 +32,28 @@ components/Footer.tsx
 public/asset/
 ```
 
+## Recommended Branch Flow
+
+Use a separate branch for each update:
+
+```bash
+git checkout -b update/sonata-version
+```
+
+Then apply the new version and compare changes before merging into production.
+
+## Compare Carefully
+
+Pay extra attention to:
+
+- `package.json`
+- Lockfile changes.
+- Route files under `app/`.
+- Shared components.
+- Config structure changes.
+- Product data shape changes.
+- Environment variable names.
+
 ## Safe Update Flow
 
 1. Download the latest Sonata version.
@@ -37,6 +63,22 @@ public/asset/
 5. Run the dev server.
 6. Run a production build.
 7. Test all product pages.
+
+## Dependency Changes
+
+If dependencies changed:
+
+```bash
+pnpm install
+```
+
+Then run:
+
+```bash
+pnpm build
+```
+
+If the build fails after an update, read the first TypeScript error and check whether a data shape or component prop changed.
 
 ## After Updating
 
@@ -60,3 +102,15 @@ Check:
 Updates may include license markers or anti-piracy placeholder changes.
 
 Do not remove or tamper with them unless you have written permission.
+
+## Update Checklist
+
+- Custom brand config preserved.
+- Custom colors preserved.
+- Product data preserved.
+- New required environment variables added.
+- Navigation still works.
+- Billing links still work.
+- Domain lookup still works.
+- Stock and status APIs still work.
+- Production build passes.

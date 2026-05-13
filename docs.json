@@ -96,13 +96,13 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@zaqua.studio"
+        "href": "mailto:hi@tariqdev.xyz"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Demo",
-      "href": "https://demo.zaqua.studio"
+      "href": "https://demo.tariqdev.xyz"
     }
   },
   "footer": {

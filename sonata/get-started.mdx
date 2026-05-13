@@ -8,6 +8,10 @@ icon: "rocket"
 
 This guide gets Sonata running locally.
 
+<Info>
+Sonata is a Next.js storefront. Most setup work is changing config, product data, assets, and environment variables, then checking that every public page still builds cleanly.
+</Info>
+
 ## Requirements
 
 Install:
@@ -86,3 +90,73 @@ Restart the dev server after changing environment variables.
 6. Test light and dark mode.
 7. Test all product pages.
 8. Run a production build before deployment.
+
+## Recommended Setup Flow
+
+Use this order for a fresh installation:
+
+1. Install dependencies with `pnpm install`.
+2. Start local development with `pnpm dev`.
+3. Update brand details in `lib/config/site.ts`.
+4. Replace logos, favicon, and metadata images.
+5. Update product plans and checkout URLs.
+6. Connect optional integrations.
+7. Test every route on desktop and mobile.
+8. Run `pnpm build`.
+
+## Brand Setup
+
+Open:
+
+```txt
+lib/config/site.ts
+```
+
+Update these first:
+
+| Field | Purpose |
+|---|---|
+| `name` | Short brand name. |
+| `fullName` | Full public brand name. |
+| `description` | Main website description. |
+| `url` | Production website URL. |
+| `billing.url` | Billing or checkout base URL. |
+| `billing.panel` | Customer panel URL. |
+| `social` | Discord, email, marketplace, or community links. |
+
+## Pages to Check
+
+Before deployment, open:
+
+```txt
+/
+/game-host
+/web-host
+/app-host
+/vps
+/domain
+/nodes
+/status
+/support
+```
+
+<Tip>
+If a page crashes after editing product data, compare the new item with an existing working item in the same file.
+</Tip>
+
+## Where to Go Next
+
+<CardGroup cols={2}>
+  <Card title="General Configuration" icon="sliders" href="./general">
+    Learn the main files for brand, navigation, data, and layout.
+  </Card>
+  <Card title="Product Data" icon="boxes" href="./product-data">
+    Update plans, prices, tiers, specs, and checkout links.
+  </Card>
+  <Card title="Integrations" icon="plug" href="./integrations">
+    Connect Pterodactyl, UptimeRobot, Discord, billing, and domains.
+  </Card>
+  <Card title="Deployment" icon="cloud-upload" href="./deployment">
+    Prepare Sonata for Vercel, Railway, Render, or a VPS.
+  </Card>
+</CardGroup>
