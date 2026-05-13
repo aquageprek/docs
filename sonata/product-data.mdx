@@ -1,0 +1,94 @@
+---
+title: "Product Data"
+description: "Edit Sonata product plans, billing URLs, pricing, tiers, and catalog content."
+icon: "boxes"
+---
+
+# Product Data
+
+Sonata product content is mostly data-driven.
+
+## Product Data Files
+
+```txt
+lib/data/game-hosting.ts
+lib/data/product-config.ts
+```
+
+Use `game-hosting.ts` for game hosting pages.
+
+Use `product-config.ts` for:
+
+- Web hosting.
+- App hosting.
+- VPS.
+- Domains.
+- Private nodes.
+
+## Billing Base
+
+Most product URLs use:
+
+```ts
+const B = siteConfig.billing.url;
+```
+
+Then each product appends a path:
+
+```ts
+billingUrl: `${B}/products/vps/starter-s1`
+```
+
+## Non-Game Plan Shape
+
+Example:
+
+```ts
+{
+  id: "s1",
+  name: "Starter S1",
+  price: "Rp 49.000",
+  cpu: "1 vCPU",
+  ram: "1 GB",
+  storage: "20 GB NVMe",
+  bandwidth: "500 GB",
+  billingUrl: `${B}/products/vps/starter-s1`,
+}
+```
+
+## Tiers
+
+Tiers group plans by category.
+
+Examples:
+
+- Starter.
+- Standard.
+- Pro.
+- Node Lite.
+- Node Elite.
+- Node.js.
+- Python.
+- Database.
+
+## Config Groups
+
+App hosting, VPS, and private node pages can show selectable config groups.
+
+Examples:
+
+- Operating system.
+- Runtime.
+- Deployment method.
+- Management level.
+- Region.
+
+By default, these selectors are visual. If you want them to change billing URLs, extend the page logic to append query parameters.
+
+## Product Copy Tips
+
+- Keep plan names short.
+- Keep spec labels consistent.
+- Use real resource values.
+- Avoid long text inside cards.
+- Test mobile layout after adding new content.

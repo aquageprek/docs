@@ -1,0 +1,80 @@
+---
+title: "Homepage"
+description: "Customize Sonata homepage sections, hero content, pricing previews, FAQ, newsletter, and comparison content."
+icon: "house"
+---
+
+# Homepage
+
+Homepage sections live in:
+
+```txt
+app/home/
+```
+
+The homepage is designed as the first impression for the hosting brand.
+
+## Common Sections
+
+Depending on the current version, the homepage may include:
+
+- Hero section.
+- Feature sections.
+- Pricing or product preview.
+- Comparison modal.
+- FAQ.
+- Newsletter.
+- Server map or latency section.
+- Testimonials or social proof.
+
+## Hero Section
+
+Main file:
+
+```txt
+app/home/HeroSection.tsx
+```
+
+Use it to update:
+
+- Main headline.
+- Supporting copy.
+- CTA buttons.
+- Hero visuals.
+- Border beam usage.
+- Background effects.
+
+## FAQ Section
+
+Main file:
+
+```txt
+app/home/FaqSection.tsx
+```
+
+Keep FAQ answers short and direct. Long support content should live in docs instead.
+
+## Newsletter Section
+
+Main file:
+
+```txt
+app/home/NewsletterSection.tsx
+```
+
+Wire this to your preferred email provider if you need real submissions.
+
+Possible providers:
+
+- Resend.
+- Mailchimp.
+- ConvertKit.
+- Custom API route.
+
+## Homepage Customization Tips
+
+- Keep hero copy focused on the product.
+- Use real hosting benefits, not generic marketing copy.
+- Keep visual effects subtle enough to preserve readability.
+- Test the first viewport on mobile.
+- Check both light and dark mode.

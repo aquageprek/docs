@@ -1,0 +1,81 @@
+---
+title: "Web Hosting"
+description: "Customize the Sonata web hosting page, pricing cycles, apps, features, stats, and FAQ."
+icon: "globe"
+---
+
+# Web Hosting
+
+Web hosting has a custom page because the buying flow differs from simple catalog pages.
+
+Main files:
+
+```txt
+app/web-host/page.tsx
+lib/data/product-config.ts
+```
+
+## Data Used
+
+```ts
+webHostCycles
+webHostPlans
+webHostFeatures
+webHostApps
+webHostFaqs
+webHostStats
+webHostBgFiles
+```
+
+## Pricing Cycles
+
+Cycles control monthly and yearly display.
+
+Example:
+
+```ts
+export const webHostCycles = [
+  { key: "monthly", label: "Monthly" },
+  { key: "yearly", label: "Yearly", badge: "-20%" },
+];
+```
+
+## Plans
+
+Each web hosting plan includes:
+
+- Name.
+- Tagline.
+- Monthly and yearly price.
+- Popular state.
+- Billing URL.
+- Feature list.
+- CTA label.
+
+## Apps
+
+The app list is used to show common one-click install options.
+
+Examples:
+
+- WordPress.
+- WooCommerce.
+- Joomla.
+- Laravel.
+- Ghost.
+- Node.js.
+
+## FAQ
+
+Keep web hosting FAQ focused on buyer questions:
+
+- WordPress support.
+- SSL.
+- Backups.
+- Domain usage.
+- Control panel.
+- Staging.
+
+## Visual Notes
+
+The web hosting hero uses background file labels and a softer hero CTA shadow. If the CTA glow covers nearby content, tune `.hero-cta-soft` in `app/globals.css`.

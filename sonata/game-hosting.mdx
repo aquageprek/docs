@@ -1,0 +1,124 @@
+---
+title: "Game Hosting"
+description: "Customize Sonata game hosting pages, plans, billing parameters, locations, software options, and stock badges."
+icon: "gamepad-2"
+---
+
+# Game Hosting
+
+Game hosting is one of Sonata's core product areas.
+
+Main files:
+
+```txt
+app/game-host/
+lib/data/game-hosting.ts
+```
+
+## What Game Hosting Supports
+
+- Multiple games.
+- Game-specific pages.
+- Hero images.
+- Theme accents.
+- Plan tiers.
+- Monthly and yearly pricing.
+- Location selection.
+- Software selection.
+- Billing URL parameters.
+- Badges.
+- Stock availability.
+
+## Adding a New Game
+
+1. Open `lib/data/game-hosting.ts`.
+2. Copy an existing game entry.
+3. Change `slug`, `label`, `shortLabel`, and `href`.
+4. Update hero copy and SEO metadata.
+5. Set images.
+6. Configure locations.
+7. Configure software options.
+8. Add tiers and plans.
+9. Test the page route.
+
+## Billing Config
+
+Game checkout links can append selected options.
+
+Typical fields:
+
+```ts
+cycleParam
+promoParam
+locationParam
+softwareParam
+```
+
+Match these names to your billing system.
+
+Examples:
+
+- WHMCS may use `billingcycle` and `config[...]`.
+- Paymenter may use `cycle` and `options[...]`.
+- Custom billing can use any query names your app expects.
+
+## Plans
+
+Game plans are created using the plan helper in `game-hosting.ts`.
+
+Plan fields commonly include:
+
+- ID.
+- Billing path.
+- Name.
+- Tagline.
+- Monthly price.
+- Yearly price.
+- RAM.
+- CPU.
+- Storage.
+- Bandwidth.
+- Location.
+- Backup.
+- Slots.
+- Recommended usage.
+- Badges.
+
+## Stock Badges
+
+Stock badge UI:
+
+```txt
+app/game-host/StockBadge.tsx
+```
+
+Plan card UI:
+
+```txt
+app/game-host/ProductCard.tsx
+```
+
+Stock API:
+
+```txt
+app/api/stock/route.ts
+```
+
+## Pterodactyl Requirements
+
+Set:
+
+```env
+PTERODACTYL_PANEL_URL=https://panel.example.com
+PTERODACTYL_APP_KEY=ptla_xxxxxxxxxxxxxxxxx
+```
+
+Use an Application API key with read access.
+
+## Common Mistakes
+
+- Wrong Pterodactyl location IDs.
+- Billing parameter names do not match the billing panel.
+- Software options are enabled but no `softwareParam` exists.
+- Plan card text is too long for mobile.
+- Hero image path is wrong.

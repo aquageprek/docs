@@ -1,0 +1,100 @@
+---
+title: "App Hosting, VPS, and Nodes"
+description: "Customize shared product catalog pages for App Hosting, VPS, and Private Nodes."
+icon: "server"
+---
+
+# App Hosting, VPS, and Nodes
+
+These pages share one catalog component:
+
+```txt
+components/ProductCatalogPage.tsx
+```
+
+Page files:
+
+```txt
+app/app-host/page.tsx
+app/vps/page.tsx
+app/nodes/page.tsx
+```
+
+Data file:
+
+```txt
+lib/data/product-config.ts
+```
+
+## Shared Props
+
+Each page passes:
+
+- `tiers`
+- `defaultTier`
+- `eyebrow`
+- `title`
+- `accentTitle`
+- `description`
+- `ctaLabel`
+- `configGroups`
+- `specFields`
+- `footerNote`
+
+## App Hosting
+
+App hosting is useful for runtimes and managed services.
+
+Example categories:
+
+- Node.js.
+- Python.
+- Java.
+- Database.
+
+Common config groups:
+
+- Deploy method.
+- Runtime add-ons.
+- Database options.
+
+## VPS
+
+VPS is useful for general compute plans.
+
+Example categories:
+
+- Starter.
+- Standard.
+- Pro.
+
+Common config groups:
+
+- Operating system.
+- Setup profile.
+- Backup level.
+
+## Private Nodes
+
+Private nodes are useful for dedicated hosting hardware.
+
+Example categories:
+
+- Node Lite.
+- Node Pro.
+- Node Elite.
+
+Common config groups:
+
+- Management level.
+- Use case.
+- Support level.
+
+## Extending the Shared Catalog
+
+If you want config selectors to affect checkout:
+
+1. Store selected config state.
+2. Convert selected config to query params.
+3. Append params to `billingUrl`.
+4. Test each billing provider.

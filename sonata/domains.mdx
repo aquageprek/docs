@@ -1,0 +1,82 @@
+---
+title: "Domains"
+description: "Customize Sonata domain pricing, search, RDAP availability checks, FAQ, and domain steps."
+icon: "scan-search"
+---
+
+# Domains
+
+The domain page includes domain pricing and availability lookup.
+
+Main files:
+
+```txt
+app/domain/page.tsx
+app/api/domain-check/route.ts
+lib/data/product-config.ts
+```
+
+## TLD Data
+
+Domain TLD pricing is stored in:
+
+```ts
+domainTlds
+```
+
+Each item can include:
+
+- Extension.
+- Register price.
+- Renew price.
+- Transfer price.
+- Popular state.
+
+## Domain Search
+
+Domain lookup uses public RDAP endpoints through:
+
+```txt
+app/api/domain-check/route.ts
+```
+
+RDAP is a lookup signal, not a final guarantee.
+
+A domain may still be unavailable at checkout if it is:
+
+- Premium.
+- Reserved.
+- Restricted.
+- Recently registered.
+- Blocked by registry policy.
+- Temporarily unavailable through the registrar.
+
+## Search UI
+
+The domain page sends a query to:
+
+```txt
+/api/domain-check
+```
+
+The API checks the requested label against selected TLDs.
+
+## Domain Steps
+
+The page includes a step flow such as:
+
+1. Search.
+2. Order.
+3. Manage.
+
+Keep step labels short and make connector arrows readable on desktop.
+
+## Troubleshooting Domain Lookup
+
+If lookup fails:
+
+- Check API route logs.
+- Try a different TLD.
+- Confirm outbound requests are allowed in production.
+- Confirm the TLD has a public RDAP endpoint.
+- Reduce the number of TLDs checked at once.

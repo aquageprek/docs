@@ -1,0 +1,86 @@
+---
+title: "Deployment"
+description: "Deploy Sonata to Vercel, Railway, Render, or a VPS with production environment variables."
+icon: "cloud-upload"
+---
+
+# Deployment
+
+Before deploying, run:
+
+```bash
+pnpm build
+```
+
+Fix build errors before shipping.
+
+## Vercel
+
+Recommended for most users.
+
+1. Push the project to GitHub, GitLab, or Bitbucket.
+2. Import the project in Vercel.
+3. Confirm framework is Next.js.
+4. Add environment variables.
+5. Deploy.
+
+## Railway
+
+1. Create a new Railway project.
+2. Deploy from GitHub.
+3. Add environment variables.
+4. Generate or connect a domain.
+
+## Render
+
+Use:
+
+```txt
+Build Command: pnpm install && pnpm build
+Start Command: pnpm start
+```
+
+Add environment variables in Render dashboard.
+
+## VPS
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Build:
+
+```bash
+pnpm build
+```
+
+Start:
+
+```bash
+pnpm start
+```
+
+For production VPS deployments, use PM2 and Nginx.
+
+Example:
+
+```bash
+pm2 start pnpm --name sonata -- start
+pm2 save
+```
+
+## Production Checklist
+
+- Environment variables are set.
+- Billing URLs are production URLs.
+- Brand assets are replaced.
+- SEO metadata is updated.
+- Product data is accurate.
+- Light and dark mode are readable.
+- Domain lookup works.
+- Status page works.
+- Game stock works if enabled.
+- License file is included.
+- Build succeeds.

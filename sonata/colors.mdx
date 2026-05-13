@@ -1,0 +1,122 @@
+---
+title: "Colors and Theme"
+description: "Customize Sonata colors, light mode, dark mode, depth, buttons, cards, and border beam effects."
+icon: "palette"
+---
+
+# Colors and Theme
+
+Global visual styling lives in:
+
+```txt
+app/globals.css
+```
+
+Use this file to change the theme without editing every component.
+
+## Accent Tokens
+
+Main accent colors:
+
+```css
+:root {
+  --accent: #9333ea;
+  --accent-hover: #a855f7;
+  --accent-text: #c084fc;
+  --accent-glow: #7e22ce;
+}
+```
+
+Also update:
+
+```txt
+lib/config/site.ts
+```
+
+Look for:
+
+```ts
+seo.themeColor
+```
+
+## Background Tokens
+
+```css
+--bg-base
+--bg-surface
+--bg-elevated
+```
+
+Use these for page backgrounds, cards, panels, and elevated surfaces.
+
+## Text Tokens
+
+```css
+--text-base
+--text-dim
+--text-muted
+--text-subtle
+--text-faint
+```
+
+If readability feels weak in light mode, update `html.light` values too.
+
+## Light Mode
+
+Light mode overrides live in:
+
+```css
+html.light {
+}
+```
+
+When changing color, depth, or contrast, check both modes.
+
+## Depth Tokens
+
+Sonata uses depth tokens to create tactile buttons and cards.
+
+Important tokens:
+
+```css
+--depth-highlight
+--depth-highlight-strong
+--depth-shadow-soft
+--depth-shadow-deep
+--depth-accent-shadow
+--depth-accent-glow
+--depth-surface-shadow
+--depth-surface-shadow-hover
+--depth-control-shadow
+--depth-control-shadow-hover
+--depth-accent-shadow-stack
+--depth-accent-shadow-hover
+--depth-pressed-shadow
+```
+
+## Shared Visual Hooks
+
+```css
+.game-plan-card
+.product-plan-card
+.hero-cta-soft
+```
+
+Use these hooks for consistent visual language.
+
+## Border Beam
+
+Border beam values:
+
+```css
+--border-beam-size
+--border-beam-width
+--border-beam-color-from
+--border-beam-color-to
+--border-beam-opacity
+--border-beam-blur
+```
+
+If the beam feels too bright, lower `--border-beam-opacity`.
+
+If it feels too sharp, increase `--border-beam-blur`.

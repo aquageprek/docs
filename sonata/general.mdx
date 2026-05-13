@@ -1,0 +1,99 @@
+---
+title: "General Configuration"
+description: "Understand the main project structure and core configuration files in Sonata."
+icon: "sliders"
+---
+
+# General Configuration
+
+Most Sonata customization starts in a small number of files.
+
+## Important Files
+
+| File | Purpose |
+|---|---|
+| `lib/config/site.ts` | Brand, SEO, social links, billing URLs, panel URL, locations, and metadata. |
+| `app/globals.css` | Theme tokens, colors, light mode, depth, buttons, cards, and border beam. |
+| `lib/data/game-hosting.ts` | Game hosting products, plans, tiers, locations, software variants, and billing params. |
+| `lib/data/product-config.ts` | Web hosting, app hosting, VPS, domains, and private node data. |
+| `components/ProductCatalogPage.tsx` | Shared catalog UI for app hosting, VPS, and private nodes. |
+| `app/game-host/ProductCard.tsx` | Game hosting plan card UI. |
+| `LICENSE` | Commercial license terms. |
+
+## Folder Structure
+
+```txt
+app/
+  api/
+  app-host/
+  domain/
+  game-host/
+  home/
+  nodes/
+  status/
+  support/
+  vps/
+  web-host/
+components/
+content/
+hooks/
+lib/
+public/
+```
+
+## Site Config
+
+Edit:
+
+```txt
+lib/config/site.ts
+```
+
+Common fields:
+
+- `name`
+- `fullName`
+- `logo`
+- `description`
+- `url`
+- `billing.url`
+- `billing.panel`
+- `social`
+- `seo`
+- `icons`
+- `nav.banner`
+- `locations`
+
+## Billing URL
+
+Most product order links use:
+
+```ts
+siteConfig.billing.url
+```
+
+Then product data appends a product path.
+
+Example:
+
+```ts
+billingUrl: `${B}/products/vps/starter-s1`
+```
+
+Change the suffix to match your billing panel.
+
+## Navigation
+
+Main navigation is in:
+
+```txt
+components/Navbar.tsx
+```
+
+Footer is in:
+
+```txt
+components/Footer.tsx
+```
+
+When adding a new public page, update navigation only if the page needs to be discoverable from the header or footer.

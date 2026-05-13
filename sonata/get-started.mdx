@@ -1,0 +1,88 @@
+---
+title: "Get Started"
+description: "Install Sonata, run it locally, configure environment variables, and prepare the first setup."
+icon: "rocket"
+---
+
+# Get Started
+
+This guide gets Sonata running locally.
+
+## Requirements
+
+Install:
+
+- Node.js 20 or newer.
+- pnpm 9 or newer.
+- Git.
+- A code editor.
+
+Optional services:
+
+- Pterodactyl panel for live stock.
+- UptimeRobot for status monitoring.
+- Billing panel such as WHMCS, Paymenter, Blesta, or custom billing.
+
+## Install Dependencies
+
+From the project root:
+
+```bash
+pnpm install
+```
+
+## Run Development Server
+
+```bash
+pnpm dev
+```
+
+Open:
+
+```txt
+http://localhost:3000
+```
+
+If port `3000` is busy:
+
+```bash
+pnpm dev -- -p 3001
+```
+
+## Build Production
+
+```bash
+pnpm build
+```
+
+Start the production build:
+
+```bash
+pnpm start
+```
+
+## Environment Variables
+
+Create `.env.local` in the project root.
+
+Example:
+
+```env
+PTERODACTYL_PANEL_URL=https://panel.example.com
+PTERODACTYL_APP_KEY=ptla_xxxxxxxxxxxxxxxxx
+UPTIMEROBOT_API_KEY=ur_xxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_DISCORD_GUILD_ID=000000000000000000
+```
+
+Restart the dev server after changing environment variables.
+
+## First Setup Checklist
+
+1. Update `lib/config/site.ts`.
+2. Replace logos and metadata assets.
+3. Update billing URLs.
+4. Update game hosting plans.
+5. Update web, app, VPS, domain, and node product data.
+6. Test light and dark mode.
+7. Test all product pages.
+8. Run a production build before deployment.

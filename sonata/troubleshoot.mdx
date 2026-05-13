@@ -1,0 +1,235 @@
+---
+title: "Troubleshooting"
+description: "Common Sonata installation, build, styling, API, deployment, and licensing issues with fixes."
+icon: "life-ring"
+---
+
+# Troubleshooting
+
+Use this guide when Sonata does not install, build, render, or deploy as expected.
+
+## Quick Checklist
+
+1. Check Node.js version.
+2. Check pnpm version.
+3. Reinstall dependencies.
+4. Check `.env.local`.
+5. Restart the dev server.
+6. Read terminal logs.
+7. Read browser console logs.
+8. Run a production build.
+
+Commands:
+
+```bash
+node -v
+pnpm -v
+pnpm install
+pnpm dev
+pnpm build
+```
+
+## `pnpm` Is Not Recognized
+
+Install pnpm:
+
+```bash
+npm install -g pnpm
+```
+
+Verify:
+
+```bash
+pnpm -v
+```
+
+## Port Is Already In Use
+
+Use another port:
+
+```bash
+pnpm dev -- -p 3001
+```
+
+## Blank Page
+
+Check:
+
+- Terminal logs.
+- Browser console.
+- Missing environment variables.
+- Import errors.
+- Client component errors.
+- Invalid data in config files.
+
+## Hydration Mismatch
+
+Common causes:
+
+- `Date.now()` rendered directly in JSX.
+- `Math.random()` rendered directly in JSX.
+- `window` or `document` used outside `useEffect`.
+- Theme state differs between server and client.
+
+Move browser-only logic into `useEffect`.
+
+## Build Fails
+
+Read the first real error.
+
+Common causes:
+
+- TypeScript error.
+- Invalid import.
+- Missing file.
+- Client component missing `"use client"`.
+- Invalid MDX syntax.
+- Missing environment variable.
+- Case-sensitive path issue on Linux deployments.
+
+## Product Cards Do Not Update
+
+Check the correct data file:
+
+```txt
+lib/data/game-hosting.ts
+lib/data/product-config.ts
+```
+
+Game hosting uses `game-hosting.ts`.
+
+Non-game product pages mostly use `product-config.ts`.
+
+## Billing URL Is Wrong
+
+Check:
+
+```txt
+lib/config/site.ts
+lib/data/game-hosting.ts
+lib/data/product-config.ts
+```
+
+Most URLs use `siteConfig.billing.url` plus a product path.
+
+## Domain Lookup Fails
+
+Domain lookup uses:
+
+```txt
+app/api/domain-check/route.ts
+```
+
+Possible causes:
+
+- RDAP endpoint is unavailable.
+- TLD has no public RDAP endpoint.
+- Registry rate limit.
+- Deployment platform blocks outbound requests.
+- Domain is premium or reserved.
+
+## Stock Shows Unavailable
+
+Check:
+
+- `PTERODACTYL_PANEL_URL`
+- `PTERODACTYL_APP_KEY`
+- API key permissions.
+- Pterodactyl location IDs.
+- Node and allocation state.
+- API logs.
+
+## Status Page Does Not Load
+
+Check:
+
+- `UPTIMEROBOT_API_KEY`
+- UptimeRobot monitors.
+- API route logs.
+- Production environment variables.
+
+## Colors Look Wrong
+
+Check:
+
+```txt
+app/globals.css
+```
+
+Update both `:root` and `html.light` if needed.
+
+## Button Shadows Are Too Strong
+
+Tune:
+
+```css
+--depth-accent-shadow
+--depth-accent-glow
+--depth-accent-shadow-stack
+--depth-accent-shadow-hover
+```
+
+For hero CTAs, check:
+
+```css
+.hero-cta-soft
+```
+
+## Border Beam Is Too Bright
+
+Tune:
+
+```css
+--border-beam-opacity
+--border-beam-blur
+--border-beam-size
+```
+
+## MDX Does Not Render
+
+Check frontmatter:
+
+```mdx
+---
+title: "Page Title"
+description: "Short description."
+
+tags: ["Docs"]
+readTime: 3
+---
+```
+
+Common causes:
+
+- Invalid frontmatter.
+- Unclosed JSX tag.
+- Broken Markdown table.
+- Raw `<` or `>` outside code blocks.
+- Component not registered in MDX renderer.
+
+## Deployment Fails
+
+Check:
+
+- Build command.
+- Start command.
+- Node.js version.
+- Environment variables.
+- Case-sensitive file paths.
+- Platform logs.
+
+## License Issue
+
+Sonata is under the Sonata Commercial License.
+
+Do not:
+
+- Resell.
+- Redistribute.
+- Leak.
+- Crack.
+- Nulled-release.
+- Remove license markers.
+- Sell modified copies as another template.
+
+Ask Hiddenmy and TariqIsHuman for written permission if you need extended redistribution or white-label rights.

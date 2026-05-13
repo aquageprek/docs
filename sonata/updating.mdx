@@ -1,0 +1,62 @@
+---
+title: "Updating"
+description: "Update Sonata safely while preserving local customizations and product data."
+icon: "rotate-cw"
+---
+
+# Updating
+
+When updating Sonata, protect your local customizations first.
+
+## Before Updating
+
+1. Commit or back up your current changes.
+2. Note files you customized.
+3. Export important product data.
+4. Check the changelog if available.
+5. Update in a separate branch.
+
+## Files Commonly Customized
+
+```txt
+lib/config/site.ts
+app/globals.css
+lib/data/game-hosting.ts
+lib/data/product-config.ts
+components/Navbar.tsx
+components/Footer.tsx
+public/asset/
+```
+
+## Safe Update Flow
+
+1. Download the latest Sonata version.
+2. Compare changed files.
+3. Reapply custom config carefully.
+4. Reinstall dependencies if package files changed.
+5. Run the dev server.
+6. Run a production build.
+7. Test all product pages.
+
+## After Updating
+
+Check:
+
+- Homepage.
+- Game hosting pages.
+- Web hosting page.
+- App hosting page.
+- VPS page.
+- Domain page.
+- Private nodes page.
+- Status page.
+- Support pages.
+- Light and dark mode.
+- Billing URLs.
+- License file.
+
+## Do Not Remove License Markers
+
+Updates may include license markers or anti-piracy placeholder changes.
+
+Do not remove or tamper with them unless you have written permission.

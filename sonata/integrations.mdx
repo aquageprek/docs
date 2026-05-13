@@ -1,0 +1,89 @@
+---
+title: "Integrations"
+description: "Configure Pterodactyl, UptimeRobot, Discord, billing providers, and domain lookup integrations."
+icon: "plug"
+---
+
+# Integrations
+
+Sonata includes optional integrations for real hosting workflows.
+
+## Pterodactyl Stock
+
+API route:
+
+```txt
+app/api/stock/route.ts
+```
+
+Environment variables:
+
+```env
+PTERODACTYL_PANEL_URL=https://panel.example.com
+PTERODACTYL_APP_KEY=ptla_xxxxxxxxxxxxxxxxx
+```
+
+Use an Application API key with read access to the required resources.
+
+## UptimeRobot Status
+
+API route:
+
+```txt
+app/api/uptime/route.ts
+```
+
+Environment variable:
+
+```env
+UPTIMEROBOT_API_KEY=ur_xxxxxxxxxxxxxxxxx
+```
+
+Use a Main API Key.
+
+## Discord Widget
+
+Environment variable:
+
+```env
+NEXT_PUBLIC_DISCORD_GUILD_ID=000000000000000000
+```
+
+Enable the server widget in Discord settings.
+
+## Billing
+
+Main billing base URL:
+
+```txt
+lib/config/site.ts
+```
+
+Look for:
+
+```ts
+billing: {
+  url: "https://billing.example.com",
+  panel: "https://panel.example.com",
+}
+```
+
+Product-specific billing URLs are stored in product data files.
+
+## Domain Lookup
+
+Domain lookup uses public RDAP data.
+
+API route:
+
+```txt
+app/api/domain-check/route.ts
+```
+
+No API key is required for basic RDAP lookup.
+
+## Anti-Piracy Placeholders
+
+Sonata may include non-visual marketplace placeholders and markers for leak tracing.
+
+Do not remove, rename, disable, or tamper with these markers unless you have written permission.

@@ -1,0 +1,83 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about using, modifying, licensing, and deploying Sonata."
+icon: "circle-help"
+---
+
+# FAQ
+
+## Can I change the brand name?
+
+Yes. Update `lib/config/site.ts`, replace assets, and adjust page copy where needed.
+
+## Can I use Sonata for a client?
+
+Yes. You may use Sonata to build finished client websites or applications.
+
+You may not transfer Sonata as a reusable template, theme, starter kit, or source-code product unless you have permission.
+
+## Can I sell websites made with Sonata?
+
+Yes. You can sell finished websites or apps built with Sonata.
+
+You cannot sell Sonata itself or a modified copy as another theme or template.
+
+## Can I add more products?
+
+Yes. Add product data in:
+
+```txt
+lib/data/game-hosting.ts
+lib/data/product-config.ts
+```
+
+Then update or create the relevant page.
+
+## Can I use another billing panel?
+
+Yes. Update billing URLs and query parameters.
+
+For game hosting, check the billing config in `game-hosting.ts`.
+
+## Can I remove anti-piracy markers?
+
+No. License markers, download identifiers, and anti-piracy placeholders must not be removed or tampered with.
+
+## Can I publish my modified version publicly?
+
+No, not as source code, a reusable template, or a redistributed product.
+
+You may deploy the finished website or app as part of a licensed project.
+
+## Can I make Sonata dark mode only?
+
+Yes, but review the theme toggle and `html.light` tokens if removing light mode support.
+
+## Can I use the docs on another site?
+
+Yes. These MDX files are intended to be portable for an external docs site.
+
+## Where do I update colors?
+
+Use:
+
+```txt
+app/globals.css
+```
+
+## Where do I update SEO?
+
+Use:
+
+```txt
+lib/config/site.ts
+```
+
+## Where do I update pricing?
+
+Use:
+
+```txt
+lib/data/game-hosting.ts
+lib/data/product-config.ts
+```

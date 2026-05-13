@@ -1,0 +1,93 @@
+---
+title: "SEO"
+description: "Customize Sonata metadata, Open Graph images, Twitter cards, sitemap-friendly content, and theme color."
+icon: "search"
+---
+
+# SEO
+
+Global SEO config is managed through:
+
+```txt
+lib/config/site.ts
+app/layout.tsx
+```
+
+## Site URL
+
+Set the production domain:
+
+```ts
+url: "https://sonata.id"
+```
+
+This is used for metadata base, canonical URLs, and author links.
+
+## Metadata
+
+Update:
+
+```ts
+seo: {
+  title: "...",
+  titleTemplate: "...",
+  description: "...",
+  keywords: ["..."],
+  ogTitle: "...",
+  ogDescription: "...",
+  ogImage: "...",
+  ogImageAlt: "...",
+  themeColor: "...",
+  twitterTitle: "...",
+  twitterDescription: "...",
+}
+```
+
+## Open Graph Image
+
+Recommended size:
+
+```txt
+1200x630
+```
+
+Store it in:
+
+```txt
+public/asset/metadata/
+```
+
+Then update `seo.ogImage`.
+
+## Theme Color
+
+Match this with your accent:
+
+```ts
+themeColor: "#9333ea"
+```
+
+Also update browser and PWA icons if you rebrand heavily.
+
+## Page-Level SEO
+
+Some pages export their own metadata.
+
+Examples:
+
+```txt
+app/game-host/page.tsx
+```
+
+When adding a new important public page, add metadata if needed.
+
+## SEO Checklist
+
+- Production URL is correct.
+- Title and description are not placeholders.
+- Open Graph image exists.
+- Twitter card metadata is correct.
+- Favicon and app icons are replaced.
+- Product pages use real copy.
+- Legal pages are accurate.
+- Domain and billing URLs are production-ready.
