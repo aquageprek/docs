@@ -1,104 +1,69 @@
 ---
-title: 'General Settings'
-description: 'Customize LucentUI behavior and visual appearance through the available settings.'
-icon: 'sliders'
+title: 'General configuration'
+description: 'Configure color-mode behavior, typography, global layout, and visitor-facing controls.'
+icon: 'gear'
 ---
 
-# ⚙️ General Settings
+Open **Extensions → LucentUI Editor**. Global behavior is split between the **Colors**
+and **Typography & Layout** tabs.
 
-LucentUI offers several built-in settings to help you tailor the user experience. You can configure these options via the **Admin Panel → Settings → Theme Settings** section.
+## Theme behavior
 
-Each setting below can enhance performance, improve UX, or adjust visuals based on your brand or preference.
+| Control | Options | Behavior |
+| --- | --- | --- |
+| Default Theme | Auto, Light, Dark | Initial choice for first-time visitors |
+| Force Theme | User choice, Force Light, Force Dark | Overrides visitor preference and hides the toggle when forced |
+| Design Mode | Lucent UI, Flat UI | Changes surface rendering without changing content |
+| Disable Homepage | On/off | Sends visitors to the dashboard instead of the marketing homepage |
 
----
+Returning visitors keep their own light/dark/auto selection unless **Force Theme** is
+active.
 
-## 🛒 Checkout Behavior
+## Typography
 
-<Expandable title="Checkout Behavior Settings">
-    ### **Direct Checkout**
+LucentUI separates body and heading typography:
 
-    - **Setting Name**: `direct_checkout`
-    - **Type**: Checkbox
-    - **Default**: `false`
+- **Body Font** applies to paragraphs and interface chrome.
+- **Heading Font** applies to headings and branded navigation text. Leave it empty to
+  reuse the body font.
+- **Heading Weight** supports 600, 700, 800, and 900.
+- **Base Font Size** provides compact (14 px), default (16 px), and comfortable (18 px)
+  scaling.
 
-    If enabled, customers will be taken **directly to the checkout page** when clicking a product—skipping the product detail page entirely.
+Available font families include Figtree, Plus Jakarta Sans, Poppins, Inter, Roboto,
+Montserrat, Lato, Open Sans, IBM Plex Sans Thai, and Orbitron. The browser uses the
+configured fallback stack when a remote font cannot load.
 
-    <Info>Recommended for simple product offerings or one-click purchases.</Info>
-</Expandable>
+## Navigation shell
 
----
+The navbar and authenticated sidebar share the same content but offer different shells:
 
-## 🖼️ Category Display Options
+- Navbar shape: Floating pill, Flat bar, Solid bar, or Minimal rule.
+- Navbar alignment: Left Aligned or Centered.
+- Sidebar shape: Floating or Docked.
+- Authenticated users can collapse the sidebar into a 72 px icon rail; the choice persists
+  across reloads.
 
-<Expandable title="Category Display Settings">
-    ### **Show Category Image Banner**
+See [Navigation and footer](/lucentui/navigation) for custom links and visibility controls.
 
-    - **Setting Name**: `show_category_image_banner`
-    - **Type**: Checkbox  
-    - **Default**: `true`
+## Display controls
 
-    Displays the image set for a category as a **wide banner** on the top of the product list page.
+- Show full logo or icon-only branding.
+- Show the account credit balance.
+- Add the active currency code to the language indicator.
+- Show or hide cart, notifications, and guest login/register actions.
+- Enable the cookie notice and position it bottom-left or bottom-right.
 
-    ### **Show Category Description**
+The empty cart slot collapses automatically; disabling the cart is only necessary when
+the store should never expose it.
 
-    - **Setting Name**: `show_category_description`
-    - **Type**: Checkbox  
-    - **Default**: `true`
+## Cookie notice
 
-    Displays a **textual description or banner** underneath the category title.
+Configure the title, body, button text, and side in **Typography & Layout → Cookie Banner
+Text**. Acceptance is saved in the visitor's browser.
 
-    ### **Small Images**
-
-    - **Setting Name**: `small_images`
-    - **Type**: Checkbox  
-    - **Default**: `false`
-
-    Reduces image size for product thumbnails. Useful for minimalist or grid-style layouts.
-</Expandable>
-
----
-
-## 🌌 Background Customization
-
-<Expandable title="Background Customization Settings">
-    ### **Background Image URL**
-
-    - **Setting Name**: `background_image_url`
-    - **Type**: Text  
-    - **Default**: `""`
-
-    Allows you to set a **custom background image** via a direct URL.  
-    Recommended image size: `1920x1080` or larger.
-
-    ### **Background Image Opacity**
-
-    - **Setting Name**: `background_image_opacity`
-    - **Type**: Text  
-    - **Default**: `30`
-
-    Set the **opacity level** of the background image.  
-    Range: `0` (fully transparent) to `100` (fully opaque).
-
-    ### **Background Image Blur**
-
-    - **Setting Name**: `background_image_blur`
-    - **Type**: Text  
-    - **Default**: `5`
-
-    Applies a blur effect to the background image.  
-    Range: `0px` (no blur) to `20px`.
-</Expandable>
-
----
-
-## 📝 Notes
-
-- All changes take effect **immediately after saving** in the Paymenter admin panel.
-- You can mix both **color + image backgrounds** to achieve a glassmorphic effect.
-- Use URLs from **reliable sources** (e.g., your own hosting, imgur/CDN, etc.) for background images.
-
----
-
-<Info>
-More settings will be added in future versions. Join [Zaqua Discord](https://discord.gg/UYMrM8kDne) for sneak peeks and support.
-</Info>
+<Tip>
+  Describe the cookies your Paymenter installation actually uses and link to a privacy
+  policy in the footer. The built-in notice is a presentation tool, not a substitute for
+  legal review or a full consent-management platform.
+</Tip>

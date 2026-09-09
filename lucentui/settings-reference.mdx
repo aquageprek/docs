@@ -1,0 +1,136 @@
+---
+title: 'Settings reference'
+description: 'Reference the LucentUI Editor tabs, stored keys, defaults, and operational behavior.'
+icon: 'list'
+---
+
+LucentUI Editor stores global Paymenter settings with the `lucentui_` prefix. Theme code
+reads them through the `theme_lucentui_` configuration namespace. Use the Editor instead
+of editing database rows directly.
+
+## Colors
+
+| Area | Keys and defaults |
+| --- | --- |
+| Visitor mode | `default_theme=auto`, `force_theme` empty |
+| Appearance | `appearance_mode=lucent`, `flat_surface_style=bordered` |
+| Lucent hierarchy | `surface_hierarchy=balanced` |
+| Glass | `glass_intensity=balanced`; optional blur and opacity overrides |
+| Light palette | `primary`, `secondary`, `neutral`, `base`, `muted`, `inverted`, `background`, `background-secondary` |
+| Dark palette | The same roles prefixed with `dark-` |
+
+## Typography & Layout
+
+| Area | Keys and defaults |
+| --- | --- |
+| Typography | `change_font_family=Figtree`, optional heading family, heading weight 700, base size 16 |
+| Navbar | Shape, left/centered content layout, full logo, credit/currency display |
+| Sidebar | `sidebar_variant=floating`; visitor-controlled wide/icon rail state |
+| Homepage | `disable_homepage=false` |
+| Cookie notice | Enabled, bottom-left, localized title/body/button |
+
+## Navigation & Footer
+
+- Navbar visibility: cart, notifications, and guest authentication actions.
+- `custom_nav_links`: ordered label, URL, and new-tab records.
+- `custom_sidebar_links`: ordered label, URL, icon, new-tab, and separator records.
+- Footer description, copyright, Paymenter badge, privacy, terms, support, and external
+  control-panel URL.
+- Discord, GitHub, Twitter/X, Instagram, YouTube, and TikTok URLs.
+- Discord guild ID, section CTA, and fallback member text.
+
+## Auth Pages
+
+Localized fields cover the auth side-panel title/subtitle/testimonial, sign-in and OAuth
+copy, registration steps, password mismatch/form errors, reset request/reset form, 2FA,
+password visibility and strength, plus the logout confirmation message.
+
+## Homepage and Dashboard
+
+| Key | Stored shape |
+| --- | --- |
+| `homepage_blocks` | Ordered JSON list of homepage block instances |
+| `dashboard_blocks` | Ordered JSON list of dashboard block instances |
+| `buy_server_link` | Shared store/quick-action target |
+| `help_link` | Support and secondary-CTA fallback |
+| `docs_link` | Dashboard documentation target |
+
+Each block stores an ID, type, variant, enabled state, full/half width, and content.
+Localized block fields store locale maps inside content.
+
+## Products & Services
+
+| Setting | Default or purpose |
+| --- | --- |
+| Product Card Style | Classic/default visual variant |
+| Direct Checkout | Enabled |
+| Show “Starts at” | Enabled |
+| Category image banner | Enabled |
+| Category descriptions | Enabled |
+| Full banner description | Enabled |
+| Services title/empty copy | Optional localized presentation |
+| `icon_mappings` | Ordered value, optional scope, and icon source records |
+
+## Background
+
+- Uploaded light wallpaper and uploaded dark wallpaper.
+- Light URL and dark URL fallbacks.
+- Shared opacity from 0–100%.
+- Shared blur from 0–50 px.
+
+## SEO and analytics
+
+Default page title, description, keywords, author, robots policy, canonical base, browser
+accent, Open Graph upload, Twitter card/handle, GA4 ID, GTM ID, and Meta Pixel ID.
+
+## Invoice PDF
+
+Header style, optional PDF accent, date format, paid watermark, thank-you message, notes
+visibility, and plain-text notes.
+
+## Advanced
+
+Custom CSS, JavaScript, head HTML, body-top HTML, and body-bottom HTML. Homepage and
+dashboard Custom HTML blocks are stored inside their respective block list.
+
+## Runtime and cache behavior
+
+Saving, importing, resetting, or changing the Editor extension lifecycle clears mapped
+LucentUI settings and statistics caches. Settings are resolved per active locale and
+cached for normal storefront requests.
+
+Authenticated users can inspect the release marker from the browser console:
+
+```js
+LucentUI.inspect()
+```
+
+The record contains the licensed username, user ID, and a one-way proof. It does not
+expose the raw package nonce or send a tracking request.
+
+## Package paths
+
+```text
+themes/lucentui/
+├── theme.php
+├── css/
+├── js/
+├── helpers/
+├── views/
+└── public/lucentui/
+
+extensions/Others/LucentUIEditor/
+├── LucentUIEditor.php
+├── Admin/
+├── Support/
+└── resources/views/
+
+public/lucentui/
+├── manifest.json
+└── assets/
+```
+
+<Warning>
+  `themes/lucentui/public/lucentui` is the copy bundled with the theme archive.
+  Paymenter's web server loads the published copy at root `public/lucentui`.
+</Warning>

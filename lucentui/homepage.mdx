@@ -1,148 +1,90 @@
 ---
-
-title: "Homepage Settings"
-description: "Customize every section of your LucentUI homepage including hero, stats, features, and more."
-icon: "house"
-
+title: 'Homepage builder'
+description: 'Build the LucentUI marketing homepage from ordered, reusable, localized blocks.'
+icon: 'house'
 ---
 
-# 🏠 Homepage Settings
+The **Homepage** tab uses a block builder rather than a fixed list of section toggles.
+Each block has a stable ID, enabled state, variant, width, and content payload.
 
-LucentUI gives you full control over the homepage layout, from hero banners to feature sections and testimonials.
+<Frame caption="The same homepage configuration rendered with light-mode design tokens.">
+  <img
+    src="/images/lucentui/home-light.webp"
+    alt="LucentUI light-mode homepage with centered hero, floating navigation, and feature cards"
+  />
+</Frame>
 
----
+## Builder actions
 
-## 🎯 Hero Section
+- Drag blocks to change their order.
+- Expand a block to edit its content and variant.
+- Disable a block without deleting its configuration.
+- Clone a block to reuse a type with different content.
+- Choose full or half width where the block supports dashboard-style composition.
+- Switch the global content language to edit localized block fields.
 
-### 🚀 Badge, Title & Description
+Switching variants preserves the shared content schema. A cloned block receives a new
+stable identifier when saved.
 
-<Expandable title="Badge, Title & Description">
-    <ResponseField name="homepage_hero_badge" type="string" default="🚀 Welcome to Paymenter...">
-        Small text above hero title
-    </ResponseField>
-    <ResponseField name="homepage_hero_title1" type="string" default="Premium">
-        First part of hero heading
-    </ResponseField>
-    <ResponseField name="homepage_hero_title2" type="string" default="Game Hosting">
-        Highlighted part of heading
-    </ResponseField>
-    <ResponseField name="homepage_hero_desc" type="string">
-        Description paragraph under title
-    </ResponseField>
-</Expandable>
+## Homepage blocks
 
-### 🖱️ Call-to-Action Buttons
+<AccordionGroup>
+  <Accordion title="Hero" icon="window-maximize">
+    Variants: Split Media, Centered, Split Actions, Full Bleed, and Minimal. Configure
+    badge, headline, rotating words, description, two CTAs, and optional media.
+  </Accordion>
+  <Accordion title="Features" icon="grid-2">
+    Variants: Bento, Grid, Icon List, and Alternating. Each item accepts an icon, title,
+    description, and optional image.
+  </Accordion>
+  <Accordion title="FAQ" icon="circle-question">
+    Variants: Accordion, Two Column, Grouped, Divider List, and Grid.
+  </Accordion>
+  <Accordion title="Testimonials" icon="quote-left">
+    Variants: Spotlight, Grid, Marquee, and Single Large.
+  </Accordion>
+  <Accordion title="Product Categories" icon="tags">
+    Variants: Cards, Featured List, Compact List, and Cover Grid. Content comes from
+    Paymenter's category records.
+  </Accordion>
+  <Accordion title="Pricing Table" icon="money-bill">
+    Renders plan tiers from a category slug and can highlight a product by name.
+  </Accordion>
+  <Accordion title="Stats Bar" icon="chart-simple">
+    Renders a divider strip. Values can use `{uptime}`, `{users}`, and `{services}`.
+  </Accordion>
+  <Accordion title="Datacenters" icon="globe">
+    Shows a location list, network capacity label, and optional status link.
+  </Accordion>
+  <Accordion title="Discord Community" icon="discord" iconType="brands">
+    Combines marketing copy with live Discord widget data when configured.
+  </Accordion>
+  <Accordion title="Promo Bar" icon="bullhorn">
+    Displays a compact message, optional coupon, countdown target, and link.
+  </Accordion>
+  <Accordion title="Call to Action" icon="arrow-pointer">
+    Variants: Band, Boxed, Split, and Minimal with two configurable actions.
+  </Accordion>
+  <Accordion title="Custom HTML" icon="code">
+    Inserts trusted raw HTML at a specific point in the homepage. Use only when a native
+    block cannot represent the content.
+  </Accordion>
+</AccordionGroup>
 
-<Expandable title="Call-to-Action Buttons">
-    <ResponseField name="hero_cta_primary_text" type="string" default="Start Gaming Now">
-        Primary action button
-    </ResponseField>
-    <ResponseField name="hero_cta_secondary_text" type="string" default="Explore Features">
-        Secondary action button
-    </ResponseField>
-</Expandable>
+## Product and data-backed blocks
 
-### 🛡️ Trust Badges
+Categories and pricing use live Paymenter data. Stats are supplied through cached theme
+data rather than queries inside Blade views. If a referenced category slug or product
+name changes, update the corresponding block configuration.
 
-<Expandable title="Trust Badges">
-    <ResponseField name="hero_trust_badge_1" type="string" default="30-Day Money Back" />
-    <ResponseField name="hero_trust_badge_2" type="string" default="Instant Activation" />
-</Expandable>
+## Legacy upgrades
 
----
+On an upgraded installation, LucentUI Editor seeds a block list from compatible legacy
+settings. After the first successful save, the block list becomes the canonical layout.
+Do not hand-edit `homepage_blocks` JSON unless you are restoring a reviewed export.
 
-## 📊 Stats Section
-
-<Expandable title="Stats Section">
-    <ResponseField name="stats_uptime_title" type="string" />
-    <ResponseField name="stats_uptime_subtitle" type="string" />
-    <ResponseField name="stats_support_title" type="string" />
-    <ResponseField name="stats_support_subtitle" type="string" />
-    <ResponseField name="stats_users_title" type="string" />
-    <ResponseField name="stats_users_subtitle" type="string" />
-    <ResponseField name="stats_servers_title" type="string" />
-    <ResponseField name="stats_servers_subtitle" type="string" />
-</Expandable>
-
----
-
-## ⚡ Quick Actions
-
-### Section Titles
-
-<Expandable title="Section Titles">
-    <ResponseField name="quick_actions_title" type="string" default="Get Started in Seconds" />
-    <ResponseField name="quick_actions_subtitle" type="string" default="Everything you need is just one click away" />
-    <ResponseField name="quick_actions_header" type="string" default="Quick Actions" />
-</Expandable>
-
-### Cards
-
-<Expandable title="Cards">
-    <ResponseField name="buy_server_title" type="string" />
-    <ResponseField name="buy_server_subtitle" type="string" />
-    <ResponseField name="buy_server_description" type="string" />
-    <ResponseField name="buy_server_link" type="string" />
-    <ResponseField name="help_title" type="string" />
-    <ResponseField name="help_subtitle" type="string" />
-    <ResponseField name="help_link" type="string" />
-    <ResponseField name="login_title" type="string" />
-    <ResponseField name="login_subtitle" type="string" />
-    <ResponseField name="login_description" type="string" />
-    <ResponseField name="dashboard_title" type="string" />
-    <ResponseField name="dashboard_subtitle" type="string" />
-    <ResponseField name="dashboard_description" type="string" />
-    <ResponseField name="docs_title" type="string" />
-    <ResponseField name="docs_subtitle" type="string" />
-    <ResponseField name="docs_description" type="string" />
-    <ResponseField name="docs_link" type="string" />
-</Expandable>
-
----
-
-## 🧩 Features Section
-
-<Expandable title="Features Section">
-    <ResponseField name="features_title" type="string" default="Why Choose Us?" />
-    <ResponseField name="features_subtitle" type="string" default="We’ve built the most advanced..." />
-    <ResponseField name="feature_X_title" type="string" />
-    <ResponseField name="feature_X_desc" type="string" />
-</Expandable>
-
----
-
-## 🗣️ Testimonials
-
-<Expandable title="Testimonials">
-    <ResponseField name="testimonials_title" type="string" default="What Gamers Say" />
-    <ResponseField name="testimonials_subtitle" type="string" default="Join thousands of satisfied customers..." />
-    <ResponseField name="testimonial_X_name" type="string" />
-    <ResponseField name="testimonial_X_role" type="string" />
-    <ResponseField name="testimonial_X_quote" type="string" />
-</Expandable>
-
----
-
-## 🎮 Services Section
-
-<Expandable title="Services Section">
-    <ResponseField name="services_title" type="string" default="Our Services" />
-    <ResponseField name="services_subtitle" type="string" default="Choose from our comprehensive..." />
-</Expandable>
-
----
-
-## 📣 Call to Action (CTA)
-
-<Expandable title="Call to Action">
-    <ResponseField name="cta_title" type="string" default="Ready to Get Started?" />
-    <ResponseField name="cta_subtitle" type="string" />
-    <ResponseField name="cta_primary_text" type="string" default="View Pricing" />
-    <ResponseField name="cta_secondary_text" type="string" default="Chat Support" />
-</Expandable>
-
----
-
-<Note>
-Want to hide certain homepage sections completely? You can do this by customizing your theme layout Blade files in `/themes/lucentui/views/home.blade.php`.
-</Note>
+<Tip>
+  Build the narrative in this order: one Hero, proof or Features, Products/Pricing,
+  objections such as FAQ, and one final CTA. More sections do not automatically improve
+  conversion or clarity.
+</Tip>

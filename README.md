@@ -1,44 +1,40 @@
-# Mintlify Starter Kit
+# Zaqua documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+This repository contains the Mintlify documentation for Zaqua products, including
+LucentUI and Sonata.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Local preview
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+Install the current Mintlify CLI and start the development server from the repository
+root:
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
+```bash
+npm install -g mint
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+The preview is available at `http://localhost:3000` by default.
 
-## Publishing changes
+## Validation
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+Run these checks before publishing:
 
-## Need help?
+```bash
+mint validate
+mint broken-links --check-anchors
+mint a11y
+```
 
-### Troubleshooting
+Keep every page referenced by `docs.json`, add descriptive alternative text to images,
+and use absolute documentation paths such as `/lucentui/get-started` for internal links.
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Publishing
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
-- [Mintlify community](https://mintlify.com/community)
+The production documentation is connected to this repository through the Mintlify
+GitHub integration. Push reviewed changes to the configured deployment branch to publish
+them.
+
+## Content ownership
+
+LucentUI implementation details should be verified against the current theme and Editor
+source before changing the docs. Do not document planned features as available features.

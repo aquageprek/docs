@@ -1,41 +1,67 @@
 ---
-title: "Color Settings"
-description: "Customize the colors of your LucentUI theme for both light and dark modes."
-icon: "palette"
+title: 'Colors and presets'
+description: 'Configure accessible light and dark palettes using LucentUI semantic color roles.'
+icon: 'palette'
 ---
 
-# 🎨 Color Scheme Settings
+The **Colors** tab exposes ten preset strips and separate semantic palettes for light and
+dark mode. A preset fills both palettes together; it is not stored until you select
+**Save Changes**.
 
-Personalize the theme's appearance with your own brand colors and adjust how elements appear in light and dark mode.
+## Included presets
 
-## 🌞 Light Mode Colors
+Lucent Default, Ocean Breeze, Forest Mint, Sunset, Midnight, Rose, Cyberpunk, Solarized,
+Monochrome, and Cherry Blossom are included as starting points. You can edit any color
+after applying a preset.
 
-<Expandable title="Light Mode Colors">
-    | Setting | Default | Description |
-    |--------|---------|-------------|
-    | `primary` | `hsl(340, 85%, 55%)` | Main brand color used across buttons and highlights |
-    | `secondary` | `hsl(45, 90%, 60%)` | Secondary accent color used for emphasis |
-    | `neutral` | `hsl(210, 20%, 80%)` | Neutral color for borders and UI elements |
-    | `base` | `hsl(0, 0%, 10%)` | Primary text color on light background |
-    | `muted` | `hsl(200, 25%, 35%)` | Subdued text, used for descriptions or less important elements |
-    | `inverted` | `hsl(0, 0%, 100%)` | Text color on primary backgrounds (e.g., buttons) |
-    | `background` | `hsl(0, 0%, 98%)` | Default background color for the page |
-    | `background-secondary` | `hsl(0, 0%, 95%)` | Slightly darker secondary background (e.g., cards, sections) |
-</Expandable>
+## Semantic roles
 
-## 🌚 Dark Mode Colors
+| Role | Used for |
+| --- | --- |
+| Primary | Main buttons, active navigation, links, and branded emphasis |
+| Secondary | Supporting accent and secondary highlights |
+| Neutral | Borders, separators, and quiet UI controls |
+| Base | Primary readable text |
+| Muted | Descriptions, metadata, and secondary text |
+| Inverted | Text placed on primary/accent surfaces |
+| Background | Page canvas |
+| Background Secondary | Cards, panels, menus, and elevated surfaces |
 
-<Expandable title="Dark Mode Colors">
-    | Setting | Default | Description |
-    |--------|---------|-------------|
-    | `dark-primary` | `hsl(340, 85%, 55%)` | Primary brand color for dark theme |
-    | `dark-secondary` | `hsl(45, 90%, 60%)` | Secondary accent for dark mode |
-    | `dark-neutral` | `hsl(210, 20%, 25%)` | Neutral color for borders and accents |
-    | `dark-base` | `hsl(0, 0%, 95%)` | Base text color on dark backgrounds |
-    | `dark-muted` | `hsl(200, 25%, 40%)` | Less prominent text color on dark mode |
-    | `dark-inverted` | `hsl(0, 0%, 20%)` | Inverted text color on bright buttons or elements |
-    | `dark-background` | `hsl(220, 30%, 10%)` | Primary dark background color |
-    | `dark-background-secondary` | `hsl(220, 25%, 15%)` | Secondary background shade for sections and containers |
-</Expandable>
+Each role has a corresponding dark-mode value. Theme components consume these roles
+rather than fixed brand colors, which lets supported extension pages follow the same
+palette.
 
-> 🎨 **Pro Tip:** Try to keep brand colors consistent across both light and dark themes for visual harmony.
+## Current Lucent defaults
+
+| Role | Light | Dark |
+| --- | --- | --- |
+| Primary | `#2977B7` | `#49A0E8` |
+| Secondary | `#49A0E8` | `#78B8EC` |
+| Neutral | `#D9E2EC` | `#26384A` |
+| Base | `#17202B` | `#F3F7FB` |
+| Muted | `#5D6B7A` | `#A8B4C2` |
+| Inverted | `#FFFFFF` | `#07131D` |
+| Background | `#F7F9FC` | `#08111B` |
+| Background Secondary | `#FFFFFF` | `#0E1925` |
+
+## Accessibility checklist
+
+<Steps>
+  <Step title="Check normal text">
+    Keep paragraph and form text at a contrast ratio of at least 4.5:1 against its surface.
+  </Step>
+  <Step title="Check interactive states">
+    Test primary buttons, muted labels, selected tabs, disabled controls, and focus rings.
+  </Step>
+  <Step title="Check both modes">
+    A readable light palette does not guarantee a readable dark palette. Test them separately.
+  </Step>
+  <Step title="Check optional wallpaper">
+    Re-test contrast after adding a background image or increasing glass transparency.
+  </Step>
+</Steps>
+
+<Warning>
+  Avoid making `base` and `background` similar. Also avoid using a very bright dark-mode
+  neutral color: it turns every border into a competing highlight.
+</Warning>

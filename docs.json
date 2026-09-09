@@ -2,10 +2,11 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "sequoia",
   "name": "Zaqua Documentation",
+  "description": "Installation, configuration, integration, and troubleshooting guides for LucentUI and Zaqua products.",
   "colors": {
-    "primary": "#FFD400",
-    "light": "#FFF9CC",
-    "dark": "#FFD400"
+    "primary": "#806A00",
+    "light": "#FFF0A3",
+    "dark": "#8A7200"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -23,24 +24,54 @@
             "group": "LucentUI",
             "pages": [
               "lucentui/introduction",
-              "lucentui/faq",
-              "lucentui/changelogs",
-              "lucentui/get-started",
-              "lucentui/updating",
-              "lucentui/general",
-              "lucentui/seo",
-              "lucentui/custom-code",
-              "lucentui/homepage",
-              "lucentui/banner",
-              "lucentui/colors",
-              "lucentui/footer",
-              "lucentui/troubleshoot"
-            ]
-          },
-          {
-            "group": "Tripay Payment Gateway",
-            "pages": [
-              "tripay/introduction"
+              {
+                "group": "Install & update",
+                "pages": [
+                  "lucentui/get-started",
+                  "lucentui/updating",
+                  "lucentui/changelogs"
+                ]
+              },
+              {
+                "group": "Editor & branding",
+                "pages": [
+                  "lucentui/editor",
+                  "lucentui/general",
+                  "lucentui/appearance",
+                  "lucentui/colors",
+                  "lucentui/background",
+                  "lucentui/navigation",
+                  "lucentui/footer"
+                ]
+              },
+              {
+                "group": "Page builders",
+                "pages": [
+                  "lucentui/homepage",
+                  "lucentui/dashboard",
+                  "lucentui/banner",
+                  "lucentui/products",
+                  "lucentui/auth-pages"
+                ]
+              },
+              {
+                "group": "Operations",
+                "pages": [
+                  "lucentui/localization",
+                  "lucentui/extensions",
+                  "lucentui/invoice-pdf",
+                  "lucentui/seo",
+                  "lucentui/custom-code"
+                ]
+              },
+              {
+                "group": "Reference & support",
+                "pages": [
+                  "lucentui/settings-reference",
+                  "lucentui/troubleshoot",
+                  "lucentui/faq"
+                ]
+              }
             ]
           },
           {
@@ -113,5 +144,8 @@
   },
   "fonts": {
     "family": "Poppins"
+  },
+  "metadata": {
+    "timestamp": true
   }
 }

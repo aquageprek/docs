@@ -1,87 +1,82 @@
 ---
-title: 'LucentUI Introduction'
-description: 'Discover everything you need to get started with LucentUI, a minimalist theme for Paymenter.'
+title: 'LucentUI overview'
+description: 'Understand LucentUI 3.0, its companion Editor, and the supported Paymenter experience.'
 icon: 'layer-group'
 ---
-# Welcome to LucentUI Docs
 
-<img
-    src="/images/Lucentdocs.png"
-    alt="LucentUI theme screenshot"
-/>
+LucentUI 3.0 is a configurable storefront and client-area theme for Paymenter 1.5.8.
+It combines a complete theme override with LucentUI Editor, an administrator extension
+for changing the visual system and page layouts without editing Paymenter core files.
 
-## Version 2.0.0 is out now!
+<Frame caption="LucentUI homepage using the current Lucent appearance in dark mode.">
+  <img
+    src="/images/lucentui/home-dark.webp"
+    alt="LucentUI dark-mode homepage with a floating navigation bar, centered infrastructure hero, and feature cards"
+  />
+</Frame>
 
-**LucentUI** is a refined, minimalist theme crafted specifically for [Paymenter](https://paymenter.org). With a focus on clean layout, subtle animations, and glassmorphic design, LucentUI is perfect for modern hosting panels or billing platforms.
+## What ships in 3.0
 
-Designed by [Zaqua](https://tariqdev.xyz), it brings a polished experience without compromising performance.
+<Columns cols={2}>
+  <Card title="Two appearance systems" icon="circle-half-stroke" href="/lucentui/appearance">
+    Use signature Lucent glass or switch the same content to a fully opaque Flat UI.
+  </Card>
+  <Card title="Visual page builders" icon="table-columns" href="/lucentui/homepage">
+    Reorder, clone, disable, resize, and restyle homepage and dashboard blocks.
+  </Card>
+  <Card title="Dynamic localization" icon="language" href="/lucentui/localization">
+    The Editor follows Paymenter's enabled languages while English remains the source fallback.
+  </Card>
+  <Card title="Extension-aware views" icon="puzzle-piece" href="/lucentui/extensions">
+    Theme-native views cover supported announcements, affiliates, compliance, server, and uptime extensions.
+  </Card>
+</Columns>
 
-<Info>Whether you're launching a new instance or upgrading from another theme, LucentUI is built to make your panel feel premium, responsive, and beautiful.</Info>
+LucentUI also includes responsive authentication screens, product catalogue variants,
+live price-aware checkout presentation, service management, invoices, tickets, command
+palette navigation, light/dark wallpapers, SEO controls, and branded PDF invoices.
 
-👉 **[View the Demo](https://lucentui.tariqdev.xyz)**
+## Package model
 
-This documentation includes everything from installation, configuration, updates, and customization tips to help you get the most out of LucentUI.
+LucentUI is distributed as two independent ZIP files:
 
----
+| Package | Purpose | Installation path |
+| --- | --- | --- |
+| `LucentUI-3.0.0-theme.zip` | Theme source and prebuilt browser assets | Extract under `themes/lucentui` |
+| `LucentUIEditor-3.0.0-upload.zip` | Paymenter administrator extension | Upload from **Available Extensions** |
 
-## 📚 Documentation Sections
+Keeping the packages separate is intentional. Paymenter can upload the Editor extension,
+but themes continue to be placed in the `themes` directory and publish assets to `public`.
 
-<CardGroup cols={2}>
-    <Card title="Get Started" icon="rocket" href="./get-started">
-        Install the theme using ZIP or PTB method in just a few steps.
-    </Card>
-    <Card title="Updating" icon="rotate" href="./updating">
-        Keep LucentUI up to date using manual or PTB update methods.
-    </Card>
-    <Card title="General Settings" icon="sliders" href="./general">
-        Customize visuals, background, and layout easily from config files.
-    </Card>
-    <Card title="Troubleshooting" icon="life-ring" href="./troubleshoot">
-        Find solutions to common issues and errors when using LucentUI.
-    </Card>
-</CardGroup>
+<Warning>
+  Do not upload the theme ZIP through Paymenter's extension uploader. Do not extract the
+  Editor upload ZIP before selecting it in the administrator panel.
+</Warning>
 
----
+## Design and compatibility guarantees
 
-## 💡 Why Choose LucentUI?
+- No LucentUI installation step requires editing Paymenter core files.
+- Normal installations use the bundled Vite assets and do not require Node.js.
+- Theme settings are stored in Paymenter's database and survive file-only upgrades.
+- Missing optional media collapses or falls back without breaking the page structure.
+- Light and dark colors use one semantic token system throughout supported views.
+- Extension overrides are isolated inside `themes/lucentui/views/vendor`.
 
-- ✅ Minimalist & modern layout
-- 🧼 Clean code structure, easy to extend
-- 🧊 Glassmorphic effects with theme customization
-- ⚡ Lightweight & optimized for speed
-- 🌗 Supports light/dark mode
-- 🎯 Designed for Paymenter v1.3+
+<Columns cols={2}>
+  <Card title="Install LucentUI" icon="download" href="/lucentui/get-started">
+    Install both release packages and complete the first-run checks.
+  </Card>
+  <Card title="Open the Editor" icon="sliders" href="/lucentui/editor">
+    Learn the preview, save, import, export, and reset workflow.
+  </Card>
+</Columns>
 
-LucentUI is built with developer friendliness in mind — so you can focus more on your services, not the frontend hassle.
+## License and support
 
----
+Use LucentUI only under the license supplied with your purchase. Unless that license
+explicitly says otherwise, do not redistribute, resell, or publicly share the release
+archives.
 
-### 📦 Availability
-
-Available on [builtbybit](https://builtbybit.com/resources/lucentui-minimalist-theme.70343) and [Sociabuzz](https://sociabuzz.com/aquageprek/p/lucentui-tema-minimalis-modern-untuk-paymenter).
-
----
-
-## 📜 License & Usage
-
-Use and modify freely for your own services. However:
-
-- ❌ Do not resell, redistribute, or share publicly.
-- ❌ Only one holder of the theme license is permitted to use it for their services.
-
-By using LucentUI, you agree to these terms.
-
----
-
-## 📞 Need Help?
-
-If you run into issues or want to customize your theme:
-
-- 💬 [Join the Zaqua Discord](https://discord.gg/UYMrM8kDne)
-- 📧 [Email us](mailto:jstazka@icloud.com)
-
-We also offer **custom tweaks** and priority support for partners.
-- 🛠️ Clients who purchase addons on [BuiltByBit](https://builtbybit.com) can also open a support ticket for assistance.
----
-
-> Created with ❤️ by Zaqua
+- [Zaqua community](https://discord.gg/UYMrM8kDne)
+- [LucentUI on BuiltByBit](https://builtbybit.com/resources/lucentui-minimalist-theme.70343/)
+- [Email support](mailto:jstazka@icloud.com)

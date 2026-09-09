@@ -1,0 +1,59 @@
+---
+title: 'Light and dark wallpapers'
+description: 'Upload or link mode-aware wallpapers and control their shared opacity and blur.'
+icon: 'image'
+---
+
+The **Background** tab accepts separate light- and dark-mode images. Each mode supports
+either a Paymenter upload or an external URL.
+
+## Resolution order
+
+For each mode LucentUI uses the first available source:
+
+1. Uploaded image for the active mode.
+2. External URL for the active mode.
+3. The other mode's uploaded image or URL.
+4. No wallpaper when neither mode has a source.
+
+This means a single supplied wallpaper becomes the fallback for both modes. Add a second
+image only when light and dark mode need different artwork.
+
+## Configure wallpapers
+
+<Steps>
+  <Step title="Choose the source">
+    Upload JPEG, PNG, or WebP media in **Mode Wallpapers**, or paste a direct `https://`
+    URL. An uploaded image takes priority over the URL for the same mode.
+  </Step>
+  <Step title="Set opacity">
+    Use 0–100%. Start near 20–30% so the wallpaper supports the interface instead of
+    reducing text contrast.
+  </Step>
+  <Step title="Set blur">
+    Use 0–50 px. A small blur can reduce detail behind translucent Lucent surfaces.
+  </Step>
+  <Step title="Preview both color modes">
+    Check the hero, product cards, forms, menus, and footer at desktop and mobile widths.
+  </Step>
+</Steps>
+
+<Tip>
+  Prefer a wide image around 1920×1080 or larger, compressed as WebP. Keep the focal
+  point away from critical text and navigation regions.
+</Tip>
+
+## Lucent and Flat behavior
+
+Lucent mode allows the wallpaper to show through translucent surfaces. Flat mode keeps
+panels opaque, but the image can still appear on the page canvas. Opacity and blur are
+shared across light and dark wallpapers.
+
+## Troubleshooting
+
+- If an upload saves but does not display, confirm Paymenter's public storage link and
+  file permissions.
+- If an external image fails, open the direct URL in a private browser window and check
+  that the host permits embedding.
+- If an old single wallpaper remains, save a new light or dark source; legacy background
+  data remains only as an upgrade fallback.

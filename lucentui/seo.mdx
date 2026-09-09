@@ -1,50 +1,61 @@
 ---
-title: "SEO Settings"
-description: "Customize your site metadata and social sharing previews for better SEO."
-icon: "magnifying-glass"
+title: 'SEO and analytics'
+description: 'Configure metadata, canonical URLs, social previews, robots policy, and analytics IDs.'
+icon: 'magnifying-glass'
 ---
 
-# 🔍 SEO Settings
+Open **LucentUI Editor → SEO**. The configured defaults apply to pages that do not provide
+more specific metadata.
 
-LucentUI includes built-in SEO controls so your site can rank better and look great when shared.
+## Meta tags
 
-## Site Settings
+| Field | Guidance |
+| --- | --- |
+| Default Page Title | Brand or storefront name used before page-specific titles |
+| Meta Description | Clear page summary; approximately 150–160 characters is a useful target |
+| Meta Keywords | Optional comma-separated legacy metadata |
+| Author / Company | Company name used in author metadata |
+| Robots | Choose index/follow behavior for the storefront |
+| Canonical URL Base | Complete production origin such as `https://billing.example.com` |
+| SEO / Browser Color | Browser chrome and theme-color accent |
 
-<Expandable title="Site Title">
-    <ResponseField name="seo_title" type="Text">
-        - **Default**: `Premium Game Hosting - Fast & Reliable Servers`
-        - **Description**: This overrides your site’s default title tag.
-    </ResponseField>
-</Expandable>
+LucentUI appends the current request path to the canonical base. Leave the field empty to
+use Paymenter's configured application URL.
 
-<Expandable title="Meta Description">
-    <ResponseField name="seo_description" type="Textarea">
-        - **Default**: `Experience premium game hosting with 99.9% uptime, instant deployment, and 24/7 support.`
-        - **Description**: Used by search engines to summarize your site (recommended 150–160 characters).
-    </ResponseField>
-</Expandable>
+## Social sharing
 
-<Expandable title="Keywords">
-    <ResponseField name="seo_keywords" type="Text">
-        - **Default**: `game hosting, minecraft hosting, server hosting`
-        - **Description**: Add comma-separated keywords relevant to your site.
-    </ResponseField>
-</Expandable>
+Upload a 1200×630 JPEG, PNG, or WebP Open Graph image. Product/page media can supply a
+fallback when no global image is configured. Choose a Summary or Summary Large Image card
+and optionally add the Twitter/X account handle.
 
-<Expandable title="Author">
-    <ResponseField name="seo_author" type="Text">
-        - **Default**: `LucentUI Gaming`
-        - **Description**: Adds author metadata to your site.
-    </ResponseField>
-</Expandable>
+<Warning>
+  Set the canonical base to the public HTTPS hostname. A staging or localhost canonical
+  URL can cause search engines to associate production pages with the wrong origin.
+</Warning>
 
-<Expandable title="Open Graph Image">
-    <ResponseField name="og_image" type="Text (URL)">
-        - **Default**: (empty)
-        - **Description**: Image preview used when your site is shared on social media. Recommended size: **1200x630px**.
-    </ResponseField>
-</Expandable>
+## Robots policy
 
-<Note>
-These settings directly impact how your site appears on search engines and platforms like Discord, Facebook, and Twitter.
-</Note>
+| Value | Meaning |
+| --- | --- |
+| `index,follow` | Index the page and follow links |
+| `index,nofollow` | Index the page but do not follow links |
+| `noindex,follow` | Do not index the page; links may be followed |
+| `noindex,nofollow` | Do not index or follow links |
+
+Use `noindex,nofollow` on non-production environments. Robots metadata does not replace
+authentication for private pages.
+
+## Analytics IDs
+
+LucentUI can inject Google Analytics 4 (`G-...`), Google Tag Manager (`GTM-...`), and
+Meta/Facebook Pixel IDs. Leave a field empty to disable that integration.
+
+Before enabling analytics, update the cookie/privacy disclosure for the jurisdictions in
+which you operate. Avoid configuring the same tracker through both the built-in field and
+custom code, which would duplicate events.
+
+## Validate output
+
+Use browser page source—not only the inspector DOM—to check title, description, canonical,
+robots, Open Graph, and Twitter tags. Test a shared URL with the target platform's preview
+debugger after deployment.

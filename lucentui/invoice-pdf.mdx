@@ -1,0 +1,47 @@
+---
+title: 'Invoice PDF'
+description: 'Customize LucentUI invoice PDF headers, accents, dates, watermarks, and notes.'
+icon: 'file-pdf'
+---
+
+LucentUI Editor registers a themed PDF renderer for Paymenter's invoice generation event.
+Open **Invoice PDF** to configure its presentation.
+
+## Header
+
+| Style | Result |
+| --- | --- |
+| Accent Line | White header with a primary-color border |
+| Colored | Primary-color header with light text |
+| Dark | Dark header with light text |
+
+Set **PDF Accent Colour** to override the theme primary color for invoices only. Leave it
+empty to inherit the active LucentUI primary color.
+
+## Layout and dates
+
+Supported date formats are:
+
+- `d M Y` → 15 Jan 2025
+- `d/m/Y` → 15/01/2025
+- `m/d/Y` → 01/15/2025
+- `Y-m-d` → 2025-01-15
+
+Enable the paid watermark to place a diagonal **PAID** mark on paid invoices.
+
+## Footer and terms
+
+Customize the thank-you message and optionally enable plain-text notes or payment terms.
+Keep payment details concise and do not place secrets or private account credentials in
+global invoice notes.
+
+## Verification
+
+Generate one unpaid and one paid invoice after changing PDF settings. Check line wrapping,
+currency values, dates, payment history, notes, and the paid watermark. PDF rendering can
+differ from browser rendering, so a storefront preview is not sufficient.
+
+<Info>
+  If themed PDF generation throws an exception, LucentUI logs the rendering failure so it
+  can be diagnosed without changing Paymenter core files.
+</Info>

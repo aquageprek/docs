@@ -1,18 +1,46 @@
 ---
-title: "Banner Settings"
-description: "Controls for displaying banner announcements in the LucentUI theme."
-icon: "megaphone"
+title: 'Promotions and notices'
+description: 'Configure homepage promo bars, dashboard announcements, and operational notices.'
+icon: 'bullhorn'
 ---
 
-# 📢 Banner Announcement Settings
+LucentUI 3.0 does not use the retired global `banner_enabled` setting. Promotional and
+operational messages are blocks, so they can be positioned and enabled independently.
 
-Configure how announcement banners are displayed above the dashboard. This is useful for important updates, promotions, or alerts.
+## Promo Bar block
 
-| Setting              | Type     | Default                                          | Description                                                                                             |
-| -------------------- | -------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| `banner_enabled`     | Checkbox | false                                            | Toggle to enable/disable banner announcements on the dashboard                                          |
-| `banner_type`        | Select   | info                                             | Select the banner type. Options: `critical` (Red), `warning` (Orange), `info` (Blue), `success` (Green) |
-| `banner_message`     | Textarea | This is an important announcement for all users. | The main text message displayed in the banner                                                           |
-| `banner_dismissible` | Checkbox | true                                             | Allows users to manually close the banner if enabled                                                    |
+Add **Promo Bar** to the homepage or dashboard builder.
 
-> 💡 **Tip:** Use `banner_type` to match the urgency or theme of your announcement, such as `critical` for outages or `success` for promotions.
+| Field | Purpose |
+| --- | --- |
+| Message | Localized campaign or maintenance copy |
+| Coupon code | Optional code displayed with copy behavior |
+| Ends at | Optional `YYYY-MM-DD HH:MM` countdown target |
+| Link URL | Destination for the strip |
+
+Leave coupon or end time empty when the campaign does not use them.
+
+## Dashboard announcement
+
+Add or edit **Alerts & Notices** on the Dashboard tab. The announcement field supports
+Markdown and can be dismissible.
+
+| Tone | Use for |
+| --- | --- |
+| Info | Neutral service information |
+| Success | Completed work or positive updates |
+| Warning | Degraded service or required attention |
+| Critical | Active incidents or urgent account action |
+
+The same block can show generated notices for unpaid invoices, expiring services, and
+two-factor authentication. Use **Collapse after** to keep a busy dashboard compact.
+
+## Announcement extension
+
+Paymenter's Announcement extension has separate list, detail, and dashboard widget views.
+Those records are managed by the extension and should be used for durable news posts.
+Use LucentUI blocks for short campaign or account-context messages.
+
+<Card title="Supported extensions" icon="puzzle-piece" href="/lucentui/extensions">
+  See how the themed Announcement views and other optional integrations behave.
+</Card>

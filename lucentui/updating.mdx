@@ -1,66 +1,82 @@
 ---
-title: 'Updating LucentUI'
-description: 'How to update LucentUI to the latest version manually or via PTB.'
+title: 'Update LucentUI'
+description: 'Safely update the LucentUI theme and Editor while preserving configuration.'
 icon: 'arrows-rotate'
 ---
 
-# 🔄 Updating LucentUI
+LucentUI 3.0 updates use the same two ZIP files as a fresh installation. There is no
+PTB or `.paytheme` update path in this release.
 
-LucentUI receives updates regularly to bring new UI improvements, fixes, and compatibility with the latest Paymenter versions.
-
-You can update the theme using **manual update** or using the recommended **PTB (.paytheme)** method.
-
----
-
-## ⚙️ Manual Update
-
-This is the standard method if you installed LucentUI from a ZIP file.
+<Warning>
+  Back up local Blade, CSS, or JavaScript modifications before replacing the theme.
+  Saved Editor settings remain in Paymenter's database, but direct file edits are
+  overwritten by the new package.
+</Warning>
 
 <Steps>
-<Step title="Download the latest ZIP">
-Get the latest version of `lucentui.zip` from your purchase source.
-</Step>
+  <Step title="Read the release notes">
+    Check the [LucentUI changelog](/lucentui/changelogs) for compatibility notes and
+    changes that may affect custom code or extension overrides.
+  </Step>
 
-<Step title="Upload and overwrite">
-Replace the existing theme directory:
-```bash
-mv lucentui.zip /var/www/paymenter/themes
-cd /var/www/paymenter/themes
-unzip -o lucentui.zip
-```
-The `-o` flag will **overwrite** the previous files with the new ones. 
-</Step>
+  <Step title="Export the current design">
+    Open LucentUI Editor and select **Export**. Store the resulting JSON file with your
+    server backup. This gives you a portable copy of all `lucentui_*` settings.
+  </Step>
 
-<Step title="Rebuild the theme">
-After replacing the files, navigate to your Paymenter root and rebuild assets:
-```bash
-cd /var/www/paymenter
-npm run build lucentui
-```
-</Step>
+  <Step title="Back up files">
+    ```bash
+    cd /var/www/paymenter
+    cp -a themes/lucentui themes/lucentui.backup
+    cp -a public/lucentui public/lucentui.backup
+    ```
+  </Step>
+
+  <Step title="Replace theme source and public assets">
+    Extract the new theme ZIP over `themes/lucentui`, then republish the bundled assets.
+
+    ```bash
+    unzip -o /path/to/LucentUI-3.0.0-theme.zip -d /var/www/paymenter/themes
+    mkdir -p /var/www/paymenter/public/lucentui
+    cp -a /var/www/paymenter/themes/lucentui/public/lucentui/. \
+      /var/www/paymenter/public/lucentui/
+    ```
+  </Step>
+
+  <Step title="Upload the new Editor package">
+    Use **Extensions → Available Extensions → Ready to Install / Upload → Upload
+    Extension** and select the new `LucentUIEditor-3.0.0-upload.zip`. Paymenter detects
+    the installed copy, replaces the extension files, and runs its update lifecycle.
+  </Step>
+
+  <Step title="Clear caches and verify">
+    ```bash
+    cd /var/www/paymenter
+    php artisan optimize:clear
+    ```
+
+    Reload the administrator panel and storefront. Confirm the version in
+    `themes/lucentui/theme.php`, then test both color modes and critical client routes.
+  </Step>
 </Steps>
 
-<Warning>Skipping the build step may result in a **500 Internal Server Error**.</Warning>
----
+## Roll back
 
-## 🧪 Checking Version
+If the update fails, restore both backed-up directories, clear caches, and reload the
+site. Import the Editor JSON only if the saved database configuration was deliberately
+changed during troubleshooting.
 
-You can verify that the update was successful by checking your theme’s admin settings page, the `theme.php` file or the Admin Footer.
+```bash
+cd /var/www/paymenter
+mv themes/lucentui themes/lucentui.failed
+mv themes/lucentui.backup themes/lucentui
+mv public/lucentui public/lucentui.failed
+mv public/lucentui.backup public/lucentui
+php artisan optimize:clear
+```
 
----
-
-## 📌 Notes
-
-* Custom changes will be **overwritten** unless you've backed them up.
-* Always **backup your theme files** and database before updating.
-* Read the latest [changelogs](/lucentui/changelogs) for what's new.
-
----
-
-## 🚨 Troubleshooting
-
-* **500 Internal Server Error**?
-  → Re-run `npm run build lucentui` and clear your browser cache.
-
-* **Missing Styles or Broken Layouts?**
-  → Ensure assets were rebuilt correctly and check for version compatibility.
+<Note>
+  Old hashed asset files are harmless when the active `manifest.json` points to the new
+  files. For a tidy deployment, synchronize the public directory from the release rather
+  than deleting broad application paths.
+</Note>

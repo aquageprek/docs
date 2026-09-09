@@ -1,0 +1,78 @@
+---
+title: 'Extension compatibility'
+description: 'Understand LucentUI views for supported Paymenter extensions and safe fallback behavior.'
+icon: 'puzzle-piece'
+---
+
+LucentUI includes theme-side view overrides for selected Paymenter extensions. The theme
+changes presentation only; provisioning, permissions, validation, and API calls remain
+owned by each extension.
+
+## Included themed integrations
+
+| Integration | Themed experience |
+| --- | --- |
+| Announcements | Wide list, detail page, and dashboard widget |
+| Affiliates | Responsive affiliate overview and actions |
+| Compliance Tools | Privacy center and dashboard PIN cards/widgets |
+| Uptime | Dashboard status presentation |
+| BetterPterodactyl / Pterodactyl SSO | Service overview and SSO action presentation |
+| Proxmox | Overview, network, backup, reinstall, console, server, settings, and VNC views |
+| Stripe | Payment flow styling |
+| Passport | Authorization screen styling |
+
+LucentUI automatically uses an override when the installed extension renders the matching
+view contract. If an extension version changes that contract, Paymenter falls back to the
+extension's own compatible view rather than requiring a core edit.
+
+## Proxmox service view
+
+The Proxmox overview includes CPU, memory, network, and disk visualization, responsive
+action controls, copy feedback, and lifecycle-safe polling. Tabs retain state during
+Livewire navigation. Checkout options are grouped by semantic field while unknown fields
+remain visible under **Additional**.
+
+<Info>
+  LucentUI does not repair an extension's server-side API behavior. If an action fails in
+  the extension's default view as well, collect its request/log error and report it to the
+  extension maintainer.
+</Info>
+
+## BetterPterodactyl
+
+Install BetterPterodactyl according to its own instructions and configure products to use
+that server extension instead of the native Pterodactyl integration where appropriate.
+LucentUI styles the service data, copy controls, actions, and SSO surface while preserving
+the extension's Livewire/action contract.
+
+## Generic extension compatibility
+
+Extensions without a dedicated override still inherit LucentUI semantic colors, forms,
+buttons, and common components when they use Paymenter's view/component conventions.
+Custom extension markup that hardcodes its own colors or JavaScript remains the extension
+author's responsibility.
+
+## Diagnose an integration
+
+<Steps>
+  <Step title="Compare with the default theme">
+    Temporarily reproduce the same action using Paymenter's default theme. This separates
+    presentation bugs from extension/API bugs.
+  </Step>
+  <Step title="Check the browser and server">
+    Capture console errors, failed network requests, and the matching Laravel log entry.
+  </Step>
+  <Step title="Verify extension version">
+    Confirm that the installed extension version matches the version supported by the
+    LucentUI release notes.
+  </Step>
+  <Step title="Remove stale compiled views">
+    Run `php artisan optimize:clear` after replacing theme or extension files.
+  </Step>
+</Steps>
+
+<Warning>
+  The Advanced Renewal compatibility adapter is planned but is not included in LucentUI
+  3.0. Do not copy paid extension templates into the theme. Compatibility work should be
+  implemented against an extension installation the customer is licensed to use.
+</Warning>

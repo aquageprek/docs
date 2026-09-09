@@ -1,0 +1,66 @@
+---
+title: 'Appearance modes'
+description: 'Choose Lucent glass or Flat UI and tune surface hierarchy without rebuilding content.'
+icon: 'circle-half-stroke'
+---
+
+LucentUI renders one component tree through two visual systems. Switching appearance
+does not replace homepage blocks, dashboard blocks, copy, media, colors, or extension
+data.
+
+<Tabs>
+  <Tab title="Lucent UI">
+    The default design uses restrained translucent surfaces, semantic borders, and
+    background blur. Choose a surface hierarchy and glass recipe to control how often
+    and how strongly glass appears.
+  </Tab>
+  <Tab title="Flat UI">
+    Flat mode removes backdrop blur and ambient glass depth across the theme. Panels stay
+    opaque and continue using the configured light and dark palette.
+  </Tab>
+</Tabs>
+
+## Lucent surface hierarchy
+
+| Option | Best for |
+| --- | --- |
+| Balanced | Quiet content cards with glass reserved for navigation and emphasis |
+| Full Glass | A consistent frosted treatment across most surfaces |
+| Solid | Opaque surfaces while retaining the Lucent layout language |
+| Minimal | Transparent cards with restrained separators |
+
+Balanced is the safest default for readability and visual hierarchy.
+
+## Glass recipes
+
+| Preset | Blur | Light surface | Dark surface |
+| --- | ---: | ---: | ---: |
+| Subtle & Crisp | 12 px | 15% | 12% |
+| Balanced Lucent | 16 px | 20% | 20% |
+| Deep Frost | 24 px | 30% | 32% |
+
+Optional custom blur is clamped to 0–50 px. Custom opacity is clamped to 10–100%.
+Leave either field empty to inherit the chosen preset.
+
+## Flat surface styles
+
+| Option | Result |
+| --- | --- |
+| Bordered | Crisp opaque cards with clear outlines |
+| Filled | Tonal opaque panels with softer separation |
+| Quiet | Minimal chrome and fewer visible containers |
+
+These controls appear only while Flat UI is selected.
+
+## Choosing a mode
+
+- Use **Balanced Lucent** when wallpaper and branded depth are part of the experience.
+- Use **Flat / Bordered** for dense business dashboards and maximum separation.
+- Use **Flat / Quiet** when content hierarchy already provides enough structure.
+- Validate light and dark mode after every palette or wallpaper change.
+
+<Info>
+  “Solid” under Lucent surface hierarchy and “Flat UI” are not identical. Solid retains
+  the Lucent system and layout treatment; Flat UI disables the glass behavior globally
+  and offers its own three surface styles.
+</Info>

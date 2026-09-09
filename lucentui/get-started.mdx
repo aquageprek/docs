@@ -1,59 +1,120 @@
 ---
-title: 'Getting Started'
-description: 'Install and activate LucentUI on your Paymenter panel in minutes.'
+title: 'Install LucentUI'
+description: 'Install the LucentUI 3.0 theme and Editor packages on Paymenter 1.5.8.'
 icon: 'rocket'
 ---
 
-# 🚀 Get Started with LucentUI
+This guide installs LucentUI without modifying Paymenter core files. The release already
+contains compiled production assets, so Node.js is not required.
 
-LucentUI is ready to elevate your Paymenter experience with a clean, responsive, and modern interface.
+## Before you begin
 
----
+- Paymenter 1.5.8 is installed and working.
+- The server runs PHP 8.3 or newer.
+- You have administrator permission to install extensions and change settings.
+- You can write to Paymenter's `themes`, `public`, `storage`, and `bootstrap/cache` paths.
+- You downloaded both LucentUI 3.0 release ZIP files from your licensed source.
 
-## 🛠 Prerequisites
-* Paymenter installed
-* Node.js + NPM
-* unzip & curl installed
----
-
-## 🧰 Option 1: Manual Installation
+The commands below use `/var/www/paymenter` as the Paymenter root. Substitute the path
+used by your server.
 
 <Steps>
-<Step title="Upload the ZIP file">
-Move the downloaded `lucentui.zip` into your Paymenter themes directory:
-```bash
-mv lucentui.zip /var/www/paymenter/themes
-cd /var/www/paymenter/themes
-```
-</Step>
+  <Step title="Back up an existing installation">
+    If LucentUI is already installed, back up its theme and public asset directories and
+    export the current Editor settings before replacing files.
 
-<Step title="Extract the theme">
-Unzip the archive:
-```bash
-unzip lucentui.zip
-```
-Make sure the folder structure is like this:
-```txt
-/themes
- └── lucentui/
-      ├── dashboard.blade.php
-      ├── home.blade.php
-      └── other views...
-```
-</Step>
+    ```bash
+    cd /var/www/paymenter
+    cp -a themes/lucentui themes/lucentui.backup
+    cp -a public/lucentui public/lucentui.backup
+    ```
+  </Step>
 
-<Step title="Build the assets (required)">
-<Warning>Skipping this step may result in a **500 Internal Server Error**.</Warning> 
-Navigate to your Paymenter root and build the theme:
+  <Step title="Extract the theme package">
+    The theme archive already contains one `lucentui` root directory.
+
+    ```bash
+    cd /var/www/paymenter
+    unzip /path/to/LucentUI-3.0.0-theme.zip -d themes
+    ```
+
+    Confirm that `/var/www/paymenter/themes/lucentui/theme.php` exists. A path such as
+    `themes/lucentui/lucentui/theme.php` means the archive was extracted one level too deep.
+  </Step>
+
+  <Step title="Publish the prebuilt assets">
+    Copy the browser bundle stored inside the theme to Paymenter's public directory.
+
+    ```bash
+    mkdir -p /var/www/paymenter/public/lucentui
+    cp -a /var/www/paymenter/themes/lucentui/public/lucentui/. \
+      /var/www/paymenter/public/lucentui/
+    ```
+
+    Confirm that `/var/www/paymenter/public/lucentui/manifest.json` exists.
+  </Step>
+
+  <Step title="Upload LucentUI Editor">
+    In Paymenter Admin, open **Extensions → Available Extensions → Ready to Install /
+    Upload**, select **Upload Extension**, and upload
+    `LucentUIEditor-3.0.0-upload.zip`.
+
+    Upload the ZIP itself. Its `LucentUIEditor.php` file must remain at the archive root
+    for Paymenter to detect it.
+  </Step>
+
+  <Step title="Install and enable the Editor">
+    After upload, stay on **Ready to Install / Upload**. Click **Install** beside
+    **LucentUI Editor**. On the extension edit page, turn on **Enabled** and save.
+  </Step>
+
+  <Step title="Activate the theme">
+    Open Paymenter's administrator settings, find **Theme**, choose `lucentui`, and save.
+    Then clear framework caches from the Paymenter root:
+
+    ```bash
+    php artisan optimize:clear
+    ```
+  </Step>
+
+  <Step title="Complete the smoke test">
+    Open the homepage, sign-in page, product catalogue, client dashboard, and LucentUI
+    Editor. Test light and dark mode, then check the browser console for errors.
+  </Step>
+</Steps>
+
+<Check>
+  Installation is complete when the storefront is styled, LucentUI Editor appears under
+  the Extensions navigation, and `/lucentui/manifest.json` returns successfully.
+</Check>
+
+## Docker installation
+
+If `/app` is the Paymenter root inside a container, publish the theme files into that
+container. Replace `paymenter` with its actual name.
+
+```bash
+docker exec paymenter mkdir -p /app/themes/lucentui /app/public/lucentui
+docker cp themes/lucentui/. paymenter:/app/themes/lucentui/
+docker cp themes/lucentui/public/lucentui/. paymenter:/app/public/lucentui/
+docker exec paymenter php artisan optimize:clear
+```
+
+Install the Editor from the Paymenter administrator upload screen even when Paymenter is
+containerized.
+
+## Developer-only asset build
+
+Run a frontend build only after changing LucentUI CSS or JavaScript source:
+
 ```bash
 cd /var/www/paymenter
-npm i
-npm run build lucentui
+npm install
+node vite.js lucentui
 ```
-</Step>
 
-<Step title="Activate LucentUI">
-In your admin panel, go to **Settings → Theme**, and choose `lucentui`.
-</Step>
+The supported command is `node vite.js lucentui`, not `npm run build lucentui`.
 
-</Steps>
+<Card title="Next: configure the Editor" icon="sliders" href="/lucentui/editor">
+  Learn how draft previews, saving, presets, exports, imports, and reset protection work.
+</Card>

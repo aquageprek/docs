@@ -1,68 +1,73 @@
 ---
-title: "FAQ"
-description: "Frequently Asked Questions about the LucentUI theme and customization."
-icon: "question"
+title: 'Frequently asked questions'
+description: 'Answers about LucentUI installation, configuration, updates, localization, and compatibility.'
+icon: 'circle-question'
 ---
 
-# ❓ Frequently Asked Questions (FAQ)
+<AccordionGroup>
+  <Accordion title="Does LucentUI modify Paymenter core files?">
+    No. The release is limited to `themes/lucentui`, the LucentUIEditor extension, and
+    published theme assets. Supported extension views live under the theme's vendor
+    override directory.
+  </Accordion>
 
-Find answers to the most commonly asked questions about **LucentUI** and how to make the most of its customization features.
+  <Accordion title="Do customers need Node.js to install the theme?">
+    No. The release ZIP contains a prebuilt `public/lucentui` bundle. Node.js is needed
+    only when a developer changes the source CSS or JavaScript.
+  </Accordion>
 
----
+  <Accordion title="Why are there two ZIP files?">
+    Paymenter uploads extensions but themes are installed in the `themes` directory. The
+    Editor ZIP is structured for **Upload Extension**; the theme ZIP contains the
+    `lucentui` theme root and its prebuilt assets.
+  </Accordion>
 
-### How do I enable the homepage hero section?
-The homepage hero section is enabled by default. You can customize the content using the following fields:
+  <Accordion title="Can the theme be completely flat?">
+    Yes. Select **Colors → Appearance Mode → Flat UI**, then choose Bordered, Filled, or
+    Quiet surfaces. The same content and layout remain in use.
+  </Accordion>
 
-- `homepage_hero_badge`
-- `homepage_hero_title1` and `homepage_hero_title2`
-- `homepage_hero_desc`
-- `hero_cta_primary_text` and `hero_cta_secondary_text`
+  <Accordion title="Can visitors choose light or dark mode?">
+    Yes. Set Default Theme to Auto, Light, or Dark and leave Force Theme at **Let users
+    choose**. Forcing a mode hides the visitor toggle.
+  </Accordion>
 
-You can access all of these under the theme settings in the admin panel.
+  <Accordion title="What happens if I upload only one wallpaper?">
+    LucentUI uses it as the fallback for both light and dark mode. A mode-specific upload
+    overrides a URL for the same mode.
+  </Accordion>
 
----
+  <Accordion title="How many languages are supported?">
+    The Editor follows Paymenter's Allowed Languages list. English is always included as
+    the source/fallback; there is no fixed four-language limit.
+  </Accordion>
 
-### Can I inject custom scripts or analytics tools?
-Yes! Use the following fields to inject your scripts:
+  <Accordion title="Will an update erase my Editor settings?">
+    File replacement does not intentionally remove settings because they live in
+    Paymenter's database. Export settings and back up files before every update anyway.
+  </Accordion>
 
-- `custom_head_html` for things like Google Fonts or meta tags
-- `custom_body_top_html` for tools like Google Tag Manager (noscript)
-- `custom_body_bottom_html` for widgets like Tawk.to or Discord
+  <Accordion title="Can I use an extension without a dedicated LucentUI page?">
+    Usually. Generic Paymenter components inherit the theme where possible. Extension
+    markup with custom fixed styling may look different until a dedicated override is
+    added.
+  </Accordion>
 
-All code is automatically wrapped in appropriate `<script>` or `<style>` tags.
+  <Accordion title="Does LucentUI support Proxmox and BetterPterodactyl?">
+    The 3.0 release includes theme-side views for Proxmox and the Pterodactyl SSO service
+    surface used by BetterPterodactyl. The extensions remain responsible for server-side
+    provisioning and API behavior.
+  </Accordion>
 
----
+  <Accordion title="Can I use Advanced Renewal?">
+    LucentUI does not currently ship its planned Advanced Renewal adapter. Customers must
+    hold their own valid extension license; paid extension templates are not redistributed
+    with LucentUI.
+  </Accordion>
 
-### Where do I change the color palette?
-Color customization can be done via the **Color Scheme** section in the theme settings.
-
-You can set:
-- `primary`, `secondary`, `neutral` for light theme
-- `dark-primary`, `dark-secondary`, `dark-neutral`, etc. for dark mode
-
-The values accept any CSS-supported color, including `hsl()`, `#hex`, or named colors.
-
----
-
-### Does LucentUI support dark mode?
-Yes. LucentUI includes full dark mode support out-of-the-box.
-
-You can customize dark theme colors using settings like `dark-base`, `dark-background`, and more. The theme automatically switches based on user preference or system setting.
-
----
-
-### How do I show a banner for all users?
-Enable the announcement banner by setting `banner_enabled` to true.
-
-You can configure:
-- `banner_type` for style (info, warning, success, critical)
-- `banner_message` for the content
-- `banner_dismissible` if users are allowed to close it
-
-Great for promotions, maintenance alerts, or urgent messages.
-
----
-
-### How do I update LucentUI to the latest version?
-Visit the [Changelogs](./changelogs) to check for new releases.
-Then, go to the [Updating](./updating) section for detailed instructions on how to update your theme using either the manual method or PTB (.paytheme).
+  <Accordion title="How do I report a bug?">
+    Follow the [troubleshooting checklist](/lucentui/troubleshoot), remove sensitive data,
+    then contact the [Zaqua community](https://discord.gg/UYMrM8kDne) with versions,
+    reproduction steps, logs, and console output.
+  </Accordion>
+</AccordionGroup>

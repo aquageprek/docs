@@ -1,0 +1,99 @@
+---
+title: 'LucentUI Editor'
+description: 'Use live preview, presets, localized fields, import, export, and reset safely.'
+icon: 'sliders'
+---
+
+LucentUI Editor is the control center for version 3.0. It is a Paymenter extension,
+not a core patch, and appears under **Extensions → LucentUI Editor** after installation
+and enablement.
+
+## Editor layout
+
+The Editor combines a configuration form with a responsive storefront preview. Its main
+tabs are:
+
+| Tab | Controls |
+| --- | --- |
+| Colors | Default/forced theme, color presets, Lucent/Flat mode, glass intensity |
+| Typography & Layout | Fonts, base size, navbar/sidebar variants, cookie notice |
+| Navigation & Footer | Visibility, custom links, footer, social links, Discord |
+| Auth Pages | Localized copy for login, registration, recovery, verification, 2FA, logout |
+| Homepage | Ordered homepage block builder |
+| Multilingual Content | Legacy/global marketing copy using the active content language |
+| Dashboard | Presets and ordered client dashboard blocks |
+| Products & Services | Product cards, category behavior, service copy, icon mappings |
+| Background | Light and dark wallpapers, opacity, blur |
+| SEO | Metadata, social image, robots policy, analytics IDs |
+| Invoice PDF | Header, accent, dates, watermark, notes |
+| Advanced | Trusted custom CSS, JavaScript, and HTML injection |
+
+## Draft preview behavior
+
+Most visual changes update the private preview before they are saved. The preview can
+switch between desktop, tablet, and mobile widths and between homepage and dashboard.
+
+<Info>
+  Preview drafts are cached for two hours and tied to the authenticated administrator
+  who created them. A preview URL without the matching signed-in owner renders live
+  settings instead of exposing the draft.
+</Info>
+
+Changes to colors and typography can update as CSS variables. Structural changes such
+as block order or variants refresh the preview frame. The preview does not make settings
+public until you select **Save Changes**.
+
+## Save, export, import, and reset
+
+<AccordionGroup>
+  <Accordion title="Save Changes" icon="floppy-disk">
+    Validates the current form, stores settings using the `lucentui_` prefix, clears
+    relevant caches, and refreshes the preview. Use `Ctrl+S` or `Cmd+S` as a shortcut.
+  </Accordion>
+  <Accordion title="Export" icon="download">
+    Downloads a timestamped JSON file containing the current `lucentui_*` database
+    settings. Export before upgrades and before large layout changes.
+  </Accordion>
+  <Accordion title="Import" icon="upload">
+    Accepts JSON produced by Export and immediately replaces matching LucentUI settings.
+    Review the source and make a fresh export before importing third-party configuration.
+  </Accordion>
+  <Accordion title="Reset" icon="trash">
+    Deletes every saved LucentUI setting and returns the theme to defaults. The action is
+    irreversible and requires typing `DELETE ALL SETTINGS` exactly.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  A color preset or dashboard layout preset only changes the form until **Save Changes**
+  is selected. Import and Reset are different: they write immediately after confirmation.
+</Warning>
+
+## Recommended first configuration
+
+<Steps>
+  <Step title="Export a baseline">
+    Save the initial defaults once, then export them. Keep this JSON as a known-good design.
+  </Step>
+  <Step title="Choose appearance and palette">
+    Select Lucent or Flat mode, apply a color strip preset, and verify light and dark preview.
+  </Step>
+  <Step title="Build the homepage and dashboard">
+    Apply a starting preset, reorder blocks, and disable anything your business does not use.
+  </Step>
+  <Step title="Configure languages and operational links">
+    Fill English first, add translations, then verify support, legal, control-panel, and social URLs.
+  </Step>
+  <Step title="Test as a customer">
+    Check guest, authenticated, mobile, and both color-mode paths outside the preview.
+  </Step>
+</Steps>
+
+<Columns cols={2}>
+  <Card title="Appearance modes" icon="circle-half-stroke" href="/lucentui/appearance">
+    Understand Lucent glass, Flat UI, surface hierarchy, and user color preference.
+  </Card>
+  <Card title="Settings reference" icon="list" href="/lucentui/settings-reference">
+    Find every Editor tab and the most important stored setting keys.
+  </Card>
+</Columns>

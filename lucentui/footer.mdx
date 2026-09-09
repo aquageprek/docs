@@ -1,51 +1,40 @@
 ---
-title: "Footer & Social Links"
-description: "Configure footer text, important legal pages, and social media links to stay connected with your users."
-icon: "link"
+title: 'Footer and social links'
+description: 'Configure company copy, legal links, support destinations, and social profiles.'
+icon: 'link'
 ---
 
-# 🔗 Footer & Social Media Settings
+Open **LucentUI Editor → Navigation & Footer**.
 
-Customize the text shown at the bottom of your site and link your users to helpful pages and social platforms.
+## Footer content
 
-## 📄 Footer Information
+| Setting | Purpose |
+| --- | --- |
+| Footer Description | Short company description; supports Markdown |
+| Copyright Text | Custom copyright, or leave empty for the generated year and app name |
+| Hide Paymenter badge | Removes the Paymenter attribution silhouette |
+| Privacy Policy URL | Internal or external privacy policy |
+| Terms of Service URL | Internal or external terms page |
+| Support URL | Ticket, contact, or help center destination |
+| External Control Panel URL | Pterodactyl or another service-management panel |
 
-<Expandable title="Footer Settings">
-    <ResponseField name="footer_text" type="string" default="Welcome to Paymenter!">
-        Text displayed in the footer area (supports **Markdown**)
-    </ResponseField>
+Relative URLs such as `/tickets` stay on the Paymenter domain. Use complete `https://`
+URLs for external destinations.
 
-    <ResponseField name="privacy_policy_url" type="string" default="https://yourserver.com/privacy">
-        Link to your Privacy Policy page
-    </ResponseField>
+## Social profiles
 
-    <ResponseField name="terms_of_service_url" type="string" default="https://yourserver.com/tos">
-        Link to your Terms of Service page
-    </ResponseField>
+LucentUI supports Discord, GitHub, Twitter/X, Instagram, YouTube, and TikTok. Empty fields
+are omitted rather than rendering inactive icons.
 
-    <ResponseField name="support_url" type="string" default="https://yourserver.com/contact">
-        Link to your support or contact page
-    </ResponseField>
-</Expandable>
+## Recommended production setup
 
-## 📱 Social Media Links
+- Keep the footer description to one or two short sentences.
+- Link privacy and terms pages before accepting customer payments.
+- Point support to the channel your team actually monitors.
+- Verify every social URL in a signed-out browser.
+- Use custom HTML only when a normal footer field cannot represent the required content.
 
-<Expandable title="Social Media Links">
-    <ResponseField name="instagram_url" type="string" default="https://instagram.com/yourprofile">
-        Link to your Instagram profile
-    </ResponseField>
-
-    <ResponseField name="youtube_url" type="string" default="https://youtube.com/yourchannel">
-        Link to your YouTube channel
-    </ResponseField>
-
-    <ResponseField name="tiktok_url" type="string" default="https://tiktok.com/yourprofile">
-        Link to your TikTok profile
-    </ResponseField>
-
-    <ResponseField name="github_url" type="string" default="https://github.com/yourprofile">
-        Link to your GitHub profile or repo
-    </ResponseField>
-</Expandable>
-
-> 💡 **Tip:** Keeping these links up-to-date helps users find support, follow your updates, or join your community!
+<Info>
+  Footer links, theme navigation, and extension navigation are independent. Changing an
+  external control-panel URL does not change server-extension SSO behavior.
+</Info>

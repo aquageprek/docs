@@ -1,0 +1,60 @@
+---
+title: 'Navigation and links'
+description: 'Configure navbar, sidebar, command palette, custom links, and Discord behavior.'
+icon: 'compass'
+---
+
+Navigation settings live across **Typography & Layout** and **Navigation & Footer** in
+LucentUI Editor.
+
+## Navbar
+
+Choose a shape and alignment, then control whether the cart, notifications, and guest
+authentication buttons appear. The theme preserves Paymenter's core routes and adds
+custom navbar links after the main links.
+
+Each custom link supports:
+
+- Label
+- Relative or absolute URL
+- Open in new tab
+- Drag-and-drop ordering
+
+## Authenticated sidebar
+
+Choose Floating or Docked sidebar shape. Custom sidebar links support the navbar fields
+plus a RemixIcon component name and an optional separator.
+
+```text
+ri-discord-line
+ri-book-open-line
+ri-server-line
+ri-customer-service-2-line
+```
+
+Use an installed RemixIcon name. An invalid name falls back safely but does not provide
+the intended visual meaning.
+
+## Sidebar rail and command palette
+
+Authenticated users can collapse the sidebar to an icon rail. The state is stored in the
+browser and survives Livewire navigation and reloads.
+
+`Ctrl+K` or `Cmd+K` opens the command palette. It searches available navigation pages,
+services, invoices, tickets, and quick actions for the signed-in user. Guest pages do
+not load the authenticated command data.
+
+## Language and currency
+
+The navbar language control follows Paymenter's allowed languages. Enable **Show Currency
+Code in Language Pill** to display a compact value such as `EN | USD`.
+
+## Discord section
+
+Provide the Discord Server ID and enable Discord's Server Widget to show live community
+data. If the widget is unavailable, LucentUI renders the configured fallback member text.
+
+<Warning>
+  Treat URLs as production configuration. Test relative links, external control-panel
+  targets, and new-tab behavior as both a guest and an authenticated client.
+</Warning>

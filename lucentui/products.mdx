@@ -1,0 +1,81 @@
+---
+title: 'Products, checkout, and service icons'
+description: 'Configure product cards, category pages, spec shortcodes, checkout behavior, and scoped icon mappings.'
+icon: 'cart-shopping'
+---
+
+Use **LucentUI Editor → Products & Services** for catalogue presentation. Product names,
+prices, stock, configuration options, and provisioning behavior remain managed by
+Paymenter and installed server extensions.
+
+<Frame caption="Cloud VPS category using product spec shortcodes and a dark Lucent palette.">
+  <img
+    src="/images/lucentui/product-cards.webp"
+    alt="LucentUI Cloud VPS category with search, billing period switch, availability badges, product cards, and specification rows"
+  />
+</Frame>
+
+## Product card styles
+
+The Editor includes six card presentations: Classic, Background, Icon Compact, Icon
+Right, Icon Top-Left, and Icon Top. All variants render the same pricing, stock, discount,
+CTA, cleaned description, and parsed specification data.
+
+## Product behavior
+
+- **Direct Checkout** skips the product detail page.
+- **Show Starts at Label** controls the small price prefix.
+- **Show Category Image Banner** uses the category media as a wide header.
+- **Show Category Descriptions** controls text on subcategory cards.
+- **Full Description in the Banner** switches between complete formatted copy and a
+  compact excerpt.
+
+## Specification shortcodes
+
+Add one marker per line to a Paymenter product description:
+
+```text
+High-frequency compute for production workloads.
+
+!cpu=4 vCPU AMD EPYC
+!ram=8 GB DDR5 ECC
+!storage=160 GB PCIe Gen4 NVMe
+!network=5 TB @ 10 Gbps
+!location=Singapore
+!ddos=3.2 Tbps DDoS Shield
+```
+
+LucentUI removes the marker lines from the visible description and renders structured
+spec rows with semantic icons. The format uses an equals sign: `!key=value`.
+
+Common keys include `cpu`, `ram`, `memory`, `storage`, `disk`, `network`, `bandwidth`,
+`location`, `region`, `ddos`, `database`, `email`, `domain`, `ssl`, and `setup`.
+Unknown keys still render with a safe fallback icon.
+
+Pricing metadata such as `discount`, `discountpercent`, and `popular_plan` is excluded
+from the hardware specification list.
+
+## Scoped icon mappings
+
+When two extensions reuse the same numeric value, a global ID is ambiguous. Add a scope
+in **Icon Mapping**:
+
+| Scope | Use |
+| --- | --- |
+| `option:3` | Paymenter configuration option whose parent ID is 3 |
+| `checkout:os` | Extension checkout field named `os` |
+| `plan` | Billing plan or period keys |
+
+Then provide the value ID and either a complete icon URL or a filename from the LucentUI
+icon asset directory.
+
+<Warning>
+  Prefer scoped mappings for opaque values such as `5`. A legacy global mapping is only
+  safe when the value is unique across every product and server extension.
+</Warning>
+
+## Server-extension checkout
+
+LucentUI keeps provisioning logic in the extension. Theme overrides only organize and
+style the controls. Proxmox options are grouped into Compute, Storage, Network, System,
+and Additional; unknown future fields remain visible under Additional.

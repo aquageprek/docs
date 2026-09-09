@@ -1,0 +1,55 @@
+---
+title: 'Authentication pages'
+description: 'Customize localized authentication copy and verify every account access flow.'
+icon: 'user-lock'
+---
+
+The **Auth Pages** tab controls shared side-panel and helper copy for the complete
+Paymenter authentication journey:
+
+- Sign in and OAuth provider actions
+- Registration and multi-step navigation
+- Password visibility and strength labels
+- Password reset request and new password form
+- Email verification
+- Two-factor authentication
+- Logout confirmation
+
+## Localized fields
+
+The global **Content language** selector at the top of LucentUI Editor controls the auth
+fields. Fill English first, then switch to each enabled Paymenter language.
+
+Dynamic placeholders such as `:provider` are part of the message contract. Preserve them
+in translations so the runtime provider name remains visible.
+
+## Error states
+
+Laravel and Paymenter validation messages remain authoritative. LucentUI styles failed
+authentication, password mismatch, and form-level errors as danger content while keeping
+field-level guidance readable in light and dark mode.
+
+## Test matrix
+
+<Steps>
+  <Step title="Test failed sign-in">
+    Confirm the error is red, announced near the form, and does not reveal account details.
+  </Step>
+  <Step title="Test registration validation">
+    Submit missing and mismatched values, move backward and forward, and check mobile layout.
+  </Step>
+  <Step title="Test password recovery">
+    Verify request, token reset, strength labels, visibility toggles, and completion state.
+  </Step>
+  <Step title="Test email verification and 2FA">
+    Check code entry, resend actions, invalid-code errors, and navigation back to sign-in.
+  </Step>
+  <Step title="Test logout">
+    Confirm that logout opens the LucentUI confirmation modal and cancel keeps the session active.
+  </Step>
+</Steps>
+
+<Tip>
+  Test authentication in every enabled language. Long translations commonly expose button
+  width, wrapping, and side-panel height problems before other pages do.
+</Tip>

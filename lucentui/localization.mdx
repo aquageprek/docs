@@ -1,0 +1,68 @@
+---
+title: 'Localization'
+description: 'Translate LucentUI content using Paymenter enabled languages and English fallback rules.'
+icon: 'language'
+---
+
+LucentUI Editor discovers languages from Paymenter's **Allowed Languages** setting.
+English is always shown first as the source and fallback language; there is no fixed
+four-language limit.
+
+## Enable languages
+
+<Steps>
+  <Step title="Configure Paymenter">
+    In Paymenter settings, enable every language customers should be able to choose.
+  </Step>
+  <Step title="Reload LucentUI Editor">
+    Open or refresh the Editor. **Content language** lists English followed by the enabled
+    Paymenter languages using their native configured names.
+  </Step>
+  <Step title="Write English source copy">
+    Complete important marketing, auth, homepage, and dashboard fields in English first.
+  </Step>
+  <Step title="Translate each enabled locale">
+    Switch **Content language**, edit the projected fields, preview that language, then
+    select **Save Changes** after all intended translations are present.
+  </Step>
+</Steps>
+
+Switching language does not write to the database and does not discard unsaved copy from
+the previous language. The form keeps complete locale maps in memory until Save.
+
+## Fallback behavior
+
+1. LucentUI uses the active locale when that translation is non-empty.
+2. Otherwise it uses the English value when an English entry exists.
+3. If no English entry exists, it uses the first non-empty locale value.
+4. An explicitly empty English entry suppresses fallback copy.
+
+Legacy plain-string settings are treated as English, so upgrading does not require a
+translation migration.
+
+## Blocks and global copy
+
+Localized fields exist in three places:
+
+- **Auth Pages** for authentication and logout copy.
+- **Multilingual Content** for global marketing fields retained for compatibility.
+- Homepage and dashboard block fields marked as localized.
+
+Repeater rows such as individual FAQ answers, feature items, testimonials, and tips are
+currently stored as shared content unless the block field explicitly shows locale-aware
+editing.
+
+## Disabled languages
+
+Non-empty translations for a language are preserved when that language is temporarily
+disabled in Paymenter. They reappear when it is enabled again.
+
+<Tip>
+  Verify right-to-left languages in the private preview. LucentUI follows the document
+  direction for navigation, sidebar placement, and layout spacing.
+</Tip>
+
+<Warning>
+  Preserve placeholders such as `:name` and `:provider` in every translation. Removing a
+  placeholder prevents the dynamic value from appearing at runtime.
+</Warning>

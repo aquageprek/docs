@@ -1,0 +1,66 @@
+---
+title: 'Dashboard builder'
+description: 'Compose the authenticated client dashboard with presets, blocks, variants, and live Paymenter data.'
+icon: 'gauge-high'
+---
+
+The **Dashboard** tab uses the same stable block engine as the homepage, but exposes
+blocks designed for signed-in customer data.
+
+## Starting presets
+
+Applying a preset replaces the block arrangement in the form. It is not permanent until
+you select **Save Changes**.
+
+| Preset | Composition |
+| --- | --- |
+| Default | Alerts, greeting banner, stats, services, invoices, tickets, community |
+| Minimal | Compact greeting and figures with fewer panels |
+| Support-first | Tickets, community, and quick actions before billing |
+| Billing-first | Invoices and credits before services and support |
+
+## Dashboard blocks
+
+| Block | Variants | Main controls |
+| --- | --- | --- |
+| Greeting Card | Banner, Compact, Stat Strip | Localized copy, artwork, clock/date, membership pill |
+| Alerts & Notices | Stack, Inline | Unpaid invoices, expiring services, 2FA, announcement, daily tips |
+| Stat Cards | Cards, Strip, Minimal | Services, invoices, tickets, credits |
+| Active Services | List, Compact, Grid | Title, limit, sort, empty state, link text |
+| Unpaid Invoices | List, Compact | Title, limit, empty state, link text |
+| Support Tickets | List, Compact | Title, limit, empty state, link text |
+| Community Panel | Panel, Banner | Localized title/description, button, URL |
+| Quick Actions | Grid, Row | Reorderable icon, label, and URL items |
+| Features | Bento, Grid, Icon List, Alternating | Reusable marketing feature list |
+| FAQ | Five homepage-compatible variants | Reusable questions and answers |
+| CTA | Band, Boxed, Split, Minimal | Copy, links, optional image |
+| Stats, Discord, Promo, Custom HTML | Shared homepage variants | Shared configuration model |
+
+## Width and duplication
+
+Dashboard blocks can use full or half width. Adjacent half-width blocks form a row at
+wide viewports and stack on smaller screens. Duplicate a data block when you need two
+views with different titles or limits.
+
+<Info>
+  The service, invoice, and ticket limits are applied by the dashboard block data layer.
+  They are not the same as Paymenter's global pagination setting.
+</Info>
+
+## Alerts behavior
+
+Alerts can derive notices from unpaid invoices, services approaching expiry, and missing
+two-factor authentication. A manually configured announcement supports Markdown and one
+of four tones: Info, Success, Warning, or Critical. Daily tips rotate from the configured
+list.
+
+## Performance
+
+The dashboard is rendered server-side from cached settings and bounded data queries.
+Blocks should remain focused: increasing every limit or cloning many live-data blocks can
+increase database work and reduce scanability.
+
+<Warning>
+  When the Greeting Card uses **Stat Strip**, disable a separate Stat Cards block unless
+  repeating the same figures is intentional.
+</Warning>

@@ -1,154 +1,107 @@
 ---
-title: "Troubleshooting LucentUI"
-description: "Common issues and how to fix them when using the LucentUI theme for Paymenter."
-icon: "bug"
+title: 'Troubleshooting'
+description: 'Diagnose LucentUI installation, assets, Editor, localization, media, and extension issues.'
+icon: 'bug'
 ---
 
-# 🛠️ Troubleshooting Guide
+Start with the exact exception and failing request. Avoid replacing core Paymenter files
+to work around a theme or extension packaging problem.
 
-If you're running into issues with the LucentUI theme, don’t worry! Here’s a list of common problems and how to resolve them.
+## First checks
 
----
+```bash
+cd /var/www/paymenter
+php artisan optimize:clear
+php artisan view:cache
+```
 
-## 🚫 Theme Not Rendering / Blank Page
+Then inspect the latest Laravel log entries:
 
-**Symptoms:**
-- Page is blank or not styled
-- Header/footer is missing
+```bash
+tail -n 100 storage/logs/laravel.log
+```
 
-**Possible Causes:**
-- Theme not properly installed or not selected
-- Missing required assets or build step not completed
-- Base URL not set correctly
-- `themes/lucentui/Theme.php` is malformed (e.g. missing comma, invalid array) or not found
+Use the container equivalents when Paymenter runs in Docker.
 
-**Fixes:**
-- Make sure LucentUI is selected as the active theme in Paymenter settings
-- Run `php artisan app:settings:change app_url` to set the Base URL
-- Build the theme again using `npm run build lucentui` from your Paymenter root
-- Check the theme folder path: should be `/themes/lucentui`
-- Validate your `Theme.php` using an online PHP linter
+<AccordionGroup>
+  <Accordion title="Vite manifest not found" icon="file-circle-xmark">
+    Confirm `public/lucentui/manifest.json` exists at the Paymenter root. Republish the
+    prebuilt bundle from `themes/lucentui/public/lucentui`, clear caches, and hard-refresh.
 
----
+    ```bash
+    mkdir -p public/lucentui
+    cp -a themes/lucentui/public/lucentui/. public/lucentui/
+    php artisan optimize:clear
+    ```
+  </Accordion>
 
-## ⚠️ npm/Vite Build Errors
-**Symptoms:**
-- Errors when running `npm run build lucentui`
-- Missing dependencies or modules
-**Possible Causes:**
-- Node.js or NPM not installed or outdated
-- Missing `package.json` or `node_modules`
-**Fixes:**
-- Ensure you have Node.js v14+ and NPM installed
-- Run `npm install` in your Paymenter root to install dependencies
-- Check for typos in `package.json`
-- Try deleting `node_modules` and running `npm install` again
+  <Accordion title="No valid extension class found" icon="box-open">
+    Upload `LucentUIEditor-3.0.0-upload.zip`, not the theme archive or a combined bundle.
+    The Editor ZIP must contain `LucentUIEditor.php` directly at its root.
+  </Accordion>
 
----
+  <Accordion title="Editor uploaded but missing" icon="puzzle-piece">
+    Upload and installation are separate steps. Return to **Ready to Install / Upload**,
+    click **Install** beside LucentUI Editor, enable it on the edit page, and save.
+  </Accordion>
 
-## ⚠️ Error 500 - Internal Server Error
+  <Accordion title="Undefined LucentUI helper or class" icon="code">
+    This normally indicates mixed files from different releases or a disabled/outdated
+    Editor. Replace both theme and Editor from the same release, ensure the Editor is
+    enabled, and clear compiled views. Do not add the helper to Paymenter core.
+  </Accordion>
 
-**Symptoms:**
-- Page displays error 500 or “SERVER ERROR”
+  <Accordion title="Old CSS or JavaScript remains" icon="rotate">
+    Republish the complete bundled public directory. Check the browser Network panel to
+    confirm filenames match `public/lucentui/manifest.json`, then hard-refresh.
+  </Accordion>
 
-**Possible Causes:**
-- Syntax error in theme files
-- PHP version incompatibility
-- Laravel cache issues
+  <Accordion title="Settings save but the storefront does not change" icon="floppy-disk">
+    Confirm `lucentui` is Paymenter's active theme and that you selected **Save Changes**.
+    Presets only change the form until saved. Clear application caches and test outside
+    the private preview.
+  </Accordion>
 
-**Fixes:**
-- Run `php artisan config:clear`, `php artisan view:clear`, and `php artisan cache:clear`
-- Check `storage/logs/laravel.log` for exact error trace
-- Ensure you’re using PHP 8.3 or higher (as required by Paymenter)
+  <Accordion title="Wallpaper upload does not appear" icon="image">
+    Verify Paymenter's public storage link, file permissions, and that opacity is above
+    zero. For external URLs, test the direct image in a signed-out browser.
+  </Accordion>
 
----
+  <Accordion title="Translation falls back to English" icon="language">
+    Confirm the locale is enabled in Paymenter's Allowed Languages and its translated
+    value is non-empty. Reload the Editor after changing the allowed language list.
+  </Accordion>
 
-## 🧩 Theme Settings Not Showing
+  <Accordion title="Wrong icon appears for a server option" icon="icons">
+    Replace an ambiguous global numeric mapping with `option:{parent ID}`, `checkout:{field}`,
+    or `plan` scope. Save, clear caches, and test every product type that reused the ID.
+  </Accordion>
 
-**Symptoms:**
-- Custom theme settings are missing in the admin panel
+  <Accordion title="Extension action button does nothing" icon="bolt">
+    Reproduce the action with Paymenter's default theme. If both fail, inspect the
+    extension's request and Laravel log. If only LucentUI fails, capture the console and
+    failed network request and report the extension/version pair.
+  </Accordion>
 
-**Possible Causes:**
-- `Theme.php` file not loaded properly
-- Syntax error in one of the setting definitions
+  <Accordion title="Custom code breaks navigation" icon="triangle-exclamation">
+    Remove the most recent snippet, especially duplicate listeners, intervals, and DOM
+    observers that survive Livewire navigation. Restore a known-good Editor export if the
+    form is no longer usable.
+  </Accordion>
+</AccordionGroup>
 
-**Fixes:**
-- Double check `Theme.php` syntax (especially commas, quotes, brackets)
-- Refresh the admin dashboard or relogin
-- Re-import the theme
+## Collect a useful support report
 
----
+Include:
 
-## 🖼️ Background Image Not Showing
+- Paymenter, PHP, LucentUI, and LucentUI Editor versions.
+- The failing URL and whether it affects guests, clients, or administrators.
+- Light/dark and Lucent/Flat mode combination.
+- Exact exception, relevant Laravel log lines, console errors, and failed request status.
+- Installed extension name and version when the problem occurs in an integration.
+- Whether the same action works with Paymenter's default theme.
 
-**Symptoms:**
-- Background image set in settings does not appear
-
-**Possible Causes:**
-- Invalid URL format
-- Image is blocked due to CORS
-
-**Fixes:**
-- Make sure the image URL is direct and ends with `.jpg`, `.png`, etc.
-- Try uploading the image to a CDN or your own server
-- Ensure browser isn’t blocking external content
-
----
-
-## 🎨 Color Settings Not Applying
-
-**Symptoms:**
-- Primary or secondary colors are not updating
-
-**Possible Causes:**
-- Cache not cleared
-- Incorrect `hsl()` format
-
-**Fixes:**
-- Check that all colors are valid (e.g. `hsl(240, 100%, 50%)`)
-- Clear browser cache or use hard reload (Ctrl + F5)
-- Try clearing views: `php artisan view:clear`
-
----
-
-## 🔧 Custom JS/CSS Not Working
-
-**Symptoms:**
-- Custom scripts or styles have no effect
-
-**Possible Causes:**
-- Syntax errors in your custom code
-- Content-Security-Policy (CSP) blocking inline scripts
-
-**Fixes:**
-- Wrap CSS in `<style>` and JS in `<script>` (automatically done if using theme settings)
-- Avoid using `document.write` in JS
-- Check browser console for errors (F12 > Console)
-
----
-
-## 🧼 Markdown Not Rendering in Footer / CTA
-
-**Symptoms:**
-- Footer text or other markdown content displays as raw text
-
-**Fixes:**
-- Ensure you're not escaping special characters (like `*`, `_`)
-- Wrap content correctly — avoid unclosed tags
-
----
-
-## 🧪 Still Broken?
-
-**Checklist:**
-- ✅ Is the theme installed in the right folder?
-- ✅ Is your Paymenter version up to date?
-- ✅ Are you using supported PHP version?
-- ✅ Did you clear Laravel & browser cache?
-- ✅ Did you check the logs?
-
-> 🧠 **Pro Tip:** Always test new settings on a staging environment before applying them live!
-
----
-
-Need help? **Open a ticket** in our Discord Server!
+<Danger>
+  Remove tokens, cookies, passwords, customer data, package fingerprints, and private
+  infrastructure addresses before posting logs or screenshots publicly.
+</Danger>
