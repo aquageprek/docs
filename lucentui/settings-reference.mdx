@@ -99,15 +99,6 @@ Saving, importing, resetting, or changing the Editor extension lifecycle clears 
 LucentUI settings and statistics caches. Settings are resolved per active locale and
 cached for normal storefront requests.
 
-Authenticated users can inspect the release marker from the browser console:
-
-```js
-LucentUI.inspect()
-```
-
-The record contains the licensed username, user ID, and a one-way proof. It does not
-expose the raw package nonce or send a tracking request.
-
 ## Package paths
 
 ```text
@@ -128,9 +119,18 @@ extensions/Others/LucentUIEditor/
 public/lucentui/
 ├── manifest.json
 └── assets/
+    ├── editor.svg
+    ├── flags/
+    ├── icons/
+    └── images/card-styles/
 ```
 
 <Warning>
   `themes/lucentui/public/lucentui` is the copy bundled with the theme archive.
   Paymenter's web server loads the published copy at root `public/lucentui`.
 </Warning>
+
+LucentUI's required interface assets are bundled locally and versioned with the theme.
+A CDN such as Cloudflare R2 can mirror them, but should not replace the local files;
+keeping the local copy prevents Editor previews and locale controls from depending on
+external availability, cache state, or cross-origin policy.

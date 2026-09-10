@@ -23,6 +23,11 @@ Released September 2026.
 - Replaced fixed homepage sections with ordered, cloneable, variant-aware blocks.
 - Added the same builder architecture to the authenticated dashboard.
 - Added four dashboard starting presets: Default, Minimal, Support-first, and Billing-first.
+- Added a multi-currency Monthly Cost Overview block with radial and bar variants.
+- Unified navbar, mobile drawer, and sidebar account profiles with a lightweight credit line.
+- Fixed the Monthly Cost radial chart so its semantic primary progress arc renders in
+  light and dark mode.
+- Separated credit reveal controls from card navigation across all dashboard stat variants.
 - Added stable block IDs so reorder and no-op saves preserve configuration.
 - Added dynamic localization based on Paymenter's Allowed Languages, with English source
   fallback and preservation of disabled-language translations.
@@ -51,9 +56,9 @@ Released September 2026.
 - Added live Editor preview for desktop, tablet, mobile, homepage, dashboard, and active locale.
 - Added import/export and destructive reset confirmation.
 - Added SEO, analytics, navigation, footer, custom code, and invoice PDF controls.
-- Added browser release inspection through `LucentUI.inspect()` without exposing the raw nonce.
-- Added separate install-ready theme and Paymenter upload ZIP packages with prebuilt assets,
-  SHA-256 checksums, and automated archive validation.
+- Added a single-download release bundle containing install-ready theme and Editor ZIPs,
+  a complete installation guide, locally bundled interface artwork, SHA-256 checksums,
+  and automated archive validation.
 
 ## Earlier releases
 
@@ -68,8 +73,3 @@ Released September 2026.
 | 1.2.0 | New homepage design and broader customization controls |
 | 1.1.x | Category banners, early extension support, and Paymenter 1.2 compatibility |
 | 1.0.0 | First stable LucentUI release |
-
-<Info>
-  The 3.0 packaging workflow supersedes retired PTB/`.paytheme` instructions. Use the
-  supported two-ZIP process described in [Install LucentUI](/lucentui/get-started).
-</Info>

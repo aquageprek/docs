@@ -17,7 +17,7 @@ you select **Save Changes**.
 | Default | Alerts, greeting banner, stats, services, invoices, tickets, community |
 | Minimal | Compact greeting and figures with fewer panels |
 | Support-first | Tickets, community, and quick actions before billing |
-| Billing-first | Invoices and credits before services and support |
+| Billing-first | Monthly cost visualization, invoices, and credits before services and support |
 
 ## Dashboard blocks
 
@@ -26,6 +26,7 @@ you select **Save Changes**.
 | Greeting Card | Banner, Compact, Stat Strip | Localized copy, artwork, clock/date, membership pill |
 | Alerts & Notices | Stack, Inline | Unpaid invoices, expiring services, 2FA, announcement, daily tips |
 | Stat Cards | Cards, Strip, Minimal | Services, invoices, tickets, credits |
+| Monthly Cost Overview | Radial, Bars | Localized title/subtitle, paid amount, recurring service count |
 | Active Services | List, Compact, Grid | Title, limit, sort, empty state, link text |
 | Unpaid Invoices | List, Compact | Title, limit, empty state, link text |
 | Support Tickets | List, Compact | Title, limit, empty state, link text |
@@ -53,6 +54,22 @@ Alerts can derive notices from unpaid invoices, services approaching expiry, and
 two-factor authentication. A manually configured announcement supports Markdown and one
 of four tones: Info, Success, Warning, or Critical. Daily tips rotate from the configured
 list.
+
+## Monthly cost overview
+
+The Monthly Cost Overview estimates a monthly recurring amount from active paid services,
+normalizing daily, weekly, monthly, and yearly billing cycles. It separately shows pending
+invoice balances due through the end of the current month and paid invoices due within the
+month. Free and one-time plans are excluded from the recurring estimate.
+
+Each currency is rendered independently. LucentUI never combines unlike currencies into a
+misleading total, and the visitor's selected currency is shown first. The radial variant
+emphasizes invoice payment progress; the bars variant provides a denser comparison.
+
+Credit figures are obscured by default. The eye button changes only the reveal state;
+it does not open the Credits page. Selecting any other part of the credit card still
+navigates to the account credit screen. This behavior is consistent across Cards, Strip,
+and Minimal stat variants.
 
 ## Performance
 

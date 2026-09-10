@@ -21,8 +21,6 @@ Then inspect the latest Laravel log entries:
 tail -n 100 storage/logs/laravel.log
 ```
 
-Use the container equivalents when Paymenter runs in Docker.
-
 <AccordionGroup>
   <Accordion title="Vite manifest not found" icon="file-circle-xmark">
     Confirm `public/lucentui/manifest.json` exists at the Paymenter root. Republish the
@@ -54,6 +52,19 @@ Use the container equivalents when Paymenter runs in Docker.
   <Accordion title="Old CSS or JavaScript remains" icon="rotate">
     Republish the complete bundled public directory. Check the browser Network panel to
     confirm filenames match `public/lucentui/manifest.json`, then hard-refresh.
+  </Accordion>
+
+  <Accordion title="Monthly Cost ring shows only a plain circle" icon="chart-pie">
+    Republish the current `public/lucentui` assets and hard-refresh the browser. The
+    progress arc uses the active semantic primary color in both light and dark mode;
+    seeing only the neutral track usually means an older compiled stylesheet is cached.
+  </Accordion>
+
+  <Accordion title="Credit reveal opens the Credits page" icon="eye">
+    Update the theme and republish its bundled assets. In the current release, the eye
+    button reveals the value without navigation, while the rest of the card remains a
+    link to Credits. Test the active Cards, Strip, or Minimal dashboard variant after
+    clearing cached views.
   </Accordion>
 
   <Accordion title="Settings save but the storefront does not change" icon="floppy-disk">
@@ -102,6 +113,6 @@ Include:
 - Whether the same action works with Paymenter's default theme.
 
 <Danger>
-  Remove tokens, cookies, passwords, customer data, package fingerprints, and private
-  infrastructure addresses before posting logs or screenshots publicly.
+  Remove tokens, cookies, passwords, customer data, and private infrastructure addresses
+  before posting logs or screenshots publicly.
 </Danger>

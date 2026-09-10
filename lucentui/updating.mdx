@@ -4,8 +4,7 @@ description: 'Safely update the LucentUI theme and Editor while preserving confi
 icon: 'arrows-rotate'
 ---
 
-LucentUI 3.0 updates use the same two ZIP files as a fresh installation. There is no
-PTB or `.paytheme` update path in this release.
+LucentUI 3.0 updates use the same outer bundle and two inner ZIP files as a fresh installation.
 
 <Warning>
   Back up local Blade, CSS, or JavaScript modifications before replacing the theme.
@@ -17,6 +16,11 @@ PTB or `.paytheme` update path in this release.
   <Step title="Read the release notes">
     Check the [LucentUI changelog](/lucentui/changelogs) for compatibility notes and
     changes that may affect custom code or extension overrides.
+  </Step>
+
+  <Step title="Extract the downloaded bundle">
+    Open `LucentUI-3.0.0-bundle.zip` on your computer and keep both inner installation
+    ZIP files intact.
   </Step>
 
   <Step title="Export the current design">

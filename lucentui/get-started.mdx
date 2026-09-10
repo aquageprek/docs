@@ -13,12 +13,19 @@ contains compiled production assets, so Node.js is not required.
 - The server runs PHP 8.3 or newer.
 - You have administrator permission to install extensions and change settings.
 - You can write to Paymenter's `themes`, `public`, `storage`, and `bootstrap/cache` paths.
-- You downloaded both LucentUI 3.0 release ZIP files from your licensed source.
+- You downloaded `LucentUI-3.0.0-bundle.zip` from your licensed source.
 
 The commands below use `/var/www/paymenter` as the Paymenter root. Substitute the path
 used by your server.
 
 <Steps>
+  <Step title="Open the release bundle">
+    Extract `LucentUI-3.0.0-bundle.zip` on your computer. Keep the two inner ZIP files
+    intact: the theme archive is extracted on the server, while the Editor archive is
+    uploaded through Paymenter. Read `INSTALLATION-GUIDE.md` for the portable copy of
+    this workflow and use `PACKAGE-SHA256SUMS.txt` to verify both inner packages.
+  </Step>
+
   <Step title="Back up an existing installation">
     If LucentUI is already installed, back up its theme and public asset directories and
     export the current Editor settings before replacing files.
@@ -51,7 +58,10 @@ used by your server.
       /var/www/paymenter/public/lucentui/
     ```
 
-    Confirm that `/var/www/paymenter/public/lucentui/manifest.json` exists.
+    Confirm that `/var/www/paymenter/public/lucentui/manifest.json` and
+    `/var/www/paymenter/public/lucentui/assets/editor.svg` exist. The same directory
+    includes locale flags, service icons, and Editor card previews; no separate asset
+    download or external image host is required.
   </Step>
 
   <Step title="Upload LucentUI Editor">
@@ -85,23 +95,9 @@ used by your server.
 
 <Check>
   Installation is complete when the storefront is styled, LucentUI Editor appears under
-  the Extensions navigation, and `/lucentui/manifest.json` returns successfully.
+  the Extensions navigation, and both `/lucentui/manifest.json` and
+  `/lucentui/assets/editor.svg` return successfully.
 </Check>
-
-## Docker installation
-
-If `/app` is the Paymenter root inside a container, publish the theme files into that
-container. Replace `paymenter` with its actual name.
-
-```bash
-docker exec paymenter mkdir -p /app/themes/lucentui /app/public/lucentui
-docker cp themes/lucentui/. paymenter:/app/themes/lucentui/
-docker cp themes/lucentui/public/lucentui/. paymenter:/app/public/lucentui/
-docker exec paymenter php artisan optimize:clear
-```
-
-Install the Editor from the Paymenter administrator upload screen even when Paymenter is
-containerized.
 
 ## Developer-only asset build
 

@@ -38,25 +38,32 @@ palette navigation, light/dark wallpapers, SEO controls, and branded PDF invoice
 
 ## Package model
 
-LucentUI is distributed as two independent ZIP files:
+LucentUI is delivered as one downloadable bundle. Extract the bundle on your computer
+to get the two install-ready packages:
 
 | Package | Purpose | Installation path |
 | --- | --- | --- |
+| `LucentUI-3.0.0-bundle.zip` | Single download containing both packages, installation guide, and checksums | Extract locally; do not upload it to Paymenter |
 | `LucentUI-3.0.0-theme.zip` | Theme source and prebuilt browser assets | Extract under `themes/lucentui` |
 | `LucentUIEditor-3.0.0-upload.zip` | Paymenter administrator extension | Upload from **Available Extensions** |
 
-Keeping the packages separate is intentional. Paymenter can upload the Editor extension,
-but themes continue to be placed in the `themes` directory and publish assets to `public`.
+The two inner ZIP files remain separate because Paymenter can upload the Editor extension,
+while themes are placed in the `themes` directory and publish assets to `public`.
 
 <Warning>
   Do not upload the theme ZIP through Paymenter's extension uploader. Do not extract the
   Editor upload ZIP before selecting it in the administrator panel.
 </Warning>
 
+The theme package itself contains the compiled frontend bundle and every required local
+interface asset: locale flags, service icons, LucentUI Editor artwork, and card-style
+previews. There is no separate assets archive to install.
+
 ## Design and compatibility guarantees
 
 - No LucentUI installation step requires editing Paymenter core files.
-- Normal installations use the bundled Vite assets and do not require Node.js.
+- Normal installations use bundled CSS, JavaScript, flags, service icons, and Editor
+  previews and do not require Node.js or an external image host.
 - Theme settings are stored in Paymenter's database and survive file-only upgrades.
 - Missing optional media collapses or falls back without breaking the page structure.
 - Light and dark colors use one semantic token system throughout supported views.
